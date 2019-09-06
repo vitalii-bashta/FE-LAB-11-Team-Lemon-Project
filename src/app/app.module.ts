@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { CoreModule } from './core/index';
-import { SharedModule } from './shared/index';
-import { HomeModule } from './home/index';
+import { CoreModule } from 'src/app/core';
+import { HomeModule } from 'src/app/home';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -15,7 +14,6 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    SharedModule,
     HomeModule
   ],
   providers: [],
