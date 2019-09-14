@@ -23,4 +23,4 @@ const routes : Routes = [
       RouterModule.forChild(routes),
     ]
   })
-  export class ArtecleLoadModule { }
+  export class HomePageRoutingModule { }
