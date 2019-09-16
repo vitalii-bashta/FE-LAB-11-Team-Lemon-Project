@@ -17,17 +17,17 @@ export class HomePageComponent implements OnInit {
     title: "sunt aut facere repellat provident occaecati ex...",
     userId: 1
   }
-  // constructor(private httpEvents: HttpServiceEvents,private httpUsers: HttpServiceUsers) { }
+  constructor(private httpEvents: HttpServiceEvents,private httpUsers: HttpServiceUsers) { }
   ngOnInit() {
     // this.httpEvents.getEvents().subscribe({
-    //   next:users => console.log(users)
+    //   next:users => console.log(users())
     // })
     // this.httpUsers.deleteUser('6').subscribe({
     //   next:user => console.log(user)
     // })
-    // this.httpUsers.getUser('5').subscribe({
-    //   next:user => console.log(user)
-    // })
+    this.httpUsers.getUser('5').subscribe({
+      next:user => console.log(user())
+    })
     
     // this.http.pushUser(this.fakeData).subscribe({
     //   next:user => console.log(user)

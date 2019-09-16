@@ -24,6 +24,4 @@ export class HttpServiceEvents{
     updateEvent(key:string,data:Event):Observable<any> {
         return this.http.patch(`${this.fireBase}/events/${key}.json`,data)
     }   
-    // 'https://[PROJECT_ID].firebaseio.com/users/jack/name/last.json'
-    // { "first": "Jack", "last": "Sparrow" }
 }
