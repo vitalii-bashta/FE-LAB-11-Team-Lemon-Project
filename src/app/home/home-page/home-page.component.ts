@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpServiceEvents } from '../../core/services/http-service.events'
-import { HttpServiceUsers } from '../../core/services/http-service.users'
-import { from } from 'rxjs';
+
 
 
 @Component({
@@ -10,9 +8,8 @@ import { from } from 'rxjs';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  
   ngOnInit() {
-    
+
   }
 
 }

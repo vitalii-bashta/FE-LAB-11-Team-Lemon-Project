@@ -16,7 +16,7 @@ export class GlobalErrorHandler implements ErrorHandler {
   }
 
   handleError(error) {
-    if (isDevMode()) {
+    if (!isDevMode()) {
       this.router = this.inject.get(Router);
       this.router.navigate(['error']);
       console.error(error);    
