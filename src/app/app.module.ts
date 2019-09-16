@@ -7,9 +7,9 @@ import {enableProdMode} from '@angular/core';
 import { CoreModule } from 'src/app/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpServiceEvents } from './services/http-service.events';
-import { HttpServiceUsers } from './services/http-service.users';
-import { GlobalErrorHandler } from './shared/error.module';
+import { HttpServiceEvents } from './core/services/http-service.events';
+import { HttpServiceUsers } from './core/services/http-service.users';
+import { GlobalErrorHandler } from './core/services/error.service';
 
 enableProdMode();
 
