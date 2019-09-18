@@ -1,12 +1,9 @@
-import { Injectable, Injector, isDevMode,ErrorHandler } from '@angular/core'
+import { Injectable,Injector, isDevMode,ErrorHandler } from '@angular/core'
 import { Router } from "@angular/router";
 
 import { from } from 'rxjs';
 
-
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
   private router:Router;
   private inject:Injector;
@@ -15,12 +12,10 @@ export class GlobalErrorHandler implements ErrorHandler {
   }
 
   handleError(error) {
+    console.error(error); 
     if (!isDevMode()) {
       this.router = this.inject.get(Router);
       this.router.navigate(['error']);
-      console.error(error);    
-    } else {
-      console.error(error);   
     }
   }
 }

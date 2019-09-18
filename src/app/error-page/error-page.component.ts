@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 
 
@@ -8,16 +8,12 @@ import { Router } from "@angular/router";
   styleUrls: ['./error-page.component.scss']
 })
 export class ErrorPageComponent implements OnInit {
-  private router:Router;
-  private inject:Injector;
-  constructor(inject:Injector){
-    this.inject = inject;
+  constructor(private router: Router){
+
   }
   ngOnInit() {
-    this.router = this.inject.get(Router);
-    let bindedMethod = this.router.navigate.bind(this.router,['home'])
-    setTimeout(function ():void {
-      bindedMethod()
+    setTimeout(()=>{
+      this.router.navigate(['home']);
     }, 5000);
   }
 }
