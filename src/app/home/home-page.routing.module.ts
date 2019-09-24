@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule,Routes } from '@angular/router'
-
-import  { HomePageComponent } from './home-page.component';
+import { RouterModule, Routes } from '@angular/router';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomePageComponent } from './home-page.component';
 
 const routes : Routes = [
   {
@@ -12,12 +11,9 @@ const routes : Routes = [
 ]
 
 @NgModule({
-  declarations: [
-    HomePageComponent
-  ],
   imports: [
-    CommonModule,
     RouterModule.forChild(routes),
-  ]
+  ],
+  exports: [RouterModule]
 })
 export class HomePageRoutingModule { }

@@ -10,7 +10,7 @@ const routes: Routes =  [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home-page/home-page.routing.module').then(m => m.HomePageRoutingModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'error',

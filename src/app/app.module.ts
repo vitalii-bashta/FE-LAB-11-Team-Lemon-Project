@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from 'src/app/core';
+import { HomeModule } from './home/index'
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 
 
@@ -17,6 +19,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     AppRoutingModule,
     CoreModule,
+    HomeModule
   ],
   providers: [
   ],
