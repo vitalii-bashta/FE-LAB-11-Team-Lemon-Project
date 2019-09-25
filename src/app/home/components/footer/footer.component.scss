@@ -1,0 +1,32 @@
+.footer-container{
+    width:100%;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+}
+
+.links-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #F9F9F9;
+}
+
+.footer-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 30px;
+    color: darken(lightgrey, 20% );
+    
+    &:visited{
+        color: darken(lightgrey, 20% );
+    }
+}
+
+.links-wrapper{
+    .active-link {
+        color: darken(pink, 30% );
+    }
+}
