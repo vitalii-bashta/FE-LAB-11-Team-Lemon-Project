@@ -16,6 +16,10 @@ const routes: Routes =  [
     path: 'error',
     loadChildren: () => import('./error-page/error-page.routing.module').then(m => m.ErrorPageRoutingModule)    
   },
+  {
+    path: 'user-profile',
+    loadChildren: () => import('./user-profile/user-profile.routing.module').then(m => m.UserProfileRoutingModule)
+  },
   { 
     path: '**', 
     redirectTo: 'home' 
