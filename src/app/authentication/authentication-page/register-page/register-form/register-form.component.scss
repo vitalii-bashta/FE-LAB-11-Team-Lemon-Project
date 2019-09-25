@@ -1,0 +1,34 @@
+$pageCol: #FF2055;
+$txtCol: #FFFFFF;
+$fontSize: 18px;
+
+@mixin formElement($bgrCol, $margin){
+    width: 100%;
+    background-color: $bgrCol ;
+    padding: 15px;
+    border: none;
+    border-radius: 3px;
+    margin: $margin;
+}
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input{
+        @include formElement(lighten($pageCol, 10%), 2px);
+        opacity: 0.6;
+        &::placeholder{
+            color: $txtCol;
+            font-size: $fontSize;
+        }
+    }
+
+    button{
+        @include formElement($txtCol, 20px);
+        color: lighten($pageCol, 10%);
+        font-size: $fontSize;
+    }
+}

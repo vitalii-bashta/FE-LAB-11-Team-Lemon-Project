@@ -1,0 +1,7 @@
+<form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)">
+    <input type="email" formControlName="email" placeholder="Email" required>
+    <input type="password" formControlName="password" placeholder="Password" required>
+    <label class="error">{{errorMessage}}</label>
+    <button type="submit" [disabled]="!loginForm.valid">Sign in</button>
+</form>
+<a (click)="onForgotPassFormChanged()">Forgot password?</a>
