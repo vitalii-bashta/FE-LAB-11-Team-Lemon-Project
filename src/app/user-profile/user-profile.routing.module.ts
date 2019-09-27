@@ -10,8 +10,28 @@ import { FeedbackComponent } from './feedback/feedback.component';
 const routes : Routes = [
   {
     path: '',
-    component: UserProfileComponent
+    component: UserProfileComponent,
+    children: [
+      {
+        path: '', 
+        redirectTo: 'information', 
+        pathMatch: 'full'},
+
+      {
+        path: 'information',
+        component: InformationComponent 
+      },
+      {
+        path: 'organization',
+        component: OrganizationComponent
+      },
+      {
+        path: 'feedback',
+        component: FeedbackComponent
+      }
+    ]
   }
+  
 ]
 
 @NgModule({

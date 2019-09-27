@@ -1,4 +1,4 @@
-<div class="user-profile">
+<header class="user-profile">
     <div class="user-profile__header">
         <div class="user-profile__navigatioin">
             <div>Edit</div>
@@ -9,10 +9,15 @@
         <div class="user-profile__image">
             Some image
         </div>
-        <div class="user-profile__links">
-            <div>{{fullName}}</div>
-            <div>Information Link</div>
-            <div>Organization Link</div>
+        <div class="user-profile__fullName">
+            {{fullName}}
         </div>
+        
     </div>
-<div>
+<header>
+<nav class="user-profile__links">
+    <a (click)="showInformation()">Information</a>
+    <a (click)="showOrganization()">Organization</a>
+    <a (click)="showFeedback()">Feedback</a>
+</nav>
+<router-outlet></router-outlet>
