@@ -5,7 +5,7 @@ import { RouterModule,Routes } from '@angular/router'
 import { EventComponent } from './event.component';
 import { LocationComponent } from './components/location/location.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
-import { RoundedComponent } from './components/rounded-component/rounded-components.component';
+import { RoundProgresBarComponent } from './components/round-progres-bar-component/round-progres-bar.component';
 
 
 const routes : Routes = [
@@ -19,7 +19,7 @@ const routes : Routes = [
     EventComponent,
     LocationComponent,
     ContactsComponent,
-    RoundedComponent,
+    RoundProgresBarComponent,
     
   ],
   imports: [

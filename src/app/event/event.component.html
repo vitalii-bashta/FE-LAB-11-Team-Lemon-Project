@@ -27,9 +27,9 @@
     </div>
     <div class="members-second-line">
         <div class="members-second-line__minimal-number">
-            <app-rounded-components
+            <app-round-progress-bar
             [ngStyle]= "calcPartOfSircle((event | async)?.members.length,(event | async)?.needvolonteers)"
-            [content]='members((event | async)?.members.length,(event | async)?.needvolonteers)'></app-rounded-components>
+            [content]='members((event | async)?.members.length,(event | async)?.needvolonteers)'></app-round-progress-bar>
         </div>
         <div class="members-second-line__minimal-number__photos">
             <div class="members-second-line__minimal-number__photos__photo">

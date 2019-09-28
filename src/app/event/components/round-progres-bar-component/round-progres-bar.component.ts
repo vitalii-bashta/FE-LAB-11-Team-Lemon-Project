@@ -3,11 +3,11 @@ import { Observable } from 'rxjs';
 import { Event } from '../../../core/models/event.model'
 
 @Component({
-  selector: 'app-rounded-components',
-  templateUrl: './rounded-components.component.html',
-  styleUrls: ['./rounded-components.component.scss',]
+  selector: 'app-round-progress-bar',
+  templateUrl: './round-progres-bar.component.html',
+  styleUrls: ['./round-progres-bar.component.scss',]
 })
-export class RoundedComponent implements OnInit {
+export class RoundProgresBarComponent implements OnInit {
   @Input () event:Observable<Event>;
   @Input () content:string;
   constructor() {
