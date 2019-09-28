@@ -16,6 +16,10 @@ const routes: Routes =  [
     path: 'error',
     loadChildren: () => import('./error-page/error-page.routing.module').then(m => m.ErrorPageRoutingModule)    
   },
+  {
+    path: 'event',
+    loadChildren: () => import('./event/event.routing.module').then(m => m.EventRoutingModule)    
+  },  
   { 
     path: '**', 
     redirectTo: 'home' 

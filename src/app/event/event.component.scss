@@ -1,0 +1,147 @@
+$pageCol: #E5465D;
+$txtCol: #FFFFFF;
+$fontSize: 18px;
+
+.navigation {
+    background-color: $pageCol;
+    color: $txtCol;
+    display: flex;
+    padding: 20px;
+    font-size: $fontSize*1.5;
+    font-weight: 100;
+    text-align: center;
+    & div:hover {
+        cursor: pointer;
+    }
+    &__item {
+        flex-grow: 1;
+    }
+    &__name {
+        flex-grow: 7;
+    }
+}
+.header {
+    position: relative;
+    width:100%;
+    padding-bottom: 35%;
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_55.png?alt=media&token=45661b0b-6de1-4370-9066-67e215392fcc);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    &__star {
+        position: absolute;
+        top:10%;
+        left: 5%;
+        font-size: $fontSize*1.5;
+        color: $pageCol;
+    }
+    &__text-container{
+        position: absolute;
+        bottom: 5%;
+        left: 5%;
+        color: $txtCol;
+        &__name {
+            margin: 0px;
+        }
+    }
+}
+.sub-pages {
+    background-color: #F8F8F8;
+    color: #8A8A8F;
+    display: flex;
+    text-align: center;
+    font-size: $fontSize*1.3;
+    .sub-page {
+        flex-grow: 1;
+        padding: 20px;
+        border-bottom: solid 2px #F8F8F8;
+        &_current {
+            flex-grow: 1;
+            padding: 20px;
+            color: $pageCol;
+            border-bottom: solid 2px $pageCol;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .sub-pages{ 
+        font-size: $fontSize*1.1;
+    }
+}
+@media screen and (max-width: 400px) {
+    .sub-pages{ 
+        font-size: $fontSize;
+    }    
+}
+.members {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+    &-first-line {
+        margin-bottom: 20px;
+        display: flex;
+        &__header {
+            font-size: 1.3*$fontSize;
+            font-weight: bolder;
+            padding-left: 5%;
+            flex-grow: 1;
+        }
+        &__see-all {
+            display: flex;
+            flex-grow: 1;
+            font-size: 1.2*$fontSize;
+            a {
+                display: inline-block;
+                width: 100%;
+                text-align: end;
+                padding-right: 5%;
+                color: $pageCol;
+                text-decoration: none;
+            }
+        }
+    }
+    &-second-line {
+        display: flex;
+        &__minimal-number {
+            width: 45%;
+            padding-bottom: 45%;
+            position: relative;
+            &__photos {
+                margin-left: 3%;
+                width: 52%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &__photo {
+                    width: 20%;
+                    position: relative;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    &:nth-child(2) {
+                        right: 2%;
+                    }
+                    &:nth-child(3) {
+                        right: 4%;
+                    }
+                    &:nth-child(4) {
+                        right: 6%;
+                    }
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+.clear {
+    width: 100%;
+    height: 1px;
+    background-color: rgb(199, 199, 199);
+}
+.square-box {
+    width: 400px;
+    position: relative;
+    padding-bottom: 400px;
+}

@@ -1,0 +1,35 @@
+$pageCol: #E5465D;
+$txtCol: #FFFFFF;
+$fontSize: 18px;
+
+@mixin centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+:host {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color:$pageCol;
+    border: 2px solid #F9F9F9;
+    @include centering;
+    margin: 1em;
+
+
+}
+.inner-round {
+    width: 95%;
+    height: 95%;
+    background-color: white;
+    border-radius: 50%;
+    @include centering;
+    flex-direction: column;
+    &__number {
+        color: $pageCol;
+        font-size: $fontSize;
+    }
+}

@@ -1,0 +1,52 @@
+<!-- <div>{{(event | async)?.name}}</div> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<div class="navigation">
+    <div class="navigation__item" [routerLink]="['home']"><i class="fas fa-angle-left"></i></div>
+    <div class="navigation__name">Event</div>
+    <div class="navigation__item"><i class="far fa-share-square"></i></div>
+    <div class="navigation__item"><i class="fas fa-bell"></i></div>
+</div>
+<div class="header">
+    <div class="header__star">
+        <i class="fas fa-star"></i>
+    </div >
+    <div class="header__text-container">
+        <h2 class="header__text-container__name">{{(event | async)?.name}}</h2>
+        <div class="header__text-container__description">{{(event | async)?.date.day}} {{(event | async)?.date.month}} {{(event | async)?.date.year}}</div>
+    </div>
+</div>
+<div class="sub-pages">
+    <div class="sub-page_current">Information</div>
+    <div class="sub-page">Description</div>
+    <div class="sub-page">Feedback</div>
+</div>
+<div class="members">
+    <div class="members-first-line">
+        <div class="members-first-line__header">Event members</div>
+        <div class="members-first-line__see-all"><a href="#">See all</a></div>
+    </div>
+    <div class="members-second-line">
+        <div class="members-second-line__minimal-number">
+            <app-rounded-components
+            [ngStyle]= "calcPartOfSircle((event | async)?.members.length,(event | async)?.needvolonteers)"
+            [content]='members((event | async)?.members.length,(event | async)?.needvolonteers)'></app-rounded-components>
+        </div>
+        <div class="members-second-line__minimal-number__photos">
+            <div class="members-second-line__minimal-number__photos__photo">
+                <img src="https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_57.png?alt=media&token=71ddd81b-807f-44d5-9656-f99b581af27c" alt="">
+            </div>
+            <div class="members-second-line__minimal-number__photos__photo">
+                <img src="https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_58.png?alt=media&token=d17244c1-1f96-435f-92fc-331e800beea2" alt="">
+            </div>
+            <div class="members-second-line__minimal-number__photos__photo">
+                <img src='https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_57.png?alt=media&token=71ddd81b-807f-44d5-9656-f99b581af27c' alt="">
+            </div>
+            <div class="members-second-line__minimal-number__photos__photo">
+                <img src='https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_57.png?alt=media&token=71ddd81b-807f-44d5-9656-f99b581af27c' alt="">
+            </div>            
+        </div>
+    </div>
+</div>
+<app-contacts [event]='event'></app-contacts>
+<app-location [event]='event'></app-location>
+
