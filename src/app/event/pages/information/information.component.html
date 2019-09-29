@@ -1,0 +1,35 @@
+<div class="sub-pages">
+    <div class="sub-page_current" >Information</div>
+    <div class="sub-page" [routerLink]="['./../description']">Description</div>
+    <div class="sub-page" [routerLink]="['./../discussion']">Feedback</div>
+</div>
+<div class="members">
+    <div class="members-first-line">
+        <div class="members-first-line__header">Event members</div>
+        <div class="members-first-line__see-all"><a href="#">See all</a></div>
+    </div>
+    <div class="members-second-line">
+        <div class="members-second-line__minimal-number">
+            <app-round-progress-bar
+            [ngStyle]= "calcPartOfSircle((event | async)?.members.length,(event | async)?.needvolonteers)"
+            [content]='members((event | async)?.members.length,(event | async)?.needvolonteers)'></app-round-progress-bar>
+        </div>
+        <div class="members-second-line__minimal-number__photos">
+            <div class="members-second-line__minimal-number__photos__photo">
+                <img src="https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_57.png?alt=media&token=71ddd81b-807f-44d5-9656-f99b581af27c" alt="">
+            </div>
+            <div class="members-second-line__minimal-number__photos__photo">
+                <img src="https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_58.png?alt=media&token=d17244c1-1f96-435f-92fc-331e800beea2" alt="">
+            </div>
+            <div class="members-second-line__minimal-number__photos__photo">
+                <img src='https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_57.png?alt=media&token=71ddd81b-807f-44d5-9656-f99b581af27c' alt="">
+            </div>
+            <div class="members-second-line__minimal-number__photos__photo">
+                <img src='https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_57.png?alt=media&token=71ddd81b-807f-44d5-9656-f99b581af27c' alt="">
+            </div>            
+        </div>
+    </div>
+</div>
+<app-contacts [event]='event'></app-contacts>
+<app-location [event]='event'></app-location>
+<app-gallery [event]='event'> </app-gallery>
