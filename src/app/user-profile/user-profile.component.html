@@ -1,23 +1,22 @@
 <header class="user-profile">
-    <div class="user-profile__header">
-        <div class="user-profile__navigatioin">
-            <div>Edit</div>
-            <div>Share</div>
-            <div>Notification</div>
-        </div>
-        <br />
-        <div class="user-profile__image">
-            Some image
-        </div>
-        <div class="user-profile__fullName">
-            {{fullName}}
-        </div>
-        
+  <div class="user-profile__header">
+    <div class="user-profile__navigation">
+      <div class="edit">Edit</div>
+      <div>Share</div>
+      <div class="notification">Notification</div>
     </div>
+    <br />
+    <div class="user-profile__image">
+      <img src="assets/IMG_20190425_202226.jpg" alt="photo" />
+    </div>
+    <div class="user-profile__fullName">
+        <h2>{{fullName}}</h2>
+    </div>
+  </div>
 <header>
 <nav class="user-profile__links">
-    <a (click)="showInformation()">Information</a>
-    <a (click)="showOrganization()">Organization</a>
-    <a (click)="showFeedback()">Feedback</a>
+  <a (click)="showInformation()">Information</a>
+  <a (click)="showOrganization()">Organization</a>
+  <a (click)="showFeedback()">Feedback</a>
 </nav>
 <router-outlet></router-outlet>
