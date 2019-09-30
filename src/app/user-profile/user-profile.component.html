@@ -15,8 +15,11 @@
   </div>
 <header>
 <nav class="user-profile__links">
-  <a (click)="showInformation()" [class.active]="isActive">Information</a>
-  <a (click)="showOrganization()">Organization</a>
-  <a (click)="showFeedback()">Feedback</a>
+  <!-- <a (click)="showInformation()" [class.active]="">Information</a>
+  <a (click)="showOrganization()" [class.active]=>Organization</a>
+  <a (click)="showFeedback()" [class.active]>Feedback</a> -->
+  <a [routerLink]="['information']"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Information</a>
+  <a routerLink="organization" routerLinkActive="active">Organization</a>
+  <a routerLink="feedback" routerLinkActive="active">Feedback</a>
 </nav>
 <router-outlet></router-outlet>

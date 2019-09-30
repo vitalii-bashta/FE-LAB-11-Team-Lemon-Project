@@ -4,7 +4,7 @@ body {
   margin: 0;
 }
 .user-profile__header {
-  background-color: $red;
+  background-color: $pink;
   color: $white;
 }
 
@@ -12,6 +12,7 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  // margin-top: 20px;
 
   div {
     padding: 10px;
@@ -22,9 +23,9 @@ body {
     margin-right: auto;
   }
 
-  .notification {
+  // .notification {
 
-  }
+  // }
 }
 
 .user-profile__image {
@@ -42,7 +43,7 @@ body {
   text-align: center;
   h2 {
     // padd-bottom: 10px;
-    background-color: $red;
+    background-color: $pink;
     margin: 0;
     padding: 20px;
   }
@@ -56,15 +57,20 @@ body {
   display: flex;
   justify-content: space-around;
 
-  // a {
-  //   padding: 10px;
-  // }
+  
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  a:visited, a:link {
+    color: $grey;
+  }
   a:hover {
-    color: $red;
-    border-bottom: 1px solid $red;
+    color: $pink;
+    border-bottom: 1px solid $pink;
   }
   a.active {
-    color: $red;
-    border-bottom: 1px solid $red;
+    color: $pink;
+    border-bottom: 1px solid $pink;
   }
 }
