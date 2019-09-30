@@ -3,11 +3,39 @@
     <div class="sub-page_current">Description</div>
     <div class="sub-page" [routerLink]="['./../discussion']">Feedback</div>
 </div>
-<p>dvdsfv</p>
-<p>dvdsfv</p>
-<p>dvdsfv</p><p>dvdsfv</p>
-<p>dvdsfv</p>
-<p>dvdsfv</p>
-<p>dvdsfv</p>
-<p>dvdsfv</p><p>dvdsfv</p>
-<p>dvdsfv</p>
+<div class="description">
+    <h3 class="description__header">About event</h3>
+    <div class="description__text">{{(event | async)?.about_event}}</div>
+    <div class="description__toggler">more <span class="description__toggler__symbol"> &or; </span></div>
+</div>
+<div class="description">
+    <h3 class="description__header">How can I help</h3>
+    <div class="description__text">{{(event | async)?.how_can_i_help}}</div>
+    <div class="description__toggler">more <span class="description__toggler__symbol"> &or; </span></div>
+</div>
+<div class="description">
+    <h3 class="description__header">What do I need</h3>
+    <div class="description__text">{{(event | async)?.what_do_i_need}}</div>
+    <div class="description__toggler">more <span class="description__toggler__symbol"> &or; </span></div>
+</div>
+<div class="schedule">
+    <h3 class="schedule__header">Schedule</h3>
+    <div class="schedule-item">
+        <div class="date">
+            <span class="schedule-item__day-of-week">{{(event | async)?.schedule.date_time.day_of_week}} </span>
+            <span class="schedule-item__month">{{(event | async)?.schedule.date_time.month}} </span>
+            <span class="schedule-item__day">{{(event | async)?.schedule.date_time.day}} </span>,
+            <span class="schedule-item__year">{{(event | async)?.schedule.date_time.year}} </span>
+        </div>
+        <div class="time">
+            <span class="time-interval">{{(event | async)?.schedule.date_time.time.from}} </span>-
+            <span class="time-interval">{{(event | async)?.schedule.date_time.time.to}}</span>   
+        </div>
+    </div>
+    <div class="schedule__toggler">more <span class="description__toggler__symbol"> &or; </span></div>
+</div>
+<div class="description">
+    <h3 class="description__header">About organization</h3>
+    <div class="description__text">{{(event | async)?.about_organization}}</div>
+    <div class="description__toggler">more <span class="description__toggler__symbol"> &or; </span></div>
+</div>

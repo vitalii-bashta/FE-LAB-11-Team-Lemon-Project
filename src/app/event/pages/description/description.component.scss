@@ -20,3 +20,32 @@ $fontSize: 18px;
         }
     }
 }
+
+.description {
+    padding-left: 3%;
+    padding-right: 3%;
+    position: relative;
+    &__toggler {
+        position: absolute;
+        bottom: 0%;
+        right: 3%;
+        color: lightgray;
+        &__symbol {
+            font-size: $fontSize*0.7;
+        }
+    }
+}
+.schedule {
+    padding-left: 3%;
+    padding-right: 3%;  
+    position: relative;  
+    &__toggler {
+        position: absolute;
+        bottom: 0%;
+        right: 3%;
+        color: lightgray;
+        &__symbol {
+            font-size: $fontSize*0.7;
+        }
+    }
+}

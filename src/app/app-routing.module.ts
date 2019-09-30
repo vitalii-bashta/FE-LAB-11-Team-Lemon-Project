@@ -18,7 +18,7 @@ const routes: Routes =  [
   },
   {
     path: 'event',
-    loadChildren: () => import('./event/event.routing.module').then(m => m.EventRoutingModule)    
+    loadChildren: () => import('./event/event.module').then(m => m.EventModule)    
   },  
   { 
     path: '**', 

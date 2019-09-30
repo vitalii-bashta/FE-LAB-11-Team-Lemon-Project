@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule,Routes } from '@angular/router'
+import { DragDropModule } from '@angular/cdk/drag-drop'
 
 import { EventComponent } from './event.component';
 import { LocationComponent } from './components/location/location.component';
@@ -12,7 +13,7 @@ import { DiscussionComponent } from './pages/discussion/discussion.component';
 // import { FooterComponent } from 'src/app/home/components/footer/footer.component';
 import { GalleryComponent } from './components/gallery/gallery.component'
 
-import { DragDropModule } from '@angular/cdk/drag-drop'
+
 
 const routes : Routes = [
   {
@@ -47,4 +48,4 @@ const routes : Routes = [
     DragDropModule
   ]
 })
-export class EventRoutingModule { }
+export class EventModule { }

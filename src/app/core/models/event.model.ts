@@ -10,8 +10,8 @@ export interface Event {
     urlImage: string,
     date: startDate,
     time: startTime,
-    contacts: Contacts
-    // about: string,
+    contacts: Contacts,
+    assignedPhotos: Array<string>
     // howCanIHelp: string,
     // whatDoINeed: string,
 }
