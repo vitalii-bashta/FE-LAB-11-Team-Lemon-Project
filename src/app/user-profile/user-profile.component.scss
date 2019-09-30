@@ -49,10 +49,22 @@ body {
 }
 
 .user-profile__links {
-  background-color: $lightwhite;
+  
   color: $grey;
+  background-color: $lightwhite;
   padding: 10px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 
+  // a {
+  //   padding: 10px;
+  // }
+  a:hover {
+    color: $red;
+    border-bottom: 1px solid $red;
+  }
+  a.active {
+    color: $red;
+    border-bottom: 1px solid $red;
+  }
 }

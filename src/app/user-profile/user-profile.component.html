@@ -15,7 +15,7 @@
   </div>
 <header>
 <nav class="user-profile__links">
-  <a (click)="showInformation()">Information</a>
+  <a (click)="showInformation()" [class.active]="isActive">Information</a>
   <a (click)="showOrganization()">Organization</a>
   <a (click)="showFeedback()">Feedback</a>
 </nav>

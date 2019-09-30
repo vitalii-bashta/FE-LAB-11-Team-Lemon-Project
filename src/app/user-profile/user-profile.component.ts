@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
 
+  isActive = true;
   public fullName = "Robin Smith";
 
   constructor(private route: ActivatedRoute,
@@ -18,12 +19,15 @@ export class UserProfileComponent implements OnInit {
 
   showInformation() {
     this.router.navigate(['information'], {relativeTo: this.route});
+    this.isActive = false;
   }
   showOrganization() {
     this.router.navigate(['organization'], {relativeTo: this.route});
+    this.isActive = false;
   }
   showFeedback() {
     this.router.navigate(['feedback'], {relativeTo: this.route});
+    this.isActive = false;
   }
 
 }
