@@ -1,0 +1,25 @@
+<header class="user-profile">
+  <div class="user-profile__header">
+    <div class="user-profile__navigation">
+      <div class="edit">Edit</div>
+      <div>Share</div>
+      <div class="notification">Notification</div>
+    </div>
+    <br />
+    <div class="user-profile__image">
+      <img src="assets/IMG_20190425_202226.jpg" alt="photo" />
+    </div>
+    <div class="user-profile__fullName">
+        <h2>{{fullName}}</h2>
+    </div>
+  </div>
+<header>
+<nav class="user-profile__links">
+  <!-- <a (click)="showInformation()" [class.active]="">Information</a>
+  <a (click)="showOrganization()" [class.active]=>Organization</a>
+  <a (click)="showFeedback()" [class.active]>Feedback</a> -->
+  <a [routerLink]="['information']"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Information</a>
+  <a routerLink="organization" routerLinkActive="active">Organization</a>
+  <a routerLink="feedback" routerLinkActive="active">Feedback</a>
+</nav>
+<router-outlet></router-outlet>
