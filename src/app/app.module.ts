@@ -6,10 +6,6 @@ import { CoreModule } from 'src/app/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-<<<<<<< HEAD
-=======
-
->>>>>>> userProfile
 @NgModule({
   declarations: [
     AppComponent,
