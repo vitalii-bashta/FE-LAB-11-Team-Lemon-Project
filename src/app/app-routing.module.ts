@@ -19,7 +19,11 @@ const routes: Routes =  [
   {
     path: 'event',
     loadChildren: () => import('./event/event.module').then(m => m.EventModule)    
-  },  
+  },
+  {  
+    path: 'user-profile',
+    loadChildren: () => import('./user-profile/user-profile.routing.module').then(m => m.UserProfileRoutingModule)
+  },
   { 
     path: '**', 
     redirectTo: 'home' 

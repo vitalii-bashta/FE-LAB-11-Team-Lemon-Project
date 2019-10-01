@@ -1,0 +1,75 @@
+@import '../shared/colors';
+
+body {
+  margin: 0;
+}
+.user-profile__header {
+  background-color: $pink;
+  color: $white;
+}
+
+.user-profile__navigation {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  div {
+    padding: 10px;
+    // margin: 10px;
+  }
+
+  .edit {
+    margin-right: auto;
+  }
+
+  // .notification {
+
+  // }
+}
+
+.user-profile__image {
+  text-align: center;
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+
+  }
+}
+
+.user-profile__fullName {
+  text-align: center;
+  h2 {
+    // padd-bottom: 10px;
+    background-color: $pink;
+    margin: 0;
+    padding: 20px;
+  }
+}
+
+.user-profile__links {
+  
+  color: $grey;
+  background-color: $lightwhite;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+
+  
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  a:visited, a:link {
+    color: $grey;
+  }
+  a:hover {
+    color: $pink;
+    border-bottom: 1px solid $pink;
+  }
+  a.active {
+    color: $pink;
+    border-bottom: 1px solid $pink;
+  }
+}
