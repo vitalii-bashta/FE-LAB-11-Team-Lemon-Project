@@ -22,9 +22,9 @@ body {
     margin-right: auto;
   }
 
-  // .notification {
-
-  // }
+  .edit, .notification, .share {
+    cursor: pointer;
+  }
 }
 
 .user-profile__image {
