@@ -12,10 +12,20 @@ import { HttpServiceEvents } from 'src/app/core/services/http-events.service'
 })
 export class DescriptionComponent implements OnInit {
   public event:Observable<Event>;
-  public eventObject: Event;
+  
   constructor(private HttpServiceEvents: HttpServiceEvents) {
   }
-
+  showAndHideContent($event):void {  
+    if ($event.target.parentNode.style.height!=='auto') {
+      $event.target.parentNode.style.height = 'auto'
+    } else {
+      $event.target.parentNode.style.height='150px'
+    }
+  }
+  setSizes($event):void {
+    console.log($event.target)
+    console.log(1)
+  }
   ngOnInit() {
     this.event = this.HttpServiceEvents.getEvent('clean')
   }

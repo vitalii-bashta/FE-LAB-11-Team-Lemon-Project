@@ -25,10 +25,14 @@ $fontSize: 18px;
     padding-left: 3%;
     padding-right: 3%;
     position: relative;
+    height: 150px;
+    overflow: hidden;
     &__toggler {
+        z-index: 1;
         position: absolute;
         bottom: 0%;
         right: 3%;
+        background-color: white;
         color: lightgray;
         &__symbol {
             font-size: $fontSize*0.7;
@@ -41,6 +45,7 @@ $fontSize: 18px;
     position: relative;  
     &__toggler {
         position: absolute;
+        
         bottom: 0%;
         right: 3%;
         color: lightgray;
