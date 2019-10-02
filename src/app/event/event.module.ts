@@ -13,8 +13,6 @@ import { DiscussionComponent } from './pages/discussion/discussion.component';
 // import { FooterComponent } from 'src/app/home/components/footer/footer.component';
 import { GalleryComponent } from './components/gallery/gallery.component'
 
-
-
 const routes : Routes = [
   {
     path: '',

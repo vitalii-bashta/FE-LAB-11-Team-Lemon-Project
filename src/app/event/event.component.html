@@ -8,10 +8,12 @@
 <div class="header">
   <div class="header__star">
     <i class="fas fa-star"></i>
-  </div >
+  </div>
   <div class="header__text-container">
-    <h2 class="header__text-container__name">{{(event | async)?.name}}</h2>
-    <div class="header__text-container__description">{{(event | async)?.date.day}} {{(event | async)?.date.month}} {{(event | async)?.date.year}}</div>
+      <ng-container *ngIf="event$ | async as event">
+        <h2 class="header__text-container__name">{{event.name}}</h2>
+        <div class="header__text-container__description">{{event.date.year}}</div>
+      </ng-container>
   </div>
 </div>
 <router-outlet></router-outlet>

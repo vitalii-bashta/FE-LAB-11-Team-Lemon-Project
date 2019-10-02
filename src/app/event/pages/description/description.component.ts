@@ -11,7 +11,7 @@ import { HttpServiceEvents } from 'src/app/core/services/http-events.service'
   styleUrls: ['./description.component.scss']
 })
 export class DescriptionComponent implements OnInit {
-  public event:Observable<Event>;
+  public event$:Observable<Event>;
   
   constructor(private HttpServiceEvents: HttpServiceEvents) {
   }
@@ -27,7 +27,7 @@ export class DescriptionComponent implements OnInit {
     console.log(1)
   }
   ngOnInit() {
-    this.event = this.HttpServiceEvents.getEvent('clean')
+    this.event$ = this.HttpServiceEvents.getEvent('clean')
   }
 
 }

@@ -18,7 +18,7 @@ import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
 ]
 })
 export class InformationComponent implements OnInit {
-  public event:Observable<Event>;
+  public event$:Observable<Event>;
   public eventObject: Event;
   members(currentNumber:number,needVolunteers:number):string {
     if (!currentNumber || !needVolunteers) {
@@ -50,6 +50,6 @@ export class InformationComponent implements OnInit {
   }
   constructor(private HttpServiceEvents: HttpServiceEvents,public sanitizer: DomSanitizer) {}
   ngOnInit() {
-    this.event = this.HttpServiceEvents.getEvent('clean')
+    this.event$ = this.HttpServiceEvents.getEvent('clean')
   }
 }

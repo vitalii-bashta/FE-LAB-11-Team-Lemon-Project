@@ -2,10 +2,12 @@
   <div class="location__name">
     Location
   </div>
-  <div class="location__map">
-    <iframe [src]="this.sanitizer.bypassSecurityTrustResourceUrl((event | async)?.location.url)"  width="600" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-  </div>
-  <div class="location__address" >
-    {{(event | async)?.location.name}}
-  </div>
+  <ng-container *ngIf="event$ | async as event">
+    <div class="location__map">
+      <iframe [src]="this.sanitizer.bypassSecurityTrustResourceUrl((event | async)?.location.url)"  width="600" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    </div>
+    <div class="location__address" >
+      {{event.location.name}}
+    </div>
+  </ng-container>
 </div>

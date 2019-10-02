@@ -1,14 +1,7 @@
-import { Component, OnInit, Input,NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Event } from 'src/app/core/models/event.model'
-import { DragDropModule } from '@angular/cdk/drag-drop'
 
-@NgModule({
-  imports: [BrowserModule, DragDropModule],
-  exports: [DragDropModule],
-
-})
 
 @Component({
   selector: 'app-gallery',
@@ -20,6 +13,7 @@ export class GalleryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(event)
   }
 
 }
