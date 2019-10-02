@@ -1,11 +1,11 @@
 <div class="location">
-    <div class="location__name">
-        Location
-    </div>
-    <div class="location__map">
-        <iframe [src]="this.sanitizer.bypassSecurityTrustResourceUrl((event | async)?.location.url)"  width="600" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-    </div>
-    <div class="location__address" >
-        {{(event | async)?.location.name}}
-    </div>
+  <div class="location__name">
+    Location
+  </div>
+  <div class="location__map">
+    <iframe [src]="this.sanitizer.bypassSecurityTrustResourceUrl((event | async)?.location.url)"  width="600" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+  </div>
+  <div class="location__address" >
+    {{(event | async)?.location.name}}
+  </div>
 </div>

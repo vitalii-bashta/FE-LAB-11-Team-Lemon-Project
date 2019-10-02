@@ -7,21 +7,21 @@ import { Event } from '../models/event.model'
   
 @Injectable()
 export class HttpServiceEvents{
-    private fireBase = `https://fe-lab-11-team-lemon-project.firebaseio.com/`
-    constructor(private http: HttpClient){ }    
-    getEvents():Observable<Event[]> {
-        return this.http.get<Event[]>(this.fireBase+`events.json`)
-    }
-    getEvent(number:string):Observable<any> {
-        return this.http.get(`${this.fireBase}events/${number}.json`)
-    }
-    deleteEvent(id:string):Observable<void> {
-        return this.http.delete<void>(`${this.fireBase}events/${id}.json`)
-    }
-    pushEvent(data:Event):Observable<any>  {
-        return this.http.post(`${this.fireBase}events.json`, data)
-    }
-    updateEvent(key:string,data:Event):Observable<any> {
-        return this.http.patch(`${this.fireBase}/events/${key}.json`,data)
-    }   
+  private fireBase = `https://fe-lab-11-team-lemon-project.firebaseio.com/`
+  constructor(private http: HttpClient){ }  
+  getEvents():Observable<Event[]> {
+    return this.http.get<Event[]>(this.fireBase+`events.json`)
+  }
+  getEvent(number:string):Observable<any> {
+    return this.http.get(`${this.fireBase}events/${number}.json`)
+  }
+  deleteEvent(id:string):Observable<void> {
+    return this.http.delete<void>(`${this.fireBase}events/${id}.json`)
+  }
+  pushEvent(data:Event):Observable<any>  {
+    return this.http.post(`${this.fireBase}events.json`, data)
+  }
+  updateEvent(key:string,data:Event):Observable<any> {
+    return this.http.patch(`${this.fireBase}/events/${key}.json`,data)
+  }   
 }
