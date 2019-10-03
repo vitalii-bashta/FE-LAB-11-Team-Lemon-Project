@@ -8,6 +8,7 @@ import { EventsComponent } from './components/events/events.component';
 import { OrganizationsComponent } from './components/organizations/organizations.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { VolunteersComponent } from './components/volunteers/volunteers.component';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 const routes: Routes = [
 	{
@@ -16,7 +17,10 @@ const routes: Routes = [
 		children: [
 			{ path: '', redirectTo: 'events', pathMatch: 'full' },
 			{ path: 'events', component: EventsComponent },
-      { path: 'profile', component: ProfileComponent },
+      {
+        path: 'user-profile',
+        loadChildren: () => import('../user-profile/user-profile.routing.module').then(m => m.UserProfileRoutingModule)
+      },
       { path: 'volunteers', component: VolunteersComponent },
       { path: 'organizations', component: OrganizationsComponent },
       { path: 'adresses', component: AdressesComponent },
