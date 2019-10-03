@@ -1,1 +1,15 @@
-<p>events works!</p>
+<h2 class="events-heading">Events <span class="events-amount">({{events.length}})</span></h2>
+<div class="flex-container">
+    <div *ngFor="let event of events" class="event">
+        <div class="event-wrapper">
+            <img [src]="event.urlImage" class="event-image" alt="image">
+            <a class="favorites-icon" routerLink="events"><i class="material-icons ">star</i></a>
+            <div class="text-wrapper">
+                <p class="event-name">{{event.eventName | uppercase}}</p>
+                <p class="event-date">{{event.date | date}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

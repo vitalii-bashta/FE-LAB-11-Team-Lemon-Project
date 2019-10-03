@@ -9,6 +9,7 @@ import { OrganizationsComponent } from './components/organizations/organizations
 import { AdressesComponent } from './components/adresses/adresses.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomePageRoutingModule } from './home-page.routing.module';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomePageRoutingModule } from './home-page.routing.module';
     VolunteersComponent,
     OrganizationsComponent,
     AdressesComponent,
-    ProfileComponent
+    ProfileComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
