@@ -35,6 +35,7 @@ export class AuthenticationService {
       firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
       .then(res => {
         resolve(res);
+        this.router.navigate(['home']);
       }, err => reject(err))
     })
   };
@@ -44,6 +45,7 @@ export class AuthenticationService {
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
       .then(res => {
         resolve(res);
+        this.router.navigate(['home']);
       }, err => reject(err))
     })
   };
@@ -53,6 +55,7 @@ export class AuthenticationService {
       firebase.auth().sendPasswordResetEmail(value.email)
       .then(res => {
         resolve(res);
+        this.router.navigate(['authentication']);
       }, err => reject(err))
     })
   }

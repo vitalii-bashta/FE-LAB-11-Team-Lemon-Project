@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
+import { AuthenticationService } from 'src/app/core';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['../authentication.component.scss']
 })
 export class LoginComponent implements OnInit {
+  errorMessage: string;
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -14,14 +17,20 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(
+    public auth: AuthenticationService,
     private fb: FormBuilder
   ) { }
 
   ngOnInit() {
   }
 
-  submit(){
-    alert('Successful!');
+  submit(value){
+    this.auth.doLogin(value)
+    .then(res => {
+      this.errorMessage = "";
+    }, err => {
+      this.errorMessage = err.message;
+    })
     this.loginForm.reset();
   }
 

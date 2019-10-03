@@ -1,5 +1,0 @@
-<form [formGroup]="forgotPassForm" (ngSubmit)="submit(forgotPassForm.value)">
-    <input type="email" formControlName="email" placeholder="Email" required>
-    <label class="error">{{errorMessage}}</label>
-    <button type="submit" [disabled]="!forgotPassForm.valid">Send pass</button>
-</form>

@@ -2,12 +2,19 @@ $pageCol: #FF2055;
 $txtCol: #FFFFFF;
 $fontSize: 18px;
 
-.link{
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.link {
     color: $txtCol;
     text-decoration: none;
 }
 
-@mixin formElement($bgrCol, $margin){
+@mixin formElement($bgrCol, $margin) {
     width: 100%;
     background-color: $bgrCol ;
     padding: 15px;
@@ -16,43 +23,44 @@ $fontSize: 18px;
     margin: $margin;
 }
 
-.wrapper{
-    background-color: $pageCol;
-    width: 100vw;
-    height: 100vh;
-    color: $txtCol;
-    font-size: $fontSize;
-    padding: 10% 5%;
+// .wrapper {
+//     background-color: $pageCol;
+//     width: 100vw;
+//     height: 100vh;
+//     color: $txtCol;
+//     font-size: $fontSize;
+//     padding: 10% 5%;
 
-    header{
-        display: flex;
-        justify-content: flex-end;
+//     header {
+//         display: flex;
+//         justify-content: flex-end;
 
-        button{
-            background-color: $pageCol;
-            color: $txtCol;
-            border: none;
-            font-size: $fontSize;
-        }
-    }
-    main{
+//         button {
+//             background-color: $pageCol;
+//             color: $txtCol;
+//             border: none;
+//             font-size: $fontSize;
+//         }
+//         .user {
+//             margin: 60px;
+//             width: 100px;
+//             height: 100px;
+//         }
+
+//     }
+
+    main {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: center;     
 
-        .user{
-            margin: 60px;
-            width: 100px;
-            height: 100px;
-        }
-
-        form{
+        form {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
 
-            input{
+            input {
                 @include formElement(lighten($pageCol, 10%), 2px);
                 opacity: 0.6;
                 &::placeholder{
@@ -61,19 +69,19 @@ $fontSize: 18px;
                 }
             }
 
-            button{
+            button {
                 @include formElement($txtCol, 20px);
                 color: lighten($pageCol, 10%);
                 font-size: $fontSize;
             }
         }
 
-        a{
+        a {
             @extend .link;
             opacity: 0.6;
         }
 
-        .divider{
+        .divider {
             width: 100%;
             display: flex;
             flex-direction: row;
@@ -81,7 +89,7 @@ $fontSize: 18px;
             align-items: center;
             margin: 20px;
 
-            .line{
+            .line {
                 width: 45%;
                 height: 1px;
                 opacity: 0.6;
@@ -89,12 +97,12 @@ $fontSize: 18px;
             }
         }
 
-        p{
+        p {
             margin: 20px;
         }
     }
 
-    footer{
+    footer {
         position: absolute;
         bottom: 10px;
         width: 100%;
@@ -103,12 +111,12 @@ $fontSize: 18px;
         justify-content: center;
         font-size: 15px;
 
-        p{
+        p {
             margin-right: 5px;
         }
 
-        a{
+        a {
             @extend .link;
         }
     }
-}
+// }
