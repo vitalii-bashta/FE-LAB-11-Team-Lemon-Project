@@ -1,0 +1,19 @@
+<main>
+    <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)">
+        <input type="text" formControlName="email" placeholder="Email" required>
+        <input type="text" formControlName="password" placeholder="Password" required>
+        <label class="error">{{errorMessage}}</label>
+        <button type="submit" [disabled]="!loginForm.valid">Sign in</button>
+    </form>
+    <a routerLink="/authentication/forgotpass">Forgot password?</a>
+    <div class="divider">
+        <div class="line"></div>
+        <span>or</span>
+        <div class="line"></div>
+    </div>
+    <p (click)="auth.googleSignin()"><i class="fab fa-google"></i> Sign in with Google</p>
+</main>
+<footer>
+    <p>No account?</p>
+    <a routerLink="/authentication/register">Sign up</a>
+</footer>
