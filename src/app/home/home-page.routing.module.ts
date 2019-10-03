@@ -8,7 +8,6 @@ import { EventsComponent } from './components/events/events.component';
 import { OrganizationsComponent } from './components/organizations/organizations.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { VolunteersComponent } from './components/volunteers/volunteers.component';
-import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 const routes: Routes = [
 	{
