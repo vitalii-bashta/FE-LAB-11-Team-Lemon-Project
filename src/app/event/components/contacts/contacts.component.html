@@ -1,31 +1,33 @@
-<div class="contact">
-  <div class="contact__name">
-    Contacts
-  </div>
-  <div class="clear"></div>
-  <div class="contact-item">
-    <div class="contact-item__type">organization</div>
-    <div class="contact-item__value">{{(event | async)?.organization}}</div>
+<ng-container *ngIf="event$ | async as event">
+  <div class="contact">  
+    <div class="contact__name">
+      Contacts
+    </div>
+    <div class="clear"></div>
+    <div class="contact-item">
+      <div class="contact-item__type">organization</div>
+      <div class="contact-item__value">{{event.organization}}</div>
+      <div class="clear"></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item__type">manager</div>
+      <div class="contact-item__value">{{event.manager}}</div>
+      <div class="clear"></div>    
+    </div>
+    <div class="contact-item">
+      <div class="contact-item__type">mobile</div>
+      <div class="contact-item__value">{{event.contacts.phone}}</div>
+      <div class="clear"></div>    
+    </div>
+    <div class="contact-item">
+      <div class="contact-item__type">email</div>
+      <div class="contact-item__value">{{event.contacts.email}}</div>
+      <div class="clear"></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item__type">category</div>
+      <div class="contact-item__value">{{event.category}}</div>
+    </div>
     <div class="clear"></div>
   </div>
-  <div class="contact-item">
-    <div class="contact-item__type">manager</div>
-    <div class="contact-item__value">{{(event | async)?.manager}}</div>
-    <div class="clear"></div>    
-  </div>
-  <div class="contact-item">
-    <div class="contact-item__type">mobile</div>
-    <div class="contact-item__value">{{(event | async)?.contacts.phone}}</div>
-    <div class="clear"></div>    
-  </div>
-  <div class="contact-item">
-    <div class="contact-item__type">email</div>
-    <div class="contact-item__value">{{(event | async)?.contacts.email}}</div>
-    <div class="clear"></div>
-  </div>
-  <div class="contact-item">
-    <div class="contact-item__type">category</div>
-    <div class="contact-item__value">{{(event | async)?.category}}</div>
-  </div>
-  <div class="clear"></div>
-</div>
+</ng-container>

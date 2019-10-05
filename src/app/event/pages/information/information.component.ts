@@ -1,25 +1,23 @@
-import { Component, OnInit, NgModule } from '@angular/core';
-import { Observable, from } from 'rxjs'
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription,from } from 'rxjs'
 import { DomSanitizer } from '@angular/platform-browser';
-
-
 
 import { Event } from 'src/app/core/models/event.model'
 import { HttpServiceEvents } from 'src/app/core/services/http-events.service'
 import { User } from 'src/app/core/models/user.model'
 import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
 
-
 @Component({
   selector: 'app-information',
   templateUrl: './information.component.html',
-  styleUrls: ['./information.component.scss',
-
-]
+  styleUrls: ['./information.component.scss']
 })
-export class InformationComponent implements OnInit {
+export class InformationComponent implements OnInit,OnDestroy {
   public event$:Observable<Event>;
   public eventObject: Event;
+  public amountOfMembers: String;
+  public partSircle: Object;
+  public subs: Subscription = new Subscription();
   members(currentNumber:number,needVolunteers:number):string {
     if (!currentNumber || !needVolunteers) {
       return '';
@@ -51,5 +49,12 @@ export class InformationComponent implements OnInit {
   constructor(private HttpServiceEvents: HttpServiceEvents,public sanitizer: DomSanitizer) {}
   ngOnInit() {
     this.event$ = this.HttpServiceEvents.getEvent('clean')
+    this.subs.add(this.event$.subscribe(res => {
+      this.amountOfMembers = this.members(res.members.length,res.needVolunteers)
+      this.partSircle = this.calcPartOfSircle(res.members.length,res.needVolunteers)
+    }));
+  }
+  ngOnDestroy() {
+    this.subs.unsubscribe()
   }
 }

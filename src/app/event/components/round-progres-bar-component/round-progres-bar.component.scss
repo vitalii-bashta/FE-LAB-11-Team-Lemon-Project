@@ -7,8 +7,6 @@ $fontSize: 18px;
   justify-content: center;
   align-items: center;
 }
-
-
 :host {
   position: absolute;
   width: 100%;
@@ -18,8 +16,6 @@ $fontSize: 18px;
   border: 2px solid #F9F9F9;
   @include centering;
   margin: 1em;
-
-
 }
 .inner-round {
   width: 95%;

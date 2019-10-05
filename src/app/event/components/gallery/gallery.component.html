@@ -1,5 +1,7 @@
 
-<p>{{(event| async)?.name}}</p>
+<ng-container *ngIf="event$ | async as event">
+  <p>{{event.name}}</p>
+</ng-container>
 <div class="gallery"> 
   <div class="gallery-box">
     <div class="gallery-box__container" cdkDragLockAxis="x" cdkDrag>

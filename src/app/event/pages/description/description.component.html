@@ -1,3 +1,4 @@
+<app-header [event$]='event$'></app-header>
 <ng-container *ngIf="event$ | async as event">
 <div class="sub-pages">
   <div class="sub-page" [routerLink]="['./../information']">Information</div>

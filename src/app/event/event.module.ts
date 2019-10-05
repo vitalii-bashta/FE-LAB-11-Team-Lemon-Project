@@ -11,7 +11,8 @@ import { InformationComponent } from './pages/information/information.component'
 import { DescriptionComponent } from './pages/description/description.component';
 import { DiscussionComponent } from './pages/discussion/discussion.component';
 // import { FooterComponent } from 'src/app/home/components/footer/footer.component';
-import { GalleryComponent } from './components/gallery/gallery.component'
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { HeaderComponent } from './components/header/header.component'
 
 const routes : Routes = [
   {
@@ -35,7 +36,8 @@ const routes : Routes = [
     DescriptionComponent,
     DiscussionComponent,
     // FooterComponent,
-    GalleryComponent
+    GalleryComponent,
+    HeaderComponent
   ],
   imports: [
     DragDropModule,

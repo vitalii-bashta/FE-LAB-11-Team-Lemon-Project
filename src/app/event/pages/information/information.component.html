@@ -1,3 +1,4 @@
+<app-header [event$]='event$'></app-header>
 <div class="sub-pages">
   <div class="sub-page_current" >Information</div>
   <div class="sub-page" [routerLink]="['./../description']">Description</div>
@@ -11,9 +12,9 @@
   <div class="members-second-line">
   <ng-container *ngIf="event$ | async as event"> 
     <div class="members-second-line__minimal-number">
-    <app-round-progress-bar
-    [ngStyle]= "calcPartOfSircle(event.members.length,event.needvolonteers)"
-    [content]='members(event.members.length,event.needvolonteers)'></app-round-progress-bar>
+      <app-round-progress-bar
+      [ngStyle]= "partSircle"
+      [content]='amountOfMembers'></app-round-progress-bar>
     </div>
     <div class="members-second-line__minimal-number__photos">
     <div class="members-second-line__minimal-number__photos__photo">
@@ -32,6 +33,7 @@
   </ng-container> 
   </div>
 </div>
-<app-contacts [event]='event$'></app-contacts>
-<app-location [event]='event$'></app-location>
-<app-gallery [event]='event$'> </app-gallery>
+<app-contacts [event$]='event$'></app-contacts>
+<app-location [event$]='event$'></app-location>
+<app-gallery [event$]='event$'> </app-gallery>
+

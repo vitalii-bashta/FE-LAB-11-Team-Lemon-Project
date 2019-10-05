@@ -5,16 +5,5 @@
   <div class="navigation__item"><i class="far fa-share-square"></i></div>
   <div class="navigation__item"><i class="fas fa-bell"></i></div>
 </div>
-<div class="header">
-  <div class="header__star">
-    <i class="fas fa-star"></i>
-  </div>
-  <div class="header__text-container">
-      <ng-container *ngIf="event$ | async as event">
-        <h2 class="header__text-container__name">{{event.name}}</h2>
-        <div class="header__text-container__description">{{event.date.year}}</div>
-      </ng-container>
-  </div>
-</div>
 <router-outlet></router-outlet>
 <!-- <app-footer></app-footer> -->

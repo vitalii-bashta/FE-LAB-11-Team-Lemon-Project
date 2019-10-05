@@ -4,9 +4,9 @@
   </div>
   <ng-container *ngIf="event$ | async as event">
     <div class="location__map">
-      <iframe [src]="this.sanitizer.bypassSecurityTrustResourceUrl((event | async)?.location.url)"  width="600" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      <iframe [src]="safeRef"  width="600" height="300" frameborder="0" zoom='2' ></iframe>
     </div>
-    <div class="location__address" >
+    <div class="location__address">
       {{event.location.name}}
     </div>
   </ng-container>

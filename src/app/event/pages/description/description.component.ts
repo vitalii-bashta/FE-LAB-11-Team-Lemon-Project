@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Event } from 'src/app/core/models/event.model'
 import { HttpServiceEvents } from 'src/app/core/services/http-events.service'
 
-
 @Component({
   selector: 'app-description',
   templateUrl: './description.component.html',
