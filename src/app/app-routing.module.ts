@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
-const routes: Routes = [
+const routes: Routes =  [
   {
     path: '', 
     redirectTo: 'home',
@@ -10,11 +10,19 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home-page/home-page.routing').then(m => m.HomePageRoutingModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'error',
     loadChildren: () => import('./error-page/error-page.routing.module').then(m => m.ErrorPageRoutingModule)    
+  },
+  {
+    path: 'event',
+    loadChildren: () => import('./event/event.module').then(m => m.EventModule)    
+  },
+  {  
+    path: 'user-profile',
+    loadChildren: () => import('./user-profile/user-profile.routing.module').then(m => m.UserProfileRoutingModule)
   },
   { 
     path: '**', 
