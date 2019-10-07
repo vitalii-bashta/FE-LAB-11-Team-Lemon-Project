@@ -12,7 +12,10 @@ import { DescriptionComponent } from './pages/description/description.component'
 import { DiscussionComponent } from './pages/discussion/discussion.component';
 // import { FooterComponent } from 'src/app/home/components/footer/footer.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
-import { HeaderComponent } from './components/header/header.component'
+import { HeaderComponent } from './components/header/header.component';
+import { AddCommentFormComponent } from 'src/app/event/components/add-comment-form/add-comment-form.component'
+import { PostComponent } from 'src/app/event/components/post/post.component'
+
 
 const routes : Routes = [
   {
@@ -37,7 +40,9 @@ const routes : Routes = [
     DiscussionComponent,
     // FooterComponent,
     GalleryComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddCommentFormComponent,
+    PostComponent
   ],
   imports: [
     DragDropModule,
