@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription,from } from 'rxjs'
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthenticationService } from 'src/app/core';
+import { share } from 'rxjs/operators'
+
 
 import { Event } from 'src/app/core/models/event.model'
 import { HttpServiceEvents } from 'src/app/core/services/http-events.service'
@@ -14,10 +17,10 @@ import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
 })
 export class InformationComponent implements OnInit,OnDestroy {
   public event$:Observable<Event>;
-  public eventObject: Event;
   public amountOfMembers: String;
   public partSircle: Object;
   public subs: Subscription = new Subscription();
+  public currentUser:Observable<any>; 
   members(currentNumber:number,needVolunteers:number):string {
     if (!currentNumber || !needVolunteers) {
       return '';
@@ -46,10 +49,30 @@ export class InformationComponent implements OnInit,OnDestroy {
       }
     }
   }
-  constructor(private HttpServiceEvents: HttpServiceEvents,public sanitizer: DomSanitizer) {}
+  constructor(
+    private HttpServiceEvents: HttpServiceEvents,
+    public sanitizer: DomSanitizer,
+    public auth: AuthenticationService,
+    // private HttpServiceUsers:HttpServiceUsers
+    ) {}
   ngOnInit() {
-    this.event$ = this.HttpServiceEvents.getEvent('clean')
+    this.currentUser = this.auth.afAuth.user.pipe(
+      share()
+    )
+    this.event$ = this.HttpServiceEvents.getEvent('clean').pipe(
+      share()
+    )
+    // this.HttpServiceUsers.pushUser({
+    //   body: "quia et suscipit\nsuscipit recusandae consequunt...",
+    //   id: 50,
+    //   title: "sunt aut facere repellat provident occaecati ex...",
+    //   userId: 1
+    // }
+    // ).subscribe({
+    //   next:user => console.log(user)
+    // })
     this.subs.add(this.event$.subscribe(res => {
+      console.log(res)
       this.amountOfMembers = this.members(res.members.length,res.needVolunteers)
       this.partSircle = this.calcPartOfSircle(res.members.length,res.needVolunteers)
     }));

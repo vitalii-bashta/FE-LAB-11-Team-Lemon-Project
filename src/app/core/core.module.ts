@@ -4,6 +4,7 @@ import { ErrorHandler } from '@angular/core';
 
 import { HttpServiceEvents } from './services/http-events.service';
 import { HttpServiceUsers } from './services/http-users.service';
+import { HttpServicePosts } from './services/http-posts.service'
 import { GlobalErrorHandler } from './services/error.service';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { GlobalErrorHandler } from './services/error.service';
   providers: [
     HttpServiceEvents,
     HttpServiceUsers,
+    HttpServicePosts,
     [{provide: ErrorHandler, useClass: GlobalErrorHandler}]
   ]
 })

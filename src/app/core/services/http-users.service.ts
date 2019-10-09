@@ -18,10 +18,10 @@ export class HttpServiceUsers{
     deleteUser(id:string):Observable<void> {
         return this.http.delete<void>(`${this.fireBase}users/${id}.json`)
     }
-    pushUser(data:Event):Observable<any>  {
+    pushUser(data:User):Observable<any>  {
         return this.http.post(`${this.fireBase}users.json`, data)
     }
-    updateUser(key:string,data:Event):Observable<any> {
+    updateUser(key:string,data:User):Observable<any> {
         return this.http.patch(`${this.fireBase}/users/${key}.json`,data)
     }   
 }

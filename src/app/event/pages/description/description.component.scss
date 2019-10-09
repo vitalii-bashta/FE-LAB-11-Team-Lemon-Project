@@ -20,6 +20,16 @@ $fontSize: 18px;
     }
   }
 }
+@media screen and (max-width: 450px) {
+  .sub-pages{ 
+    font-size: $fontSize*1.1;
+  }
+}
+@media screen and (max-width: 400px) {
+  .sub-pages{ 
+    font-size: $fontSize;
+  }  
+}
 .description {
   padding-left: 3%;
   padding-right: 3%;
