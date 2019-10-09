@@ -10,6 +10,7 @@ import { AdressesComponent } from './components/adresses/adresses.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomePageRoutingModule } from './home-page.routing.module';
 import { UserProfileRoutingModule } from '../user-profile/user-profile.routing.module';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UserProfileRoutingModule } from '../user-profile/user-profile.routing.m
     OrganizationsComponent,
     AdressesComponent,
     ProfileComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
