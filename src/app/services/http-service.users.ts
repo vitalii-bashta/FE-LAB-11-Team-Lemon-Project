@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { User } from '../models/user.model'
+import { User } from '../core/models/user.model'
 
   
 @Injectable()
@@ -18,10 +18,10 @@ export class HttpServiceUsers{
     deleteUser(id:string):Observable<void> {
         return this.http.delete<void>(`${this.fireBase}users/${id}.json`)
     }
-    pushUser(data:User):Observable<any>  {
+    pushUser(data:Event):Observable<any>  {
         return this.http.post(`${this.fireBase}users.json`, data)
     }
-    updateUser(key:string,data:User):Observable<any> {
+    updateUser(key:string,data:Event):Observable<any> {
         return this.http.patch(`${this.fireBase}/users/${key}.json`,data)
     }   
 }

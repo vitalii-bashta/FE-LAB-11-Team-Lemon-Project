@@ -1,0 +1,13 @@
+<div class="location">
+  <div class="location__name">
+    Location
+  </div>
+  <ng-container *ngIf="event$ | async as event">
+    <div class="location__map">
+      <iframe [src]="safeRef"  width="600" height="300" frameborder="0" zoom='2' ></iframe>
+    </div>
+    <div class="location__address">
+      {{event.location.name}}
+    </div>
+  </ng-container>
+</div>

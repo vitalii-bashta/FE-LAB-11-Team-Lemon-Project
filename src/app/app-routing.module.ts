@@ -17,6 +17,10 @@ const routes: Routes =  [
     loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
   },
   {
+    path: 'event',
+    loadChildren: () => import('./event/event.module').then(m => m.EventModule)    
+  },
+  {
     path: 'error',
     loadChildren: () => import('./error-page/error-page.routing.module').then(m => m.ErrorPageRoutingModule)    
   },
