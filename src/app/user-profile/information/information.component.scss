@@ -1,24 +1,24 @@
 @import '../../shared/colors';
 .information {
-    div, h2, button {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-    h2 {
-        margin-bottom: 5px;
-    }
-    .pink {
-        color: $pink;
-    }
-    .log-out {
-        margin-top: 20px;
-        width: 100%;
-        height: 40px;
-        background-color: transparent;
-        color: $pink;
-        font-weight: bold;
-        border: 1px solid $pink;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+  div, h2, button {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  h2 {
+    margin-bottom: 5px;
+  }
+  .pink {
+    color: $pink;
+  }
+  .log-out {
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    color: $pink;
+    font-weight: bold;
+    border: 1px solid $pink;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }

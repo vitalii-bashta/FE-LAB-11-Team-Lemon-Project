@@ -15,16 +15,15 @@ body {
 
   div {
     padding: 10px;
-    // margin: 10px;
   }
 
   .edit {
     margin-right: auto;
   }
 
-  // .notification {
-
-  // }
+  .edit, .notification, .share {
+    cursor: pointer;
+  }
 }
 
 .user-profile__image {
@@ -41,7 +40,6 @@ body {
 .user-profile__fullName {
   text-align: center;
   h2 {
-    // padd-bottom: 10px;
     background-color: $pink;
     margin: 0;
     padding: 20px;
@@ -55,7 +53,6 @@ body {
   padding: 10px;
   display: flex;
   justify-content: space-around;
-
   
   a {
     cursor: pointer;
