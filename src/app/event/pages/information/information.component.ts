@@ -16,7 +16,7 @@ import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
   styleUrls: ['./information.component.scss']
 })
 export class InformationComponent implements OnInit,OnDestroy {
-  public event$:Observable<Event>;
+  public event$:Observable<any>;
   public amountOfMembers: String;
   public partSircle: Object;
   public subs: Subscription = new Subscription();
@@ -56,9 +56,9 @@ export class InformationComponent implements OnInit,OnDestroy {
     // private HttpServiceUsers:HttpServiceUsers
     ) {}
   ngOnInit() {
-    this.currentUser = this.auth.afAuth.user.pipe(
-      share()
-    )
+    // this.currentUser = this.auth.afAuth.user.pipe(
+    //   share()
+    // )
     this.event$ = this.HttpServiceEvents.getEvent('clean').pipe(
       share()
     )
@@ -72,9 +72,8 @@ export class InformationComponent implements OnInit,OnDestroy {
     //   next:user => console.log(user)
     // })
     this.subs.add(this.event$.subscribe(res => {
-      console.log(res)
-      this.amountOfMembers = this.members(res.members.length,res.needVolunteers)
-      this.partSircle = this.calcPartOfSircle(res.members.length,res.needVolunteers)
+      this.amountOfMembers = this.members(res.members.length,res.amountOfVolunteers)
+      this.partSircle = this.calcPartOfSircle(res.members.length,res.amountOfVolunteers)
     }));
   }
   ngOnDestroy() {
