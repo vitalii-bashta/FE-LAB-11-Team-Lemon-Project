@@ -10,6 +10,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { VolunteersComponent } from './components/volunteers/volunteers.component';
 import { AngularFireAuthGuard, canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["authentication"]);
+
 const routes: Routes = [
 	{
 		path: '',
@@ -20,7 +22,8 @@ const routes: Routes = [
       {
         path: 'user-profile',
         loadChildren: () => import('../user-profile/user-profile.routing.module').then(m => m.UserProfileRoutingModule),
-        ...canActivate(redirectUnauthorizedTo(['authentication']))
+        canActivate: [AngularFireAuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedToLogin}
       },
       { path: 'volunteers', component: VolunteersComponent },
       { path: 'organizations', component: OrganizationsComponent },
