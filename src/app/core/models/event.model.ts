@@ -8,7 +8,7 @@ export interface Event {
   category: string;
   location: Address;
   urlImage: string;
-  dateTime: string;
+  date: string;
   contacts: Contacts;
   assignedPhotos?: Array<string>;
   howCanIHelp?: string;
