@@ -1,6 +1,12 @@
 export interface User {
-    body: string,
     id:number,
-    title:string,
-    userId: number
+    email: string,
+    mobile?: string,
+    city?: string,
+    age?: string,
+    memberOf?: string,
+    skills?: string,
+    aboutMe?: string,
+    organizations?: string,
+    feedback?: string
 }
