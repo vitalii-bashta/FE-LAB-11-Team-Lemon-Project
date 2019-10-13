@@ -1,30 +1,18 @@
-
-<ng-container *ngIf="event$ | async as event">
-  <p>{{event.name}}</p>
+<h3 class="header">Gallery</h3>
+  <div class="container">
+    <ng-container *ngIf="event$ | async as event">
+      <slideshow [height]="height"
+      [minHeight]="'340px'"
+      [autoPlay]="true"
+      [showArrows]="true"
+      [showDots]="true"
+      [imageUrls]="imageUrls"
+      [backgroundPosition]='position'
+      [backgroundRepeat]="repeat"
+      [lazyLoad]="imageSources?.length > 1"
+      [autoPlayWaitForLazyLoad]="true">
+    </slideshow>
 </ng-container>
-<div class="gallery"> 
-  <div class="gallery-box">
-    <div class="gallery-box__container" cdkDragLockAxis="x" cdkDrag>
-      <div class="gallery-box__container__image">
-        <img src="https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_55.png?alt=media&token=45661b0b-6de1-4370-9066-67e215392fcc" alt="">
-      </div>
-      <div class="gallery-box__container__image">
-        <img src="https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_55.png?alt=media&token=45661b0b-6de1-4370-9066-67e215392fcc" alt="">
-      </div>
-      <div class="gallery-box__container__image">
-        <img src="https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_55.png?alt=media&token=45661b0b-6de1-4370-9066-67e215392fcc" alt="">
-      </div>
-      <div class="gallery-box__container__image">
-        <img src="https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_55.png?alt=media&token=45661b0b-6de1-4370-9066-67e215392fcc" alt="">
-      </div>   
-      <div class="gallery-box__container__image">
-        <img src="https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_55.png?alt=media&token=45661b0b-6de1-4370-9066-67e215392fcc" alt="">
-      </div>   
-      <div class="gallery-box__container__image">
-        <img src="https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_55.png?alt=media&token=45661b0b-6de1-4370-9066-67e215392fcc" alt="">
-      </div>
-    </div>
-  </div> 
 </div>
 
 

@@ -5,8 +5,11 @@
         {{title}}
       </mat-panel-title>
     </mat-expansion-panel-header>
-			<div>
+			<p *ngIf='!preline'>
 				{{content}}
-			</div>
+      </p>
+      <pre *ngIf='preline'>
+        {{content}}
+      </pre>
   </mat-expansion-panel>
 <mat-accordion>

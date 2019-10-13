@@ -2,13 +2,13 @@
 <div class="sub-pages">
     <div class="sub-page" [routerLink]="['./../information']" >Information</div>
     <div class="sub-page_current" >Description</div>
-    <div class="sub-page" [routerLink]="['./../discussion']">Feedback</div>
+    <div class="sub-page" [routerLink]="['./../discussion']">Discussion</div>
   </div>
 <ng-container *ngIf="event$ | async as event">
     <app-accordion [status]='isOpened' [title]='titleAboutEvent' [content]='event.aboutEvent'></app-accordion>
     <app-accordion [title]='titleCanHelp' [content]='event.howCanIHelp'></app-accordion>
     <app-accordion [title]='titlewhatDoINeed' [content]='event.whatDoINeed'></app-accordion>
     <app-accordion [title]='titleAboutOrganization' [content]='event.aboutOrganization'></app-accordion>
-    <app-accordion [title]='titleSchedule' [content]='event.date'></app-accordion>
+    <app-accordion [title]='titleSchedule' [content]='schedule' [preline]='true'></app-accordion>
 </ng-container>
 

@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule,Routes } from '@angular/router'
 import { DragDropModule } from '@angular/cdk/drag-drop'
 import { AddCommentComponent } from './components/add-comment/add-comment.component'
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { 
   MatExpansionModule, 
   MatButtonModule 
 } from '@angular/material';
+import { SlideshowModule } from 'ng-simple-slideshow';
 
 import { EventComponent } from './event.component';
 import { LocationComponent } from './components/location/location.component';
@@ -49,12 +49,12 @@ const routes : Routes = [
     HeaderComponent,
     PostComponent,
     AddCommentComponent,
-    AccordionComponent
+    AccordionComponent,
   ],
   imports: [
     DragDropModule,
     CommonModule,
-    // BrowserAnimationsModule,
+    SlideshowModule,
     MatExpansionModule,
     MatButtonModule,
     RouterModule.forChild(routes),

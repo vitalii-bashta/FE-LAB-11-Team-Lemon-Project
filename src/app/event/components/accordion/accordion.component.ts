@@ -9,6 +9,7 @@ export class AccordionComponent implements OnInit {
   @Input() title;
   @Input() content;
   @Input() status;
+  @Input() preline;
   constructor() { }
 
   ngOnInit() {

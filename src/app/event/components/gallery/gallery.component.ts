@@ -9,6 +9,13 @@ import { Event } from 'src/app/core/models/event.model'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GalleryComponent implements OnInit {
+  public position:string = 'center center';
+  public repeat:string = 'no-repeat';
+  imageUrls = [
+    'https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_55.png?alt=media&token=45661b0b-6de1-4370-9066-67e215392fcc',
+    'https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_55.png?alt=media&token=45661b0b-6de1-4370-9066-67e215392fcc',
+    'https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_55.png?alt=media&token=45661b0b-6de1-4370-9066-67e215392fcc',  
+  ];
   @Input() event$:Observable<Event>
   constructor() {}
   ngOnInit() {
