@@ -25,12 +25,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     console.log(this.userData);
   }
 
+
   ngOnDestroy() {
     this.userData.uns
   }
-
-
-
+  
   // showInformation() {
   //   this.router.navigate(['information'], {relativeTo: this.route});
   //   this.isActive = false;
