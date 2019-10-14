@@ -1,0 +1,15 @@
+<mat-accordion>
+  <mat-expansion-panel [expanded]="status">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{title}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+			<p *ngIf='!preline'>
+				{{content}}
+      </p>
+      <pre *ngIf='preline'>
+        {{content}}
+      </pre>
+  </mat-expansion-panel>
+<mat-accordion>

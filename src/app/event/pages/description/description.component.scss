@@ -30,36 +30,3 @@ $fontSize: 18px;
     font-size: $fontSize;
   }  
 }
-.description {
-  padding-left: 3%;
-  padding-right: 3%;
-  position: relative;
-  height: 150px;
-  overflow: hidden;
-  &__toggler {
-    z-index: 1;
-    position: absolute;
-    bottom: 0%;
-    right: 3%;
-    background-color: white;
-    color: lightgray;
-    &__symbol {
-      font-size: $fontSize*0.7;
-    }
-  }
-}
-.schedule {
-  padding-left: 3%;
-  padding-right: 3%;  
-  position: relative;  
-  &__toggler {
-    position: absolute;
-    
-    bottom: 0%;
-    right: 3%;
-    color: lightgray;
-    &__symbol {
-      font-size: $fontSize*0.7;
-    }
-  }
-}

@@ -1,14 +1,16 @@
 <div class="comment">
     <div class="comment-photo">
-
-    </div>
+        <ng-container *ngIf="user$ | async as user">
+            <img class="avatar" src="{{user.avatarUrl}}" alt="">
+        </ng-container>
+    </div> 
     <div class="comment-body">
         <div class="comment-body-description">
-            <div class="comment-body-description__author">{{fakePost.userName}}</div>
-            <div class="comment-body-description__time">{{fakePost.date.month}} {{fakePost.date.day}}, {{fakePost.time.hours}}:{{fakePost.time.minutes}}</div>
+            <div class="comment-body-description__author">{{post.user.userName}}</div>
+            <div class="comment-body-description__time">{{postDate}}</div>
         </div>
         <div class="comment-body__content">
-            {{fakePost.body}}
+            {{post.body}}
         </div>
     </div>
 </div>

@@ -2,7 +2,10 @@
 <div class="sub-pages">
   <div class="sub-page" [routerLink]="['./../information']">Information</div>
   <div class="sub-page" [routerLink]="['./../description']">Description</div>
-  <div class="sub-page_current">Feedback</div>
+  <div class="sub-page_current">Discussion</div>
 </div>
-<app-add-comment></app-add-comment>
-<app-post></app-post>
+<h3 class="header">Leave a comment</h3>
+<app-add-comment [user$]='user$'></app-add-comment>
+<ng-container *ngFor='let item of arrayOfFilteredPosts'>
+  <app-post [user$]='user$' [post]='item'></app-post>
+</ng-container>

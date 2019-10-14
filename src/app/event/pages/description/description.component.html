@@ -1,44 +1,14 @@
 <app-header [event$]='event$'></app-header>
-<ng-container *ngIf="event$ | async as event">
 <div class="sub-pages">
-  <div class="sub-page" [routerLink]="['./../information']">Information</div>
-  <div class="sub-page_current">Description</div>
-  <div class="sub-page" [routerLink]="['./../discussion']">Feedback</div>
-</div>
-<div class="description">
-  <h3 class="description__header">About event</h3>
-  <div class="description__text">{{event.about_event}}</div>
-  <div class="description__toggler" (click)="showAndHideContent($event)">more <span class="description__toggler__symbol"> &or; </span></div>
-</div>
-<div class="description">
-  <h3 class="description__header">How can I help</h3>
-  <div class="description__text">{{event.how_can_i_help}}</div>
-  <div class="description__toggler" (click)="showAndHideContent($event)">more <span class="description__toggler__symbol"> &or; </span></div>
-</div>
-<div class="description">
-  <h3 class="description__header">What do I need</h3>
-  <div class="description__text">{{event.what_do_i_need}}</div>
-  <div class="description__toggler" (click)="showAndHideContent($event)">more <span class="description__toggler__symbol"> &or; </span></div>
-</div>
-<div class="schedule">
-  <h3 class="schedule__header">Schedule</h3>
-  <div class="schedule-item">
-    <div class="date">
-      <span class="schedule-item__day-of-week">{{event.schedule.date_time.day_of_week}} </span>
-      <span class="schedule-item__month">{{event.schedule.date_time.month}} </span>
-      <span class="schedule-item__day">{{event.schedule.date_time.day}} </span>,
-      <span class="schedule-item__year">{{event.schedule.date_time.year}} </span>
-    </div>
-    <div class="time">
-      <span class="time-interval">{{event.schedule.date_time.time.from}} </span>-
-      <span class="time-interval">{{event.schedule.date_time.time.to}}</span>   
-    </div>
+    <div class="sub-page" [routerLink]="['./../information']" >Information</div>
+    <div class="sub-page_current" >Description</div>
+    <div class="sub-page" [routerLink]="['./../discussion']">Discussion</div>
   </div>
-  <div class="schedule__toggler" (click)="showAndHideContent($event)" >more <span class="description__toggler__symbol"> &or; </span></div>
-</div>
-<div class="description">
-  <h3 class="description__header">About organization</h3>
-  <div class="description__text">{{event.about_organization}}</div>
-  <div class="description__toggler" (click)="showAndHideContent($event)" (change)='setSizes($event)'>more <span class="description__toggler__symbol"> &or; </span></div>
-</div>
+<ng-container *ngIf="event$ | async as event">
+    <app-accordion [status]='isOpened' [title]='titleAboutEvent' [content]='event.aboutEvent'></app-accordion>
+    <app-accordion [title]='titleCanHelp' [content]='event.howCanIHelp'></app-accordion>
+    <app-accordion [title]='titlewhatDoINeed' [content]='event.whatDoINeed'></app-accordion>
+    <app-accordion [title]='titleAboutOrganization' [content]='event.aboutOrganization'></app-accordion>
+    <app-accordion [title]='titleSchedule' [content]='schedule' [preline]='true'></app-accordion>
 </ng-container>
+
