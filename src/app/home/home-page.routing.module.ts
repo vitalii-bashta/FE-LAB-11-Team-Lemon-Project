@@ -16,7 +16,10 @@ const routes: Routes = [
 		children: [
 			{ path: '', redirectTo: 'events', pathMatch: 'full' },
 			{ path: 'events', component: EventsComponent },
-      { path: 'profile', component: ProfileComponent },
+      {
+        path: 'user-profile',
+        loadChildren: () => import('../user-profile/user-profile.routing.module').then(m => m.UserProfileRoutingModule)
+      },
       { path: 'volunteers', component: VolunteersComponent },
       { path: 'organizations', component: OrganizationsComponent },
       { path: 'adresses', component: AdressesComponent },
