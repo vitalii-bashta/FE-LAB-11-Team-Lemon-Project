@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../core/models/user.model';
 import { HttpServiceUsers } from '../core/services/http-users.service';
@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit, OnDestroy {
 
   isActive = true;
   public fullName = "Robin Smith";
@@ -23,6 +23,10 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     this.userData = this._userService.getUsers().subscribe(usersData =>  console.log(usersData[0]));
     console.log(this.userData);
+  }
+
+  ngOnDestroy() {
+    this.userData.uns
   }
 
 
