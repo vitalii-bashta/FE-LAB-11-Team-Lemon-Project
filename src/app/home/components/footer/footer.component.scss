@@ -1,9 +1,9 @@
 .footer-container{
-    width:100%;
+    width: 100%;
     position: fixed;
     bottom: 0px;
     text-align: center;
-    z-index: 101;
+    z-index: 1;
 }
 
 .links-wrapper {
@@ -14,6 +14,7 @@
 }
 
 .footer-link {
+    font-size: 0.8rem;
     text-decoration: none;
     display: flex;
     flex-direction: column;
@@ -21,6 +22,10 @@
     margin: 0 30px;
     color: darken(lightgrey, 20% );
     
+    .icon {
+        padding-bottom: 5px;
+    }
+
     &:visited{
         color: darken(lightgrey, 20% );
     }
