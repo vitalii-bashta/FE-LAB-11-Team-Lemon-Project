@@ -1,33 +1,26 @@
 export interface Event {
-  id: number;
-  name: string;
-  members: Array<any>;//instead of any will be type User
-  needVolunteers: number;
-  organization: any; //instead of any will be type Organization
-  manager: string; //user
+  id: string;
+  eventName: string;
+  members?: Array<string>;
+  amountOfVolunteers: number;
+  organization: string; 
+  manager: string; 
   category: string;
   location: Address;
   urlImage: string;
-  date: startDate;
-  time: startTime;
+  date: string;
   contacts: Contacts;
-  assignedPhotos: Array<string>;
-  // howCanIHelp: string,
-  // whatDoINeed: string,
+  assignedPhotos?: Array<string>;
+  howCanIHelp?: string;
+  whatDoINeed?: string;
+  aboutEvent?: string;
+  aboutOrganization?:string;
+  schedule: Array<string>
 }
 interface Address {
-  place: string;
+  city: string;
+  street: string;
   url:string;
-
-}
-interface startDate {
-  year: number;
-  month: number;
-  day: number;
-}
-interface startTime {
-  hours: number;
-  minutes: number;
 }
 interface Contacts {
   email: string;
