@@ -63,18 +63,16 @@ export class AuthenticationService {
   
   
   isLoggIn() {
-    let isLogged;
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-      if (firebaseUser) {
-        console.log(firebaseUser);
-      } else {
-        console.log('not logged in');
-      }
 
-      isLogged = firebaseUser;
-      
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser) {
+          resolve(firebaseUser);
+        } else {
+          reject('No user logged in');
+        }
+      })
     })
-    return isLogged
   }
 
 }
