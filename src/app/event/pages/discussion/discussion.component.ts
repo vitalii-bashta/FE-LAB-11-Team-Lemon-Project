@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription,from } from 'rxjs'
+import { Observable, Subscription, from, combineLatest } from 'rxjs'
+import { AngularFireAuth } from '@angular/fire/auth';
+import { mergeMap } from 'rxjs/operators'
 
+import { HttpServiceEvents } from 'src/app/core/services/http-events.service'
 import { HttpServicePosts } from 'src/app/core/services/http-posts.service'
 import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
 import { Post } from 'src/app/core/models/post.model'
@@ -15,14 +18,19 @@ export class DiscussionComponent implements OnInit,OnDestroy {
   public user$:Observable<any>;
   public arrayOfFilteredPosts:Array<Post> = [];
   private sub = new Subscription()
+  public currentUserEmail$;
+  public currentUserEmail:string;
+  public currentUser$;
+
   constructor(
     private HttpServicePosts:HttpServicePosts,
-    private HttpServiceUsers:HttpServiceUsers
+    private HttpServiceUsers:HttpServiceUsers,
+    public auth: AngularFireAuth    
   ) { }
 
   ngOnInit() {
-    this.user$ = this.HttpServiceUsers.getUser('mockUser')
-    // this.posts$ = this.HttpServicePosts.getPosts(`orderBy="keyOfOwner"&startAt="romasaldan@gmail.com"`)
+    // this.user$ = this.HttpServiceUsers.getUser('mockUser')
+    this.posts$ = this.HttpServicePosts.getPosts(`orderBy="forEvent"&equalTo="save"`);
     this.sub.add(this.posts$.subscribe(
       (elem)=>{
         for (const item in elem) {
@@ -30,11 +38,23 @@ export class DiscussionComponent implements OnInit,OnDestroy {
             this.arrayOfFilteredPosts.push(elem[item]);
           }
         }
+        this.arrayOfFilteredPosts.sort((a:Post,b:Post) => {
+          if(a.time < b.time) {
+            return 1
+          } else {
+            return -1
+          }
+        })
       }
     ))
+    this.currentUserEmail$ = this.auth.user;
+    this.currentUser$ = this.currentUserEmail$.pipe(
+      mergeMap((character:any) => {
+        this.currentUserEmail = character.email;
+        return this.HttpServiceUsers.getUsers(`orderBy="email"&equalTo="${character.email}"`)
+    }));
   }
   ngOnDestroy() {
     this.sub.unsubscribe()
   }
-
 }

@@ -4,9 +4,9 @@
 			<img class="avatar" src="{{user.avatarUrl}}" alt="avatar">
 		</ng-container>
 	</div>
-    <div class="field__input">
-        <input type="text" placeholder="Add a comment here">
-    </div>
+	<div class="field__input">
+		<input type="text" name="comment" [(ngModel)]="post.body" placeholder="Add a comment here...">
+	</div>
 </div>
-<button type="button" class="sending-button">Send comment</button>
+<input type="button" (click)='send()' class="sending-button" value="Send" [routerLink]="['../']">
 <div class="clear-hr"></div>

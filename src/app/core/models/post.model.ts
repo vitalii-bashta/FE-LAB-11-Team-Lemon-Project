@@ -1,6 +1,11 @@
 export interface Post {
     body: string;
-    id:number;
-    title:string;
-    userId: number;
+    forEvent:string;
+    keyOfOwner:string;
+    time: string;
+    user: User
+  }
+  interface User {
+    avatar: string;
+    userName: string
   }
