@@ -11,13 +11,12 @@ import { Event } from '../../../core/index'
 export class EventsComponent implements OnInit, OnDestroy {
 	public events: Event[] = [];
 	private eventSubscription: Subscription;
-
 	constructor(private eventsService: EventsService) { }
-
 	ngOnInit() {
 		this.eventSubscription = this.eventsService.getSearchedEvents().subscribe((value) => {
             this.events = [];
 			for	(const element in value) {
+				value[element].id = element
 				this.events.push(value[element])
 			}
 		})
