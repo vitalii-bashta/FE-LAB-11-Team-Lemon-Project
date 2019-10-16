@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-information',
@@ -8,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./information.component.scss']
 })
 export class InformationComponent implements OnInit {
+
+  email: Promise<any>;
 
   information = {
     'mobile': '+38 (097) 123-4567',
@@ -29,9 +33,12 @@ export class InformationComponent implements OnInit {
   public aboutMe = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a semper diam, vel laoreet arcu. Integer vestibulum, nibh vestibulum accumsan accumsan, ipsum elit luctus mauris, ac fermentum quam leo elementum quam. Fusce non elit porttitor, condimentum metus eget, facilisis lacus";
 
 
-  constructor(public _router: Router) { }
+  constructor(public _router: Router,
+              public _authenticationService: AuthenticationService)
+              { }
 
   ngOnInit() {
+    this.email = this._authenticationService.isLoggInEmail();
   }
 
   logOut() {
