@@ -15,12 +15,12 @@ export class EventsComponent implements OnInit, OnDestroy {
 	constructor(private eventsService: EventsService) { }
 
 	ngOnInit() {
-		this.eventSubscription = this.eventsService.getEventsFromDb().subscribe((value) => {
+		this.eventSubscription = this.eventsService.getSearchedEvents().subscribe((value) => {
+            this.events = [];
 			for	(const element in value) {
 				this.events.push(value[element])
 			}
 		})
-
 	}
 
 	ngOnDestroy() {
