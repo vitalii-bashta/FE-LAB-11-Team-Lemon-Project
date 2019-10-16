@@ -14,6 +14,13 @@ export class HttpServiceEvents{
 			return this.http.get<Event[]>(this.fireBase+`events.json`)
 		}
     }
+    // getEvents(request?:string):Observable<any[]> {
+    //     if(request) {
+	// 		return this.http.get<Event[]>(this.fireBase+`newevents.json?`+request)
+	// 	} else {
+	// 		return this.http.get<Event[]>(this.fireBase+`newevents.json`)
+	// 	}
+    // }
     getEvent(number:string):Observable<any> {
         return this.http.get(`${this.fireBase}events/${number}.json`)
     }
