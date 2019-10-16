@@ -22,7 +22,7 @@ export class DiscussionComponent implements OnInit,OnDestroy {
 
   ngOnInit() {
     this.user$ = this.HttpServiceUsers.getUser('mockUser')
-    this.posts$ = this.HttpServicePosts.getPosts(`orderBy="keyOfOwner"&startAt="romasaldan@gmail.com"`)
+    // this.posts$ = this.HttpServicePosts.getPosts(`orderBy="keyOfOwner"&startAt="romasaldan@gmail.com"`)
     this.sub.add(this.posts$.subscribe(
       (elem)=>{
         for (const item in elem) {

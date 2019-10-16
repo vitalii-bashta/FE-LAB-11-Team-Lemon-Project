@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
 import { Event } from '../core/models/event.model'
 
-  
 @Injectable()
 export class HttpServiceEvents{
     private fireBase = `https://fe-lab-11-team-lemon-project.firebaseio.com/`
-    constructor(private http: HttpClient){ }    
+    constructor(private http: HttpClient){ }
     getEvents():Observable<Event[]> {
         return this.http.get<Event[]>(this.fireBase+`events.json`)
     }
@@ -23,5 +21,5 @@ export class HttpServiceEvents{
     }
     updateEvent(key:string,data:Event):Observable<any> {
         return this.http.patch(`${this.fireBase}/events/${key}.json`,data)
-    }   
+    }
 }

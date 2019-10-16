@@ -6,18 +6,12 @@ import { Observable } from 'rxjs';
 export class HttpServiceEvents{
     private fireBase = `https://fe-lab-11-team-lemon-project.firebaseio.com/`
     constructor(private http: HttpClient){ }    
-    // getEvents(request):Observable<any[]> {
-    //     if(request) {
-	// 		return this.http.get<Event[]>(this.fireBase+`events.json?`+request)
-	// 	} else {
-	// 		return this.http.get<Event[]>(this.fireBase+`events.json`)
-	// 	}
-    // }
+
     getEvents(request?:string):Observable<any[]> {
         if(request) {
-			return this.http.get<Event[]>(this.fireBase+`newevents.json?`+request)
+			return this.http.get<Event[]>(this.fireBase+`events.json?`+request)
 		} else {
-			return this.http.get<Event[]>(this.fireBase+`newevents.json`)
+			return this.http.get<Event[]>(this.fireBase+`events.json`)
 		}
     }
     getEvent(number:string):Observable<any> {
