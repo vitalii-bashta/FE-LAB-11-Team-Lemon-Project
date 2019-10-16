@@ -8,6 +8,7 @@ import {
   MatButtonModule 
 } from '@angular/material';
 import { SlideshowModule } from 'ng-simple-slideshow';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { EventComponent } from './event.component';
 import { LocationComponent } from './components/location/location.component';
@@ -57,6 +58,8 @@ const routes : Routes = [
     SlideshowModule,
     MatExpansionModule,
     MatButtonModule,
+    FormsModule, 
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],
   exports: [
