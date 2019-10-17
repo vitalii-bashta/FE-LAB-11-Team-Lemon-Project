@@ -6,12 +6,8 @@ import { Observable } from 'rxjs';
 export class HttpServiceEvents{
     private fireBase = `https://fe-lab-11-team-lemon-project.firebaseio.com/`
     constructor(private http: HttpClient){ }    
-<<<<<<< HEAD
 
     getEvents(request?:string):Observable<any[]> {
-=======
-    getEvents(request):Observable<any[]> {
->>>>>>> added possibility to add post
         if(request) {
 			return this.http.get<Event[]>(this.fireBase+`events.json?`+request)
 		} else {
