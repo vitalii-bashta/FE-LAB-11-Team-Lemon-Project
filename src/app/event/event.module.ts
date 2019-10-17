@@ -30,7 +30,7 @@ const routes : Routes = [
     children: [
       { path: '', redirectTo: 'information', pathMatch: 'full'},
       { path: 'description', component: DescriptionComponent },
-      { path: 'information', component: InformationComponent },
+      { path: 'information/:key', component: InformationComponent },
       { path: 'discussion', component: DiscussionComponent } 
 		]
   },
