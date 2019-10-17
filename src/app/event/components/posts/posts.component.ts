@@ -7,7 +7,6 @@ import { Post } from 'src/app/core/models/post.model'
   styleUrls: ['./posts.component.scss']
 })
 export class PostComponent implements OnInit {
-  @Input() user$;
   @Input() post;
   public postDate:string;
   public DAY_OF_WEEK:Map<number,string> = new Map([
@@ -34,9 +33,9 @@ export class PostComponent implements OnInit {
     [11,'Dec']
   ])
   dateFormat(elem):string{
-  const date = new Date(elem)
-  return `${this.DAY_OF_WEEK.get(date.getDay())},${this.NAME_OF_MONTH.get(date.getMonth())} ${date.getDate()} ${date.getFullYear()}
-  ${date.getHours()}:${date.getMinutes()}`
+    const date = new Date(elem)
+    return `${this.DAY_OF_WEEK.get(date.getDay())},${this.NAME_OF_MONTH.get(date.getMonth())} ${date.getDate()} ${date.getFullYear()}
+    ${date.getHours()}:${date.getMinutes()}`
   }
   constructor() { }
 

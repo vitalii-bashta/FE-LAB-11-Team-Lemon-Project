@@ -34,8 +34,7 @@ export class DiscussionComponent implements OnInit,OnDestroy {
       this.keyOfEvent = params.get('key')
      });   
     // this.user$ = this.HttpServiceUsers.getUser('mockUser')
-    this.posts$ = this.HttpServicePosts.getPosts(`orderBy="forEvent"&equalTo="save"`);
-
+    this.posts$ = this.HttpServicePosts.getPosts(`orderBy="forEvent"&equalTo="clean"`);
     this.sub.add(this.posts$.subscribe(
       (elem)=>{
         for (const item in elem) {
