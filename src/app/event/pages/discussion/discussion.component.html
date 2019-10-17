@@ -5,7 +5,7 @@
   <div class="sub-page_current">Discussion</div>
 </div>
 <h3 class="header">Leave a comment</h3>
-<app-add-comment  [email]='currentUserEmail'></app-add-comment>
+<app-add-comment [user$]='currentUser$' [email]='currentUserEmail'></app-add-comment>
 <ng-container *ngFor='let item of arrayOfFilteredPosts'>
   <app-post [post]='item'></app-post>
 </ng-container>
