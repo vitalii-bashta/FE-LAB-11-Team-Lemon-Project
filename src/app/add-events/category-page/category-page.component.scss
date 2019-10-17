@@ -1,0 +1,92 @@
+@import '../../shared/colors';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form {
+    width: 100%;
+    background-color: $lightwhite;
+    color: $grey;
+    padding-bottom: 80px;
+
+    header {
+        background-color: $pink;
+        color: $white;
+        height: 100px;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        button {
+            background-color: $pink;
+            color: $white;
+            border: none;
+            outline: none;
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin: 0;
+        }
+    }
+
+    main {    
+        background-color: $white;
+         
+            .field-name {
+                font-size: 23px;
+                margin: 0;
+                padding: 10px 10px 40px;
+                background-color: $white;
+                color: $black;
+            }
+
+            .form-field {
+                width: 100%;
+                background-color: $white;
+                padding: 10px;
+                border-top: 1px solid $lightgrey;
+                border-bottom: 1px solid $lightgrey;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                label {
+                    color: $black;
+                    font-size: 22px;
+                    width: 90%;
+                }
+
+                input[type="radio"] {
+                    appearance: none;
+                    display: inline-block;
+                    width: 30px;
+                    height: 30px;
+                    background-clip: content-box;
+                    background-color: $white;
+                    border-radius: 50%;
+                    outline: none;
+
+                    &:checked {    
+                        &::before {
+                            height: 30px;
+                            width: 30px;
+                            position: absolute;
+                            content: '✔';
+                            display: inline-block;
+                            font-size: 25px;
+                            text-align: center;
+                            line-height: 30px;
+                            color: $pink;
+                        }
+                    }
+                }
+            }
+    }
+}

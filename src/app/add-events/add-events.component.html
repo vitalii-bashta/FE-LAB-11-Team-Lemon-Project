@@ -1,0 +1,104 @@
+<form [formGroup]="addEventsForm" (ngSubmit)="submit(addEventsForm.value)">
+    <header>
+        <button type="reset" class="cancel-button" routerLink="/home">Cancel</button>
+        <h2 class="page-header">New Event</h2>
+        <button type="submit" class="create-button" [disabled]="!addEventsForm.valid">Create</button>
+    </header>
+    <main>
+        <p class="field-name">EVENT NAME</p>
+        <div class="form-field">
+            <label for="event-name">Event name</label>
+            <input type="text" formControlName="eventName" id="event-name" placeholder="required" required>
+        </div>
+        <p class="field-name">EVENT COVER PHOTO</p>
+        <div class="form-field dropzone">
+            <img src="{{fs.downloadURL}}" alt="" *ngIf="fs.downloadURL">
+            <input type="file" (change)="fs.uploadFile($event.target.files)" id="event-photo"
+                formControlName="eventPhoto" accept=".jpg, .jpeg, .png">
+            <label for="event-photo">Add cover photo</label>
+        </div>
+        <p class="field-name">CATEGORY</p>
+        <p>You have to add the event category</p>
+        <div class="form-field">
+            <input type="button" value="+" class="add-option" id="add-option" routerLink="/add-events/categories">
+            <label for="add-option">add option</label>
+        </div>
+        <div class="form-field" *ngIf="state">
+            <input type="text" formControlName="eventCategory" value="{{ state.category }}">
+        </div>
+        <p class="field-name">CONTACTS</p>
+        <div class="form-field">
+            <label for="phone-contacts">Mobile</label>
+            <input type="tel" formControlName="phoneContacts" id="phone-contacts" placeholder="required" required>
+        </div>
+        <div class="form-field">
+            <label for="email-contacts">Email</label>
+            <input type="email" formControlName="emailContacts" id="email-contacts" placeholder="required" required>
+        </div>
+        <p class="field-name">DATE</p>
+        <div class="form-field">
+            <label for="event-date">Date</label>
+            <input type="date" formControlName="eventDate" id="event-date" value="{{ date }}" required>
+        </div>
+        <div class="form-field">
+            <label for="event-time">Time</label>
+            <input type="time" formControlName="eventTime" id="event-time" value="{{ time }}" required>
+        </div>
+        <p>If the event lasts more then one day, you have to write when the event starts</p>
+        <p class="field-name">LOCATION</p>
+        <div class="form-field">
+            <label for="event-city">City</label>
+            <input type="text" formControlName="eventCity" id="event-city" placeholder="required" required>
+        </div>
+        <div class="form-field">
+            <label for="event-street">Street</label>
+            <input type="text" formControlName="eventStreet" id="event-street" placeholder="required" required>
+        </div>
+        <div class="form-field space-between">
+            <label for="gm-url">URL for Google Maps</label>
+            <input type="checkbox" class="checkbox" id="gm-url" formControlName="googleMaps" (change)="urlStatus = !urlStatus">
+        </div>
+        <div class="form-field" *ngIf="urlStatus">
+            <input type="text" formControlName="googleMapsUrl" placeholder="Add URL">
+        </div>
+        <p class="field-name">VOLUNTEERS' ANOUNT</p>
+        <div class="form-field space-between">
+            <label for="unlimited-volunteers">Unlimited number of volunteers</label>
+            <input type="checkbox" class="checkbox" id="unlimited-volunteers" formControlName="volunteersQuantity">
+        </div>
+        <div class="form-field space-between">
+            <label>Number of volunteers</label>
+            <div>
+                <p id="volunteersQuantity">{{ volunteersQty }}</p>
+                <input type="button" value="-" class="minus-volunteers" (click)="minusVolunteers()">
+                <input type="button" value="+" class="plus-volunteers" (click)="plusVolunteers()">
+            </div>
+        </div>
+        <!-- <p class="field-name">VOLUNTEER SKILLS</p>
+        <div class="form-field">
+            <input type="button" value="+" class="add-option" id="add-option-skills">
+            <label for="add-option-skills">add option</label>
+        </div> -->
+        <p class="field-name">ADD DESCRIPTION</p>
+        <div class="form-field">
+            <textarea placeholder="A summary of the event" rows="3" formControlName="eventDescription"></textarea>
+        </div>
+        <p class="field-name">SCHEDULE</p>
+        <div class="form-field">
+            <textarea placeholder="Event schedule" rows="3" formControlName="eventSchedule"></textarea>
+        </div>
+        <div class="form-field space-between margin-top">
+            <label for="event-organization">Create event from organization</label>
+            <input type="checkbox" id="event-organization" formControlName="eventFromOrganization">
+        </div>
+        <p>Choose organization, which created the event</p>
+        <div class="form-field margin-top">
+            <input type="radio" id="united-way" value="United Way" name="eventOrganization" formControlName="eventOrganization">
+            <label for="united-way">United Way</label>
+        </div>
+        <div class="form-field">
+            <input type="radio" id="utsa" value="UTSA" name="eventOrganization" formControlName="eventOrganization">
+            <label for="utsa">UTSA</label>
+        </div>
+    </main>
+</form>

@@ -60,7 +60,11 @@ export class AuthenticationService {
     })
   }
 
-  
+  signOut() {
+    return firebase.auth().signOut().then(() => {
+      this.router.navigate(['authentication']);
+    })
+  }
   
   isLoggIn() {
     let isLogged;
