@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 import { FileService, HttpServiceEvents } from 'src/app/core';
 import { Event } from 'src/app/core/models/event.model'
@@ -40,16 +40,21 @@ export class AddEventsComponent implements OnInit {
     eventFromOrganization: [''],
     eventOrganization: [''],
   });
+  keyOfEvent: string;
 
   constructor(
     private fb: FormBuilder,
     private fs: FileService,
     private es: HttpServiceEvents,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    this.route.paramMap.subscribe((params)=>{
+      this.keyOfEvent = params.get('key')
+     });   
+  }
   minusVolunteers(){
     this.volunteersQty -= 1;
   }
