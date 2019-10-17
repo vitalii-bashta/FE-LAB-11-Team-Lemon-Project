@@ -21,7 +21,7 @@ const routes: Routes =  [
     loadChildren: () => import('./event/event.module').then(m => m.EventModule)    
   },
   {
-    path: 'add-events',
+    path: 'add-events/:key',
     loadChildren: () => import('./add-events/add-events.module').then(m => m.AddEventsModule)
   },
   {

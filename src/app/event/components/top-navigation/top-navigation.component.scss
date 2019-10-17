@@ -1,0 +1,22 @@
+$pageCol: #E5465D;
+$txtCol: #FFFFFF;
+$fontSize: 18px;
+
+.navigation {
+  background-color: $pageCol;
+  color: $txtCol;
+  display: flex;
+  padding: 20px;
+  font-size: $fontSize*1.5;
+  font-weight: 100;
+  text-align: center;
+  & div:hover {
+    cursor: pointer;
+  }
+  &__item {
+    flex-grow: 1;
+  }
+  &__name {
+    flex-grow: 7;
+  }
+}

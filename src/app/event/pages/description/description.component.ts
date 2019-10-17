@@ -4,6 +4,7 @@ import { share } from 'rxjs/operators'
 
 import { Event } from 'src/app/core/models/event.model'
 import { HttpServiceEvents } from 'src/app/core/services/http-events.service'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-description',
@@ -14,12 +15,13 @@ export class DescriptionComponent implements OnInit,OnDestroy {
   public event$:Observable<Event>;
   public titleCanHelp:string = 'How can I help';
   public titleAboutEvent:string = 'About Event'; 
-  public titlewhatDoINeed:string = 'What do i need'; 
+  public titlewhatDoINeed:string = 'What do i need';
   public titleSchedule:string = 'Schedule'; 
   public titleAboutOrganization:string = 'About organization';
   public isOpened:boolean = true;
   public schedule:string;
   private sub: Subscription = new Subscription()
+  public keyOfEvent: string;
   public DAY_OF_WEEK:Map<number,string> = new Map([
     [0,'Sunday'],
     [1,'Monday'],
@@ -43,6 +45,7 @@ export class DescriptionComponent implements OnInit,OnDestroy {
     [10,'November'],
     [11,'December']
   ])
+
   doSchedule(arr:Array<string>):string{
     let str = ''
     for(let i:number=0;i<arr.length;i++) {
@@ -55,9 +58,15 @@ export class DescriptionComponent implements OnInit,OnDestroy {
     }
     return str
   }
-  constructor(private HttpServiceEvents: HttpServiceEvents) {
+  constructor(
+    private HttpServiceEvents: HttpServiceEvents,
+    private route: ActivatedRoute
+    ) {
   }
   ngOnInit() {
+    this.route.paramMap.subscribe((params)=>{
+      this.keyOfEvent = params.get('key')
+     });    
     this.event$ = this.HttpServiceEvents.getEvent('clean').pipe(
       share()
     )
