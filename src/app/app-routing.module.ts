@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from './core/services/auth-guard.service';
-import { AngularFireAuthGuard, canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 const routes: Routes =  [
   {
@@ -24,8 +23,7 @@ const routes: Routes =  [
   },
   {
     path: 'user-profile',
-    loadChildren: () => import('./user-profile/user-profile.routing.module').then(m => m.UserProfileRoutingModule),
-    ...canActivate(redirectUnauthorizedTo(['authentication']))
+    loadChildren: () => import('./user-profile/user-profile.routing.module').then(m => m.UserProfileRoutingModule)
   },
   {
     path: '**',
