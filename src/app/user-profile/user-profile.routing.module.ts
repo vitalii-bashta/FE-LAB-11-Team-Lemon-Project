@@ -8,6 +8,7 @@ import { OrganizationComponent } from './organization/organization.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ModalModule } from './modal/modal.module';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 const routes : Routes = [
   {

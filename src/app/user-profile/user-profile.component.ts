@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../core/models/user.model';
 import { HttpServiceUsers } from '../core/services/http-users.service';
 import { map } from 'rxjs/operators';
+import { ModalService } from './modal/modal.service';
+import { AuthenticationService } from '../core';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,11 +16,29 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   isActive = true;
   public fullName = "Robin Smith";
   userData;
+
+  public userModel: User = {
+    name: "NoName",
+    email: "bratok3000@gmail.com",
+    avatarUrl: "https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/login%2Fuser.png?alt=media&token=4191f126-938c-4ef7-813b-f7d6956b4f27",
+    mobile: "5555555555",
+    city: "MiddleOfNowhere",
+    age: 100,
+    memberOf: "Gang",
+    skills: "No skills",
+    aboutMe: "Nothing about me",
+    organizations: "No organizations",
+    feedback: ""
+  }
+  submitted = false;
+  errorMessage = '';
   
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private _userService: HttpServiceUsers) { }
+              private _userService: HttpServiceUsers,
+              private modalService: ModalService,
+              public _authenticationService: AuthenticationService,) { }
 
   ngOnInit() {
     this.userData = this._userService.getUsers().subscribe(usersData =>  console.log(usersData[0]));
@@ -28,6 +48,18 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.userData.uns
+  }
+
+  openModal(id: string) {
+    this.modalService.open(id);
+  }
+
+  closeModal(id: string) {
+    this.modalService.close(id);
+  }
+
+  onSubmit() {
+    this.submitted = true;
   }
   
   // showInformation() {

@@ -43,11 +43,11 @@ export class InformationComponent implements OnInit {
     this._router.navigate(['home']);
   }
 
-  openModal(id: string) {
-    this.modalService.open(id);
-  }
+  // openModal(id: string) {
+  //   this.modalService.open(id);
+  // }
 
-  closeModal(id: string) {
-    this.modalService.close(id);
-  }
+  // closeModal(id: string) {
+  //   this.modalService.close(id);
+  // }
 }
