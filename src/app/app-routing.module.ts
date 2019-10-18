@@ -21,6 +21,10 @@ const routes: Routes =  [
     loadChildren: () => import('./event/event.module').then(m => m.EventModule)    
   },
   {
+    path: 'add-events/:key',
+    loadChildren: () => import('./add-events/add-events.module').then(m => m.AddEventsModule)
+  },
+  {
     path: 'error',
     loadChildren: () => import('./error-page/error-page.routing.module').then(m => m.ErrorPageRoutingModule)    
   },

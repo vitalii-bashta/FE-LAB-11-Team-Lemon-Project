@@ -1,0 +1,54 @@
+<form [formGroup]="categoriesForm" (ngSubmit)="submit(categoriesForm.value)">
+    <header>
+        <button type="reset" class="cancel-button" routerLink="/add-events">Cancel</button>
+        <h2 class="categories-page-header">Categories</h2>
+        <button type="submit" class="create-button" [disabled]="!categoriesForm.valid">Apply</button>
+    </header>
+    <main>
+        <h1 class="field-name">You have to choose the category</h1>
+        <div class="form-field">
+            <label for="children">Children</label>
+            <input type="radio" id="children" value="Children" name="categoryName" formControlName="categoryName">
+        </div>
+        <div class="form-field">
+            <label for="medicine">Medicine</label>
+            <input type="radio" id="medicine" value="Medicine" name="categoryName" formControlName="categoryName">
+        </div>
+        <div class="form-field">
+            <label for="science">Science</label>
+            <input type="radio" id="science" value="Science" name="categoryName" formControlName="categoryName">
+        </div>
+        <div class="form-field">
+            <label for="education">Education</label>
+            <input type="radio" id="education" value="Education" name="categoryName" formControlName="categoryName">
+        </div>
+        <div class="form-field">
+            <label for="disable_people">People with disablities</label>
+            <input type="radio" id="disable_people" value="People with disablities" name="categoryName" formControlName="categoryName">
+        </div>
+        <div class="form-field">
+            <label for="it">IT sector</label>
+            <input type="radio" id="it" value="IT sector" name="categoryName" formControlName="categoryName">
+        </div>
+        <div class="form-field">
+            <label for="culture">Culture</label>
+            <input type="radio" id="culture" value="Culture" name="categoryName" formControlName="categoryName">
+        </div>
+        <div class="form-field">
+            <label for="army">Army</label>
+            <input type="radio" id="army" value="Army" name="categoryName" formControlName="categoryName">
+        </div>
+        <div class="form-field">
+            <label for="animals">Protection of animals</label>
+            <input type="radio" id="animals" value="Protection of animals" name="categoryName" formControlName="categoryName">
+        </div>
+        <div class="form-field">
+            <label for="international">International projects</label>
+            <input type="radio" id="international" value="International projects" name="categoryName" formControlName="categoryName">
+        </div>
+        <div class="form-field">
+            <label for="ecology">Ecology</label>
+            <input type="radio" id="ecology" value="Ecology" name="categoryName" formControlName="categoryName">
+        </div>
+    </main>
+</form>

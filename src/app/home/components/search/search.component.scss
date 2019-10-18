@@ -1,15 +1,18 @@
 .cancel-button {
-    padding: 0;
     border: none;
     background: none;
+    min-width: 10vw;
+    font-size: 0.8rem;
 }
 
 .search-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
     position: fixed;
     top: 0;
-    z-index: 101;
+    z-index: 1;
     width: 100%;
-    padding: 5px;
     background-color: darken(pink, 20%);
 
     .cancel-button {
@@ -20,9 +23,8 @@
 
 .input-wrapper {
     position: relative;
-    width: 90%;
     .search-input {
-        width: 80vw;
+        min-width: 75vw;
         padding: 10px 30px;;
         border-radius: 10px;
         border: none;
@@ -35,13 +37,8 @@
 
     .search-icon {
         position: absolute;
-        top: 5px;
+        top: 10px;
         left: 5px;
         color: grey;
     }
-}
-
-.search-wrapper{
-    display: flex;
-    justify-content: space-around;
 }

@@ -4,7 +4,7 @@
     </div>
     <div class="header__text-container">
         <ng-container *ngIf="event$ | async as event">
-          <h2 class="header__text-container__name">{{event.name}}</h2>
+          <h2 class="header__text-container__name">{{event.eventName}}</h2>
           <div class="header__text-container__description">{{event.date.year}}</div>
         </ng-container>
     </div>

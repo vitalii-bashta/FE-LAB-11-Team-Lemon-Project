@@ -20,7 +20,8 @@ import { DiscussionComponent } from './pages/discussion/discussion.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PostComponent } from './components/posts/posts.component';
-import { AccordionComponent } from './components/accordion/accordion.component'
+import { AccordionComponent } from './components/accordion/accordion.component';
+import { TopNavigationComponent } from './components/top-navigation/top-navigation.component'
 
 
 const routes : Routes = [
@@ -29,9 +30,9 @@ const routes : Routes = [
     component: EventComponent,
     children: [
       { path: '', redirectTo: 'information', pathMatch: 'full'},
-      { path: 'description', component: DescriptionComponent },
-      { path: 'information', component: InformationComponent },
-      { path: 'discussion', component: DiscussionComponent } 
+      { path: 'description/:key', component: DescriptionComponent },
+      { path: 'information/:key', component: InformationComponent },
+      { path: 'discussion/:key', component: DiscussionComponent } 
 		]
   },
 ]
@@ -50,6 +51,7 @@ const routes : Routes = [
     PostComponent,
     AddCommentComponent,
     AccordionComponent,
+    TopNavigationComponent,
   ],
   imports: [
     DragDropModule,

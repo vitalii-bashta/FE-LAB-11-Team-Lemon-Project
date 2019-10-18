@@ -1,1 +1,0 @@
-export { EventData } from './event-data.interface'
