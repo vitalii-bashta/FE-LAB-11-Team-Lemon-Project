@@ -75,11 +75,11 @@ export class AuthenticationService {
       } else {
         console.log('not logged in');
       }
-
+    })
+  }
 
 
   isLoggInEmail() {
-
     return new Promise<any>((resolve, reject) => {
       firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
