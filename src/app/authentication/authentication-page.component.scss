@@ -12,10 +12,14 @@ $fontSize: 18px;
 .wrapper {
     background-color: $pageCol;
     width: 100vw;
-    height: 100vh;
+    min-height: 736px;
     color: $txtCol;
     font-size: $fontSize;
     padding: 10% 5%;
+
+    @media screen and (min-width: 600px) {
+        padding: 5% 30%;
+    }
 
     header {
         display: flex;

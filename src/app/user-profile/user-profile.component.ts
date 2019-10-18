@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../core/models/user.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,6 +11,8 @@ export class UserProfileComponent implements OnInit {
 
   isActive = true;
   public fullName = "Robin Smith";
+  userData : User;
+  
 
   constructor(private route: ActivatedRoute,
               private router: Router) { }

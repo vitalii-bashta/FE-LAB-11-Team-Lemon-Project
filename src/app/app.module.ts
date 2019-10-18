@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -6,6 +7,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
+import { AngularFireStorage } from '@angular/fire/storage';
+
 
 import { CoreModule } from 'src/app/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +30,7 @@ const config = {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     CoreModule,
@@ -35,7 +39,8 @@ const config = {
     AngularFireAuthModule,
   ],
   providers: [
-    AngularFireAuthGuard
+    AngularFireAuthGuard,
+    AngularFireStorage
   ],
   bootstrap: [AppComponent]
 })

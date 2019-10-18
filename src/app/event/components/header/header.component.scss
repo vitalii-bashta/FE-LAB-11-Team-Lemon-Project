@@ -1,0 +1,28 @@
+$pageCol: #E5465D;
+$txtCol: #FFFFFF;
+$fontSize: 18px;
+.header {
+    position: relative;
+    width:100%;
+    padding-bottom: 35%;
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/Screenshot_55.png?alt=media&token=45661b0b-6de1-4370-9066-67e215392fcc);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    &__star {
+      position: absolute;
+      top:10%;
+      left: 5%;
+      font-size: $fontSize*1.5;
+      color: $pageCol;
+    }
+    &__text-container{
+      position: absolute;
+      bottom: 5%;
+      left: 5%;
+      color: $txtCol;
+      &__name {
+        margin: 0px;
+      }
+    }
+  }
+  
