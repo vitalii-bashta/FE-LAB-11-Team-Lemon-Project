@@ -24,6 +24,7 @@ export class InformationComponent implements OnInit,OnDestroy {
   public currentUserEmail:string;
   public currentUser$;
   public partSircle: Object;
+  public keyOfEvent: string;
   public subs: Subscription = new Subscription();
   public subs2: Subscription = new Subscription();
   public subsUser = new Subscription();
@@ -64,7 +65,7 @@ export class InformationComponent implements OnInit,OnDestroy {
     ) {}
   ngOnInit() {
     this.route.paramMap.subscribe((params)=>{
-      console.log(params.get('key'))
+      this.keyOfEvent = params.get('key')
       this.event$ = this.HttpServiceEvents.getEvent(params.get('key')).pipe(
         share()
       )

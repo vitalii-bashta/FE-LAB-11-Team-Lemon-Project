@@ -7,7 +7,7 @@ export interface Event {
   manager: string; 
   category: string;
   location: Address;
-  urlImage: string;
+  urlImage: any;
   date: string;
   contacts: Contacts;
   assignedPhotos?: Array<string>;
@@ -20,7 +20,7 @@ export interface Event {
 interface Address {
   city: string;
   street: string;
-  url:string;
+  url?:string;
 }
 interface Contacts {
   email: string;

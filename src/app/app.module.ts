@@ -6,6 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
+import { AngularFireStorage } from '@angular/fire/storage';
+
 
 import { CoreModule } from 'src/app/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +39,8 @@ const config = {
     AngularFireAuthModule,
   ],
   providers: [
+    AngularFireAuthGuard,
+    AngularFireStorage
   ],
   bootstrap: [AppComponent]
 })
