@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, ChangeDetectionStrategy  } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { Event } from 'src/app/core/models/event.model'

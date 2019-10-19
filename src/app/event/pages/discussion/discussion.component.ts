@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription, from, combineLatest } from 'rxjs'
 import { AngularFireAuth } from '@angular/fire/auth';
-import { mergeMap } from 'rxjs/operators'
+import { mergeMap, share } from 'rxjs/operators'
 
 import { HttpServicePosts } from 'src/app/core/services/http-posts.service'
 import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
@@ -34,10 +34,15 @@ export class DiscussionComponent implements OnInit,OnDestroy {
     public auth: AngularFireAuth    
   ) { }
   ngOnInit() {
+    this.route.paramMap.pipe(
+      share()
+    )
     this.route.paramMap.subscribe((params)=>{
       this.keyOfEvent = params.get('key')
      });   
-    this.event$ = this.HttpServiceEvents.getEvent(this.keyOfEvent)
+    this.event$ = this.HttpServiceEvents.getEvent(this.keyOfEvent).pipe(
+      share()
+    )
     this.posts$ = this.HttpServicePosts.getPosts(`orderBy="forEvent"&equalTo="${this.keyOfEvent}"`);
     this.sub.add(this.posts$.subscribe(
       (elem)=>{
@@ -57,14 +62,19 @@ export class DiscussionComponent implements OnInit,OnDestroy {
     ))
     this.currentUserEmail$ = this.auth.user;
     this.currentUser$ = this.currentUserEmail$.pipe(
+      share(),
       mergeMap((character:any) => {
         if(character) {
           this.currentUserEmail = character.email;
         } else {
           this.currentUserEmail = 'anonym'
         }
-        return this.HttpServiceUsers.getUsers(`orderBy="email"&equalTo="${this.currentUserEmail}"`)
-    }));
+        return this.HttpServiceUsers.getUsers(`orderBy="email"&equalTo="${this.currentUserEmail}"`).pipe(
+          share()
+        )
+    })).pipe(
+      share()
+    );
   }
   ngOnDestroy() {
     this.sub.unsubscribe()

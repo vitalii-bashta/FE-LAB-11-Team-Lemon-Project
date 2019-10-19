@@ -28,7 +28,6 @@ export class InformationComponent implements OnInit,OnDestroy {
   public isEventFinished: boolean;
   public subs: Subscription = new Subscription();
   members(currentNumber:number,needVolunteers:number):string {
-    console.log(needVolunteers)
     if (typeof needVolunteers === 'string') {
       return 'unlimited'
     }
@@ -80,13 +79,13 @@ export class InformationComponent implements OnInit,OnDestroy {
         return this.HttpServiceUsers.getUsers(`orderBy="email"&equalTo="${character.email}"`)
       }
     ));
-    combineLatest(this.currentUser$,this.event$).subscribe(
-      (results)=>{
-        console.log(results[0])
-        console.log(results[1])
+    // combineLatest(this.currentUser$,this.event$).subscribe(
+    //   (results)=>{
+    //     console.log(results[0])
+    //     console.log(results[1])
         
-      }
-    )
+    //   }
+    // )
     this.subs.add(this.event$.subscribe(res => {
       if(!res.members) {
         this.amountOfMembers = this.members(0,res.amountOfVolunteers)
