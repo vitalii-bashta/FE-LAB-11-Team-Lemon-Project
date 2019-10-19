@@ -6,6 +6,7 @@ import { Event } from './../models/event.model'
 
 @Injectable()
 export class HttpServiceEvents{
+
   private fireBase = `https://fe-lab-11-team-lemon-project.firebaseio.com/`
   constructor(private http: HttpClient){ }
   getEvents(request:string = ''):Observable<Event[]> {
@@ -23,4 +24,5 @@ export class HttpServiceEvents{
   updateEvent(key:string,data:Event):Observable<Object> {
     return this.http.patch(`${this.fireBase}/events/${key}.json`,data)
   }   
+
 }

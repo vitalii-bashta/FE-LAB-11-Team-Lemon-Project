@@ -1,7 +1,7 @@
 <form class="search-wrapper">
     <div class="input-wrapper">
         <i class="search-icon fas fa-search"></i>
-        <input type="text" placeholder="Search" class="search-input" (input)="searchFieldChanged($event)">
+        <input #input type="text" placeholder="Search" class="search-input" (input)="searchFieldChanged($event)">
     </div>
-    <button type="submit" class="cancel-button">Cancel</button>  
+    <button type="button" class="cancel-button" (click)="onCancel()">Cancel</button>
 </form>

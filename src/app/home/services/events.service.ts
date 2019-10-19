@@ -8,30 +8,22 @@ import { HttpServiceEvents } from '../../core/services/http-events.service';
 })
 export class EventsService {
 
-    private dataUpdated = new Subject<string>();
+	private searchField = new Subject<string>();
 
-    constructor(private httpServiceEvents: HttpServiceEvents) { }
+	constructor(private httpServiceEvents: HttpServiceEvents) { }
 
-    getDataUpdated() {
-        return this.dataUpdated.asObservable().pipe(
-            startWith(''),
-            debounceTime(1000)
-        );
-    }
+	getSearchStream() {
+		return this.searchField.asObservable().pipe(
+			startWith('')
+		);
+	}
 
-    pushDataUpdated(searchString) {
-        this.dataUpdated.next(searchString);
-    }
+	pushToSearchStream(searchString) {
+		this.searchField.next(searchString);
+	}
 
-    getEventsFromDb(paramsString): Observable<any> {
-        return this.httpServiceEvents.getEvents(paramsString);
-    }
+	getEventsFromDb(): Observable<any> {
+		return this.httpServiceEvents.getEvents();
+	}
 
-    getSearchedEvents(): Observable<any> {
-        return this.getDataUpdated().pipe(
-            switchMap((searchString) => {
-                return this.getEventsFromDb(searchString);
-            })
-        )
-    }
 }
