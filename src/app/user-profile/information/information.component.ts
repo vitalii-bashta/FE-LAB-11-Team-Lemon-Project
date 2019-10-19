@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/core';
+import { Observable } from 'rxjs';
+import { ModalService } from 'src/app/user-profile/modal/modal.service';
 
 @Component({
   selector: 'app-information',
@@ -8,6 +11,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./information.component.scss']
 })
 export class InformationComponent implements OnInit {
+
+  email: Promise<any>;
+
+  bodyText: string;
 
   information = {
     'mobile': '+38 (097) 123-4567',
@@ -17,21 +24,18 @@ export class InformationComponent implements OnInit {
     'memberOf': 'SirPlus'
   }
 
-  // public information = [
-  //   '+38 (097) 123-4567',
-  //   'someEmail@pwc.com',
-  //   'Lviv',
-  //   "25 years old",
-  //   "SirPlus"
-  // ]
-
   public skills = "Front-end developer, RPA developer";
   public aboutMe = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a semper diam, vel laoreet arcu. Integer vestibulum, nibh vestibulum accumsan accumsan, ipsum elit luctus mauris, ac fermentum quam leo elementum quam. Fusce non elit porttitor, condimentum metus eget, facilisis lacus";
 
 
-  constructor(public _router: Router) { }
+  constructor(public _router: Router,
+              public _authenticationService: AuthenticationService,
+              private modalService: ModalService)
+              { }
 
   ngOnInit() {
+    this.bodyText = 'This text can be updated in modal 1';
+    this.email = this._authenticationService.isLoggInEmail();
   }
 
   logOut() {
@@ -39,4 +43,11 @@ export class InformationComponent implements OnInit {
     this._router.navigate(['home']);
   }
 
+  // openModal(id: string) {
+  //   this.modalService.open(id);
+  // }
+
+  // closeModal(id: string) {
+  //   this.modalService.close(id);
+  // }
 }

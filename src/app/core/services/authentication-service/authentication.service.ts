@@ -13,7 +13,7 @@ export class AuthenticationService {
   constructor(
       private afAuth: AngularFireAuth,
       private router: Router
-  ) { 
+  ) {
   }
 
   googleSignin(){
@@ -60,6 +60,7 @@ export class AuthenticationService {
     })
   }
 
+
   signOut() {
     return firebase.auth().signOut().then(() => {
       this.router.navigate(['authentication']);
@@ -74,11 +75,20 @@ export class AuthenticationService {
       } else {
         console.log('not logged in');
       }
-
-      isLogged = firebaseUser;
-      
     })
-    return isLogged
+  }
+
+
+  isLoggInEmail() {
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser) {
+          resolve(firebaseUser.email);
+        } else {
+          reject('No user logged in');
+        }
+      })
+    })
   }
 
 }

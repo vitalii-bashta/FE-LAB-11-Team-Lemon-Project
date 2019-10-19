@@ -1,36 +1,78 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../core/models/user.model';
+import { HttpServiceUsers } from '../core/services/http-users.service';
+import { map } from 'rxjs/operators';
+import { ModalService } from './modal/modal.service';
+import { AuthenticationService } from '../core';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit, OnDestroy {
 
   isActive = true;
   public fullName = "Robin Smith";
-  userData : User;
+  userData;
+
+  public userModel: User = {
+    name: "NoName",
+    email: "bratok3000@gmail.com",
+    avatarUrl: "https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/login%2Fuser.png?alt=media&token=4191f126-938c-4ef7-813b-f7d6956b4f27",
+    mobile: "5555555555",
+    city: "MiddleOfNowhere",
+    age: 100,
+    memberOf: "Gang",
+    skills: "No skills",
+    aboutMe: "Nothing about me",
+    organizations: "No organizations",
+    feedback: ""
+  }
+  submitted = false;
+  errorMessage = '';
   
 
   constructor(private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private _userService: HttpServiceUsers,
+              private modalService: ModalService,
+              public _authenticationService: AuthenticationService,) { }
 
   ngOnInit() {
+    this.userData = this._userService.getUsers().subscribe(usersData =>  console.log(usersData[0]));
+    console.log(this.userData);
   }
 
-  showInformation() {
-    this.router.navigate(['information'], {relativeTo: this.route});
-    this.isActive = false;
+
+  ngOnDestroy() {
+    this.userData.uns
   }
-  showOrganization() {
-    this.router.navigate(['organization'], {relativeTo: this.route});
-    this.isActive = false;
+
+  openModal(id: string) {
+    this.modalService.open(id);
   }
-  showFeedback() {
-    this.router.navigate(['feedback'], {relativeTo: this.route});
-    this.isActive = false;
+
+  closeModal(id: string) {
+    this.modalService.close(id);
   }
+
+  onSubmit() {
+    this.submitted = true;
+  }
+  
+  // showInformation() {
+  //   this.router.navigate(['information'], {relativeTo: this.route});
+  //   this.isActive = false;
+  // }
+  // showOrganization() {
+  //   this.router.navigate(['organization'], {relativeTo: this.route});
+  //   this.isActive = false;
+  // }
+  // showFeedback() {
+  //   this.router.navigate(['feedback'], {relativeTo: this.route});
+  //   this.isActive = false;
+  // }
 
 }

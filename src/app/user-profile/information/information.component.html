@@ -8,7 +8,7 @@
   <hr />
   <div class="email">
     <span>email</span><br/>
-    <span class="pink">{{information.email}}</span>
+    <span class="pink">{{email | async}}</span>
   </div>
   <hr />
   <div class="city">
@@ -48,6 +48,7 @@
   <div>
     {{aboutMe}}
   </div>
-  <button (click)="logOut()" class="log-out">LOG OUT</button>
-</div>
 
+  <button (click)="logOut()" class="log-out">LOG OUT</button>
+
+</div>
