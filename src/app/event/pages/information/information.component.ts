@@ -25,10 +25,13 @@ export class InformationComponent implements OnInit,OnDestroy {
   public currentUser$;
   public partSircle: Object;
   public keyOfEvent: string;
+  public isEventFinished: boolean;
   public subs: Subscription = new Subscription();
-  public subs2: Subscription = new Subscription();
-  public subsUser = new Subscription();
   members(currentNumber:number,needVolunteers:number):string {
+    console.log(needVolunteers)
+    if (typeof needVolunteers === 'string') {
+      return 'unlimited'
+    }
     if (!currentNumber || !needVolunteers) {
       return '';
     }
@@ -38,7 +41,7 @@ export class InformationComponent implements OnInit,OnDestroy {
       return `${currentNumber}/${needVolunteers}`
     }
   }
-  calcPartOfSircle(currentNumber:number,needVolunteers:number):object {
+  calcPartOfSircle(currentNumber:number,needVolunteers:number):object {   
     if (currentNumber && needVolunteers) {
       let degree:number = Math.round(90+currentNumber/needVolunteers*360);
       if (currentNumber/needVolunteers<0.5) {        
@@ -70,18 +73,7 @@ export class InformationComponent implements OnInit,OnDestroy {
         share()
       )
      }); 
-    //  this.event$ = this.route.paramMap.subscribe(
-    //   (params) => {
-    //     return  mergeMap((character:any) => {
-    //       return this.HttpServiceEvents.getEvent(character.get('key'))
-    //   }
-
-      
-    // ));
     this.currentUserEmail$ = this.auth.user;
-    // this.event$ = this.HttpServiceEvents.getEvent('clean').pipe(
-    //   share()
-    // )
     this.currentUser$ = this.currentUserEmail$.pipe(
       share(),
       mergeMap((character:any) => {
@@ -92,16 +84,20 @@ export class InformationComponent implements OnInit,OnDestroy {
       (results)=>{
         console.log(results[0])
         console.log(results[1])
+        
       }
     )
     this.subs.add(this.event$.subscribe(res => {
-      this.amountOfMembers = this.members(res.members.length,res.amountOfVolunteers)
-      this.partSircle = this.calcPartOfSircle(res.members.length,res.amountOfVolunteers)
+      if(!res.members) {
+        this.amountOfMembers = this.members(0,res.amountOfVolunteers)
+        this.partSircle = this.calcPartOfSircle(0,res.amountOfVolunteers)
+      } else {
+        this.amountOfMembers = this.members(res.members.length,res.amountOfVolunteers)
+        this.partSircle = this.calcPartOfSircle(res.members.length,res.amountOfVolunteers)
+      }
     }));
   }  
   ngOnDestroy() {
     this.subs.unsubscribe()
-    this.subs2.unsubscribe()
-    this.subsUser.unsubscribe()
   }
 }

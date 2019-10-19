@@ -1,11 +1,11 @@
-<div class="header">
+<div class="header" [ngStyle]="background">
     <div class="header__star">
       <i class="fas fa-star"></i>
     </div>
     <div class="header__text-container">
         <ng-container *ngIf="event$ | async as event">
           <h2 class="header__text-container__name">{{event.eventName}}</h2>
-          <div class="header__text-container__description">{{event.date.year}}</div>
+          <div class="header__text-container__description">{{status}}</div>
         </ng-container>
     </div>
   </div>

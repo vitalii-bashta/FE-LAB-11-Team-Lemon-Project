@@ -5,7 +5,10 @@ import { mergeMap } from 'rxjs/operators'
 
 import { HttpServicePosts } from 'src/app/core/services/http-posts.service'
 import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
+import { HttpServiceEvents } from 'src/app/core/services/http-events.service'
 import { Post } from 'src/app/core/models/post.model'
+import { Event } from 'src/app/core/models/event.model'
+import { User } from 'src/app/core/models/user.model'
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -15,7 +18,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DiscussionComponent implements OnInit,OnDestroy {
   public posts$:Observable<Post[]>;
-  public user$:Observable<any>;
+  public user$:Observable<User>;
+  public event$:Observable<Event>
   public arrayOfFilteredPosts:Array<Post> = [];
   private sub = new Subscription()
   public currentUserEmail$;
@@ -25,6 +29,7 @@ export class DiscussionComponent implements OnInit,OnDestroy {
   constructor(
     private HttpServicePosts:HttpServicePosts,
     private HttpServiceUsers:HttpServiceUsers,
+    private HttpServiceEvents:HttpServiceEvents,
     private route: ActivatedRoute,
     public auth: AngularFireAuth    
   ) { }
@@ -32,6 +37,7 @@ export class DiscussionComponent implements OnInit,OnDestroy {
     this.route.paramMap.subscribe((params)=>{
       this.keyOfEvent = params.get('key')
      });   
+    this.event$ = this.HttpServiceEvents.getEvent(this.keyOfEvent)
     this.posts$ = this.HttpServicePosts.getPosts(`orderBy="forEvent"&equalTo="${this.keyOfEvent}"`);
     this.sub.add(this.posts$.subscribe(
       (elem)=>{
