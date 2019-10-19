@@ -1,8 +1,6 @@
 <div class="comment">
     <div class="comment-photo">
-        <ng-container *ngIf="user$ | async as user">
-            <img class="avatar" src="{{user.avatarUrl}}" alt="">
-        </ng-container>
+        <img class="avatar" src="{{post.user.avatar}}" alt="">
     </div> 
     <div class="comment-body">
         <div class="comment-body-description">
