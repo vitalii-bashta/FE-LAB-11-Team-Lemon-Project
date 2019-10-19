@@ -67,7 +67,7 @@ export class DescriptionComponent implements OnInit,OnDestroy {
     this.route.paramMap.subscribe((params)=>{
       this.keyOfEvent = params.get('key')
      });    
-    this.event$ = this.HttpServiceEvents.getEvent('clean').pipe(
+    this.event$ = this.HttpServiceEvents.getEvent(this.keyOfEvent).pipe(
       share()
     )
     this.sub.add(this.event$.subscribe(

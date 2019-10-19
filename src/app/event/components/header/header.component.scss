@@ -18,6 +18,7 @@ $fontSize: 18px;
   }
   &__text-container{
     position: absolute;
+    font-size:$fontSize*1.5;
     bottom: 5%;
     left: 5%;
     color: $txtCol;
@@ -30,17 +31,26 @@ $fontSize: 18px;
 @media screen and (max-width: 1024px) {
   .header {
     padding-bottom: 45%;
+    &__text-container {
+      font-size:$fontSize*1.4;
+    }
   }
 }
 
 @media screen and (max-width: 768px) {
   .header {
     padding-bottom: 55%;
+    &__text-container {
+      font-size:$fontSize*1.2;
+    }    
   }  
 }
 
 @media screen and (max-width: 560px){
   .header {
     padding-bottom: 65%;
+    &__text-container {
+      font-size:$fontSize;
+    }    
   }   
 }

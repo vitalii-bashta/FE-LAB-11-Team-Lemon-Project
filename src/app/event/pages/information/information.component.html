@@ -39,5 +39,10 @@
 <app-join [event$]='event$' [currentUser$]='currentUser$' [keyOfEvent]='keyOfEvent'></app-join>
 <app-contacts [event$]='event$'></app-contacts>
 <app-location [event$]='event$'></app-location>
-<app-gallery [event$]='event$'> </app-gallery>
 
+<ng-container *ngIf="event$ | async as event"> 
+  <ng-container *ngIf="event.assignedPhotos">
+    <app-gallery [arrayOfPhotos]='event.assignedPhotos'></app-gallery>  
+  </ng-container> 
+</ng-container>
+<app-add-photo [event$]='event$' [keyOfEvent]='keyOfEvent'></app-add-photo>

@@ -7,9 +7,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router'
 
 import { Event } from 'src/app/core/models/event.model'
-import { HttpServiceEvents } from 'src/app/core/services/http-events.service'
 import { User } from 'src/app/core/models/user.model'
 import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
+import { FileService, HttpServiceEvents } from 'src/app/core';
 
 
 @Component({
@@ -18,16 +18,17 @@ import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
   styleUrls: ['./information.component.scss']
 })
 export class InformationComponent implements OnInit,OnDestroy {
-  public event$:Observable<any>;
+  public event$:Observable<Event>;
   public amountOfMembers: string;
   public currentUserEmail$;
   public currentUserEmail:string;
-  public currentUser$;
+  public currentUser$:Observable<User>;
   public partSircle: Object;
   public keyOfEvent: string;
   public isEventFinished: boolean;
   public subs: Subscription = new Subscription();
-  members(currentNumber:number,needVolunteers:number):string {
+  public arrayOfPhotos:Array<string>
+  members(currentNumber:number = 0,needVolunteers:number):string {
     if (typeof needVolunteers === 'string') {
       return 'unlimited'
     }
@@ -63,7 +64,8 @@ export class InformationComponent implements OnInit,OnDestroy {
     private HttpServiceUsers: HttpServiceUsers,
     public sanitizer: DomSanitizer,
     public auth: AngularFireAuth,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fs: FileService,
     ) {}
   ngOnInit() {
     this.route.paramMap.subscribe((params)=>{
@@ -83,10 +85,11 @@ export class InformationComponent implements OnInit,OnDestroy {
     //   (results)=>{
     //     console.log(results[0])
     //     console.log(results[1])
-        
     //   }
     // )
     this.subs.add(this.event$.subscribe(res => {
+      this.arrayOfPhotos = res.assignedPhotos;
+      console.log(res.assignedPhotos)
       if(!res.members) {
         this.amountOfMembers = this.members(0,res.amountOfVolunteers)
         this.partSircle = this.calcPartOfSircle(0,res.amountOfVolunteers)

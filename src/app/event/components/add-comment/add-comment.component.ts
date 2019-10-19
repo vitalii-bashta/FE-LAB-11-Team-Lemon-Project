@@ -44,13 +44,11 @@ export class AddCommentComponent implements OnInit {
     }
     this.HttpServicePosts.pushPost(this.post).subscribe(	
       (result)=> {	
-        console.log(result)
         window.location.reload()		
       }	
     )
   }	
 	ngOnInit() {
-    console.log(this.user$)
     this.user$.subscribe(
       (result:Array<any>)=>{	
         if(Object.keys(result).length === 0 && result.constructor === Object) {

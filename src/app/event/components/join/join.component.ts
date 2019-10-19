@@ -43,9 +43,11 @@ export class JoinComponent implements OnInit {
           }
         }
         this.event = results[1]
-        if(this.event.members.includes(this.user.email)) {
-          this.status = 'Leave the event'
-        } 
+        if(this.event.members !== undefined) {
+          if(this.event.members.includes(this.user.email)) {
+            this.status = 'Leave the event'
+          } 
+        }
       }
     )    
   }
