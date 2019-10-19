@@ -34,8 +34,9 @@ export class PostComponent implements OnInit {
   ])
   dateFormat(elem):string{
     const date = new Date(elem)
+    const minutes = date.getMinutes()<10?`0${date.getMinutes()}`:date.getMinutes(); 
     return `${this.DAY_OF_WEEK.get(date.getDay())},${this.NAME_OF_MONTH.get(date.getMonth())} ${date.getDate()} ${date.getFullYear()}
-    ${date.getHours()}:${date.getMinutes()}`
+    ${date.getHours()}:${minutes}`
   }
   constructor() { }
 
