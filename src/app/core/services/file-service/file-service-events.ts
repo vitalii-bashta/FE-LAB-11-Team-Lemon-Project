@@ -41,7 +41,6 @@ export class FileServiceEvents {
         this.HttpServiceEvents.updateEvent(keyOfEvent,firebaseEvent).subscribe(
           (res) => {
             console.log(res)
-            window.location.reload()
           }
         )
       })
