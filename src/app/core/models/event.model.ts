@@ -1,7 +1,7 @@
 export interface Event {
   id: string;
   eventName: string;
-  members?: Array<string>;
+  members?: User;
   amountOfVolunteers: number;
   organization: string; 
   manager: Manager;
@@ -29,4 +29,8 @@ interface Contacts {
 interface Manager {
   name: string;
   email: string;
+}
+interface User {
+  emails: Array<string>;
+  photos: Array<string>
 }
