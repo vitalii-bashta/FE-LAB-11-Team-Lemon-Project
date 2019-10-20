@@ -27,12 +27,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     memberOf: "Gang",
     skills: "No skills",
     aboutMe: "Nothing about me",
-    organizations: "No organizations",
+    organizations: ["No organizations"],
     feedback: ""
   }
   submitted = false;
   errorMessage = '';
-  
+
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -60,8 +60,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.submitted = true;
+    this._userService.pushUser(this.userModel)
   }
-  
+
   // showInformation() {
   //   this.router.navigate(['information'], {relativeTo: this.route});
   //   this.isActive = false;

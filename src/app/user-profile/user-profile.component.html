@@ -100,9 +100,9 @@
 
       <div class="form-group">
         <label>Member of</label>
-        <input type="number" #memberOf="ngModel"
+        <input type="text" #memberOf="ngModel"
         [class.is-invalid]="memberOf.invalid && memberOf.touched"
-        class="form-control" name="memberOf" [(ngModel)]="userModel.age">
+        class="form-control" name="memberOf" [(ngModel)]="userModel.memberOf">
         <!-- <small class="text-danger" [class.d-none]="memberOf.valid || memberOf.untouched">memberOf is required or invalid</small> -->
         <div *ngIf="memberOf.errors && (memberOf.invalid || memberOf.touched)">
           <small class="text-danger" *ngIf="memberOf.errors.required">memberOf is required</small>
