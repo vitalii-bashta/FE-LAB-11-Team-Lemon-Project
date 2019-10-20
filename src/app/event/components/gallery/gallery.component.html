@@ -1,18 +1,17 @@
-<h3 class="header">Gallery</h3>
+
   <div class="container">
-    <ng-container *ngIf="event$ | async as event">
+      <h3 class="header">Gallery</h3>
       <slideshow [height]="height"
       [minHeight]="'340px'"
       [autoPlay]="true"
       [showArrows]="true"
       [showDots]="true"
-      [imageUrls]="imageUrls"
+      [imageUrls]="arrayOfPhotos"
       [backgroundPosition]='position'
       [backgroundRepeat]="repeat"
       [lazyLoad]="imageSources?.length > 1"
       [autoPlayWaitForLazyLoad]="true">
     </slideshow>
-</ng-container>
 </div>
 
 

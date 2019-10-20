@@ -23,7 +23,7 @@ $fontSize: 18px;
 .header {
   margin-left: 10%;
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 480px) {
   .sub-pages{ 
     font-size: $fontSize*1.1;
   }

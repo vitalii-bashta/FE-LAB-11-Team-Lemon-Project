@@ -7,9 +7,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router'
 
 import { Event } from 'src/app/core/models/event.model'
-import { HttpServiceEvents } from 'src/app/core/services/http-events.service'
 import { User } from 'src/app/core/models/user.model'
 import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
+import { FileService, HttpServiceEvents } from 'src/app/core';
 
 
 @Component({
@@ -18,17 +18,20 @@ import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
   styleUrls: ['./information.component.scss']
 })
 export class InformationComponent implements OnInit,OnDestroy {
-  public event$:Observable<any>;
+  public event$:Observable<Event>;
   public amountOfMembers: string;
   public currentUserEmail$;
   public currentUserEmail:string;
-  public currentUser$;
+  public currentUser$:Observable<User>;
   public partSircle: Object;
   public keyOfEvent: string;
+  public isEventFinished: boolean;
   public subs: Subscription = new Subscription();
-  public subs2: Subscription = new Subscription();
-  public subsUser = new Subscription();
-  members(currentNumber:number,needVolunteers:number):string {
+  public arrayOfPhotos:Array<string>
+  members(currentNumber:number = 0,needVolunteers:number):string {
+    if (typeof needVolunteers === 'string') {
+      return 'unlimited'
+    }
     if (!currentNumber || !needVolunteers) {
       return '';
     }
@@ -38,7 +41,7 @@ export class InformationComponent implements OnInit,OnDestroy {
       return `${currentNumber}/${needVolunteers}`
     }
   }
-  calcPartOfSircle(currentNumber:number,needVolunteers:number):object {
+  calcPartOfSircle(currentNumber:number,needVolunteers:number):object {   
     if (currentNumber && needVolunteers) {
       let degree:number = Math.round(90+currentNumber/needVolunteers*360);
       if (currentNumber/needVolunteers<0.5) {        
@@ -61,7 +64,8 @@ export class InformationComponent implements OnInit,OnDestroy {
     private HttpServiceUsers: HttpServiceUsers,
     public sanitizer: DomSanitizer,
     public auth: AngularFireAuth,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fs: FileService,
     ) {}
   ngOnInit() {
     this.route.paramMap.subscribe((params)=>{
@@ -70,38 +74,32 @@ export class InformationComponent implements OnInit,OnDestroy {
         share()
       )
      }); 
-    //  this.event$ = this.route.paramMap.subscribe(
-    //   (params) => {
-    //     return  mergeMap((character:any) => {
-    //       return this.HttpServiceEvents.getEvent(character.get('key'))
-    //   }
-
-      
-    // ));
     this.currentUserEmail$ = this.auth.user;
-    // this.event$ = this.HttpServiceEvents.getEvent('clean').pipe(
-    //   share()
-    // )
     this.currentUser$ = this.currentUserEmail$.pipe(
       share(),
       mergeMap((character:any) => {
         return this.HttpServiceUsers.getUsers(`orderBy="email"&equalTo="${character.email}"`)
       }
     ));
-    combineLatest(this.currentUser$,this.event$).subscribe(
-      (results)=>{
-        console.log(results[0])
-        console.log(results[1])
-      }
-    )
+    // combineLatest(this.currentUser$,this.event$).subscribe(
+    //   (results)=>{
+    //     console.log(results[0])
+    //     console.log(results[1])
+    //   }
+    // )
     this.subs.add(this.event$.subscribe(res => {
-      this.amountOfMembers = this.members(res.members.length,res.amountOfVolunteers)
-      this.partSircle = this.calcPartOfSircle(res.members.length,res.amountOfVolunteers)
+      this.arrayOfPhotos = res.assignedPhotos;
+      console.log(res.assignedPhotos)
+      if(!res.members) {
+        this.amountOfMembers = this.members(0,res.amountOfVolunteers)
+        this.partSircle = this.calcPartOfSircle(0,res.amountOfVolunteers)
+      } else {
+        this.amountOfMembers = this.members(res.members.length,res.amountOfVolunteers)
+        this.partSircle = this.calcPartOfSircle(res.members.length,res.amountOfVolunteers)
+      }
     }));
   }  
   ngOnDestroy() {
     this.subs.unsubscribe()
-    this.subs2.unsubscribe()
-    this.subsUser.unsubscribe()
   }
 }

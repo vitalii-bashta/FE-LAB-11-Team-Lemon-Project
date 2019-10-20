@@ -7,9 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TopNavigationComponent implements OnInit {
   @Input () keyOfEvent;
+  @Input() eventDate;
+  public isEventFinished:boolean;
   constructor() { }
 
   ngOnInit() {
+    this.isEventFinished = !(new Date(this.eventDate)<(new Date()))
   }
 
 }

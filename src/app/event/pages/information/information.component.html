@@ -1,4 +1,6 @@
-<app-top-navigation [keyOfEvent]='keyOfEvent'></app-top-navigation>
+<ng-container *ngIf="event$ | async as event">
+  <app-top-navigation [eventDate]='event.date' [keyOfEvent]='keyOfEvent'></app-top-navigation>
+</ng-container>
 <app-header [event$]='event$'></app-header>
 <div class="sub-pages">
   <div class="sub-page_current" >Information</div>
@@ -34,7 +36,13 @@
   </ng-container> 
   </div>
 </div>
+<app-join [event$]='event$' [currentUser$]='currentUser$' [keyOfEvent]='keyOfEvent'></app-join>
 <app-contacts [event$]='event$'></app-contacts>
 <app-location [event$]='event$'></app-location>
-<app-gallery [event$]='event$'> </app-gallery>
 
+<ng-container *ngIf="event$ | async as event"> 
+  <ng-container *ngIf="event.assignedPhotos">
+    <app-gallery [arrayOfPhotos]='event.assignedPhotos'></app-gallery>  
+  </ng-container> 
+</ng-container>
+<app-add-photo [event$]='event$' [keyOfEvent]='keyOfEvent'></app-add-photo>

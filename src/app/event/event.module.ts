@@ -22,7 +22,9 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PostComponent } from './components/posts/posts.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
-import { TopNavigationComponent } from './components/top-navigation/top-navigation.component'
+import { TopNavigationComponent } from './components/top-navigation/top-navigation.component';
+import { JoinComponent } from './components/join/join.component';
+import { AddPhotoComponent } from './components/add-photo/add-photo.component'
 
 
 const routes : Routes = [
@@ -53,6 +55,8 @@ const routes : Routes = [
     AddCommentComponent,
     AccordionComponent,
     TopNavigationComponent,
+    JoinComponent,
+    AddPhotoComponent,
   ],
   imports: [
     DragDropModule,
