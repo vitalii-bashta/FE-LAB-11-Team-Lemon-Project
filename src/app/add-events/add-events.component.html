@@ -1,8 +1,8 @@
 <form [formGroup]="addEventsForm" (ngSubmit)="submit(addEventsForm.value)">
     <header>
         <button type="reset" class="cancel-button" routerLink="/home">Cancel</button>
-        <h2 class="page-header">New Event</h2>
-        <button type="submit" class="create-button" [disabled]="!addEventsForm.valid">Create</button>
+        <h2 class="page-header">{{ title }}</h2>
+        <button type="submit" class="create-button" [disabled]="!addEventsForm.valid">{{ addButton }}</button>
     </header>
     <main>
         <p class="field-name">EVENT NAME</p>
@@ -12,19 +12,22 @@
         </div>
         <p class="field-name">EVENT COVER PHOTO</p>
         <div class="form-field dropzone">
-            <img src="{{fs.downloadURL}}" alt="" *ngIf="fs.downloadURL">
-            <input type="file" (change)="fs.uploadFile($event.target.files)" id="event-photo"
-                formControlName="eventPhoto" accept=".jpg, .jpeg, .png">
+            <img src="{{coverPhoto}}" alt="" *ngIf="coverPhoto">
+            <input type="file" (change)="addCover($event.target.files)" id="event-photo"
+                 accept=".jpg, .jpeg, .png">
             <label for="event-photo">Add cover photo</label>
         </div>
         <p class="field-name">CATEGORY</p>
         <p>You have to add the event category</p>
         <div class="form-field">
-            <input type="button" value="+" class="add-option" id="add-option" routerLink="/add-events/categories">
+            <input type="button" value="+" class="add-option" id="add-option" [routerLink]="['categories']">
             <label for="add-option">add option</label>
         </div>
         <div class="form-field" *ngIf="state">
             <input type="text" formControlName="eventCategory" value="{{ state.category }}">
+        </div>
+        <div class="form-field" *ngIf="!state && getcategory">
+            <input type="text" formControlName="eventCategory">
         </div>
         <p class="field-name">CONTACTS</p>
         <div class="form-field">
@@ -87,6 +90,14 @@
         <div class="form-field">
             <textarea placeholder="Event schedule" rows="3" formControlName="eventSchedule"></textarea>
         </div>
+        <p class="field-name">REQUIREMENTS</p>
+        <div class="form-field">
+            <textarea placeholder="Event requirements" rows="3" formControlName="eventRequirements"></textarea>
+        </div>
+        <p class="field-name">DETAILS</p>
+        <div class="form-field">
+            <textarea placeholder="Event details" rows="3" formControlName="eventDetails"></textarea>
+        </div>
         <div class="form-field space-between margin-top">
             <label for="event-organization">Create event from organization</label>
             <input type="checkbox" id="event-organization" formControlName="eventFromOrganization">
@@ -100,5 +111,14 @@
             <input type="radio" id="utsa" value="UTSA" name="eventOrganization" formControlName="eventOrganization">
             <label for="utsa">UTSA</label>
         </div>
+        <!-- <p class="field-name">ADD PHOTOS FOR GALLERY</p>
+        <div class="form-field galery-field">
+            <input type="file" (change)="addPhoto($event.target.files)" id="galery-photos"
+                 accept=".jpg, .jpeg, .png">
+            <label for="galery-photos"> Add photo </label>
+        </div>
+        <div class="photosField" *ngIf="galeryPhotos">
+            <img src="{{photo}}" alt="" *ngFor="let photo of galeryPhotos">            
+        </div> -->
     </main>
 </form>

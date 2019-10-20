@@ -67,6 +67,10 @@ export class AuthenticationService {
     })
   }
   
+  getUser(){
+    return firebase.auth().currentUser
+  }
+  
   isLoggIn() {
     let isLogged;
     firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -77,7 +81,6 @@ export class AuthenticationService {
       }
     })
   }
-
 
   isLoggInEmail() {
     return new Promise<any>((resolve, reject) => {
