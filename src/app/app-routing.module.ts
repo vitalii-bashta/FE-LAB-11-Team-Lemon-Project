@@ -34,6 +34,10 @@ const routes: Routes =  [
     loadChildren: () => import('./user-profile/user-profile.routing.module').then(m => m.UserProfileRoutingModule)
   },
   {
+    path: 'filter',
+    loadChildren: () => import('./filter/filter.module').then(m => m.FilterModule)
+  },
+  {
     path: '**',
     redirectTo: 'home'
   },

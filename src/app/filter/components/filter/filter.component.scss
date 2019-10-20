@@ -1,0 +1,162 @@
+$main-theme-color: darken(pink, 30%);
+$lightGrey: #B4B4B9;
+
+@media (min-width: 992px) {
+    .select {
+		max-width: 40vw;
+	}
+
+	.date-wrapper {
+		width: 40vw;
+	}
+}
+
+.nav-wrapper {
+	background-color: $main-theme-color;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 30px;
+	font-size: 1.2rem;
+
+	p {
+		margin: 0;
+	}
+}
+
+.nav-button, .reset-button {
+	border: none;
+	background: none;
+	max-height: 30px;
+
+	&:hover, &:focus {
+		color: lighten($main-theme-color, 30%);
+		transition-duration: 200ms;
+		outline: none;
+	}
+}
+
+.select {
+	display: block;
+	margin: 0 auto;
+	padding: 15px;
+	border-radius: .5em;
+	font-size: 1.1rem;
+	border-color: $main-theme-color;
+	width: 90vw;
+	margin: auto;
+
+	&:hover, &:focus {
+		background-color: $main-theme-color;
+		color: white;
+		transition-duration: 200ms;
+	}
+
+	&:focus {
+		background-color: lighten($main-theme-color, 20%);
+		outline: none;
+	}
+}
+
+.categories-wrapper, .location-wrapper {
+	padding: 10px;
+}
+
+.footer-top-part, .filter-name {
+	background-color: #EFEFF4;
+}
+
+.filter-name {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	min-height: 8vh;
+	margin: 0;
+	padding: 10px;
+	
+	p {
+		color: $lightGrey;
+		font-size: 1.2rem;
+		margin: 0;
+	}
+}
+
+.weekdays-container {
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.weekdays-input-wrapper input {
+	display: none;
+}
+
+.weekdays-input-wrapper label {
+	display: inline-block;
+	border: 1px solid $main-theme-color;
+	border-radius: 30px;
+	background: white;
+	height: 60px;
+	width: 60px;
+	margin-right: 5px;
+	line-height: 60px;
+	text-align: center;
+	cursor: pointer;
+
+}
+
+.weekdays-input-wrapper input:checked + label {
+	background: $main-theme-color;
+	color: #ffffff;
+}
+
+.date-wrapper {
+	padding: 20px;
+	max-width: 90vw;
+	margin: 0 auto;
+}
+
+.date-input-wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+
+	.date-input {
+		border: none;
+		color: $lightGrey;
+
+		&:focus {
+			outline: none;
+		}
+
+		&:hover {
+			color: darken($lightGrey, 20%);
+			transition-duration: 300ms;
+		}
+	}
+}
+
+.date-input-from-wrapper {
+	border-bottom: 1px solid $lightGrey;
+}
+
+.select {
+	text-transform: capitalize;
+}
+
+.footer-top-part {
+	min-height: 4vh;
+}
+
+.footer-bottom-part {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 7vh;
+}
+
+.reset-button {
+	color: $main-theme-color;
+}

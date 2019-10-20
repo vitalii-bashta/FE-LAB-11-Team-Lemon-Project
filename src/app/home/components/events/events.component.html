@@ -1,13 +1,26 @@
-<h2 class="events-heading">Events <span class="events-amount">({{events.length}})</span></h2>
+<div class="main-container">
+    <div class="sub-nav-wrapper">
+    <p class="events-heading">Events <span class="events-amount">({{events.length}})</span></p>
+    <div class="icon-wrapper">
+        <a class="icon-link" [routerLink]="['/filter']">
+            <i class="icon fas fa-filter"></i>Filter
+        </a>
+        <a class="icon-link" [routerLink]="['/add-events', 'new']">
+            <i class="icon fas fa-plus"></i>Add event
+        </a>
+    </div>
+</div>
+
 <div class="flex-container">
-    <div *ngFor="let event of events" class="event" [routerLink] = "['/../event/information',event.id]">
+    <div *ngFor="let event of events" class="event" [routerLink]="['/../event/information',event.id]">
         <div class="event-wrapper">
             <img [src]="event.urlImage" class="event-image" alt="image">
-            <a class="favorites-icon" routerLink="events"><i class="icon fas fa-star"></i></a>
+            <a class="favorites-icon" routerLink="events"></a>
             <div class="text-wrapper">
                 <p class="event-name">{{event.eventName | uppercase}}</p>
                 <p class="event-date">{{event.date | date}}</p>
             </div>
         </div>
     </div>
+</div>
 </div>

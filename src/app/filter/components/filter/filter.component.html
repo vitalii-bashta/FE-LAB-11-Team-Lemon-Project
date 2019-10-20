@@ -1,0 +1,64 @@
+<div class="filters-container">
+	<nav class="nav-wrapper">
+		<button class="nav-button" (click)="cancelFilters()">Cancel</button>
+		<p>Filters</p>
+		<button class="nav-button" (click)="onSubmit()">Apply</button>
+	</nav>
+
+	<main>
+		<form class="filters-form" [formGroup]="filtersForm">
+			<div class="filter-name">
+				<p>Categories</p>
+			</div>
+			<div class="categories-wrapper">
+				<select class="select" formControlName="category">
+					<option *ngFor="let option of availableCategories" [ngValue]="option">{{option}}</option>
+				</select>
+			</div>
+
+			<div class="filter-name">
+				<p>Weekdays</p>
+			</div>
+			<div class="weekdays-container" formGroupName="weekDays">
+				<div *ngFor="let item of weekDays" class="weekdays-input-wrapper">
+					<input type="checkbox" [formControlName]="item" id="{{item}}">
+					<label for="{{item}}">{{ item }}</label>
+				</div>
+			</div>
+
+			<div formGroupName="dates">
+				<div class="filter-name">
+					<p>Dates</p>
+				</div>
+				<div class="date-wrapper">
+					<div class="date-input-wrapper date-input-from-wrapper">
+						<label for="from">From</label>
+						<input class="date-input" type="date" id="from" value="{{ initialFilter.dates.from | date:'yyyy-MM-dd' }}" formControlName="from">
+					</div>
+
+					<div class="date-input-wrapper">
+						<label for="to">To</label>
+						<input class="date-input" type="date" id="to" value="{{ initialFilter.dates.to | date:'yyyy-MM-dd' }}" formControlName="to">
+					</div>
+				</div>
+			</div>
+			
+			<div class="filter-name">
+				<p>Location</p>
+			</div>
+			<div class="location-wrapper">
+				<select class="select" formControlName="location">
+					<option *ngFor="let option of availableLocations" [ngValue]="option">{{option}}</option>
+				</select>
+			</div>
+		</form>
+	</main>
+	
+	<footer>
+		<div class="footer-top-part"></div>
+		<div class="footer-bottom-part">
+			<button class="reset-button" (click)="setDefaultValue()">Reset</button>
+		</div>
+	</footer>
+	
+</div>
