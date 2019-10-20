@@ -1,11 +1,11 @@
 @import '../shared/colors';
 
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 form {
     width: 100%;
@@ -58,7 +58,7 @@ form {
                     min-width: 35%;
                 }
 
-                #event-photo {
+                #event-photo{
                     width: 0.1px;
                     height: 0.1px;
                     opacity: 0;
@@ -78,10 +78,36 @@ form {
                     left: 10px;
                     background-color: $white;
 
-                    &:hover{
+                    &:hover {
                         cursor: pointer;
                     }
+
+                    @media screen and (min-width: 600px) {
+                    top: 640px;
+                    }
                 }
+
+                // #galery-photos + label {
+                //     font-size: 20px;
+                //     padding: 5px;
+                //     color: $grey;
+                //     display: inline-block;
+                //     z-index: 10;
+                //     position: absolute;
+                //     top: 2360px;
+                //     left: 10px;
+                //     background-color: $white;
+                //     border: 1px solid $grey;
+                //     text-align: center;                    
+
+                //     &:hover {
+                //         cursor: pointer;
+                //     }
+
+                //     @media screen and (min-width: 600px) {
+                //     top: 2560px;
+                //     }
+                // }
 
                 input[type="checkbox"] {
                     width: 50px;
@@ -127,7 +153,7 @@ form {
                     font-size: 15px;
                     outline: none;
 
-                    &::placeholder{
+                    &::placeholder {
                         color: $grey;
                         font-size: 20px;
                     }
@@ -143,12 +169,12 @@ form {
                     margin-right: 10px;
                 }
 
-                div{
+                div {
                     color: $red;
                     display: flex;
                     flex-direction: row;
 
-                    input{
+                    input {
                         border: 1px solid $red;
                         width: 50px;
                         height: 30px;
@@ -158,12 +184,12 @@ form {
                         outline: none;
                     }
 
-                    .minus-volunteers{
+                    .minus-volunteers {
                         border-right: none;
                         border-radius: 10px 0 0 10px;
                     }
 
-                    .plus-volunteers{
+                    .plus-volunteers {
                         border-radius: 0 10px 10px 0;
                     }
                 }
@@ -197,13 +223,13 @@ form {
                     }
                 }
 
-                textarea{
+                textarea {
                     width: 100%;
                     border: none;
                     outline: none;                    
                     background-color: $white;    
 
-                    &::placeholder{
+                    &::placeholder {
                         font-size: 15px;
                         color: $lightgrey;
                         font-weight: normal;             
@@ -215,19 +241,34 @@ form {
                 justify-content: space-between;
             }
 
-            .margin-top{
+            .margin-top {
                 margin-top: 40px;
             }
 
-            .dropzone{
+            .dropzone {
                 height: 200px;
                 padding: 0;
 
-                img{
+                @media screen and (min-width: 600px) {
+                    height: 400px;
+                }
+
+                img {
                     width: 100%;
                     height: 100%;
                     z-index: 0;
                 }
             }
+
+            // .galery-field{
+            //     height: 50px;
+
+            //     label{
+            //         width: 30px;
+            //         height: 30px;
+            //         display: block;
+            //         background-color: blue;
+            //     }
+            // }
     }
 }

@@ -4,7 +4,7 @@ export interface Event {
   members?: Array<string>;
   amountOfVolunteers: number;
   organization: string; 
-  manager: string; 
+  manager: Manager;
   category: string;
   location: Address;
   urlImage: any;
@@ -25,4 +25,8 @@ interface Address {
 interface Contacts {
   email: string;
   phone: string;
+}
+interface Manager {
+  name: string;
+  email: string;
 }
