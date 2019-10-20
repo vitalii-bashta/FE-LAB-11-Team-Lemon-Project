@@ -1,13 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page.component';
-import { HeaderComponent } from './components/header/header.component'
-import { FooterComponent } from './components/footer/footer.component';
-import { AdressesComponent } from './components/adresses/adresses.component';
 import { EventsComponent } from './components/events/events.component';
-import { OrganizationsComponent } from './components/organizations/organizations.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { VolunteersComponent } from './components/volunteers/volunteers.component';
 import { AngularFireAuthGuard, canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["authentication"]);
@@ -24,10 +18,7 @@ const routes: Routes = [
         loadChildren: () => import('../user-profile/user-profile.routing.module').then(m => m.UserProfileRoutingModule),
         canActivate: [AngularFireAuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLogin}
-      },
-      { path: 'volunteers', component: VolunteersComponent },
-      { path: 'organizations', component: OrganizationsComponent },
-      { path: 'adresses', component: AdressesComponent },
+      }
 		]
 	}
 ];

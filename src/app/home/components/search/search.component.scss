@@ -18,6 +18,14 @@
     .cancel-button {
         color: #F9F9F9;
         padding-right: 20px;
+
+        &:hover {
+            color: lightgrey;
+            transition-duration: 300ms;
+        }
+        &:focus {
+            outline: none;
+        }
     }
 }
 
@@ -32,6 +40,10 @@
     
         &::placeholder {
             color: grey
+        }
+        &:focus {
+            background-color: lighten(pink, 5%);
+            outline: none;
         }
     }
 

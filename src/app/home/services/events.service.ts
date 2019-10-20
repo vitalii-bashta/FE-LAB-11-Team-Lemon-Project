@@ -22,7 +22,7 @@ export class EventsService {
 		this.searchField.next(searchString);
 	}
 
-	getEventsFromDb(): Observable<any> {
+	getEvents(): Observable<any> {
 		return this.httpServiceEvents.getEvents();
 	}
 
