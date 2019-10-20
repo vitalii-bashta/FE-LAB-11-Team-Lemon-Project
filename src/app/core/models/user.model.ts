@@ -6,9 +6,9 @@ export interface User {
     mobile?: string;
     city?: string;
     age?: number;
-    memberOf?: string;
+    memberOf?: string[];
     skills?: string;
     aboutMe?: string;
-    organizations?: string;
+    organizations?: string[];
     feedback?: string;
 }
