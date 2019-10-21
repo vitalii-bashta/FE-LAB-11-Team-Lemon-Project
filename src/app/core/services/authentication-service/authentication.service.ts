@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Router } from "@angular/router";
 
 import * as firebase from 'firebase/app';
@@ -12,7 +12,8 @@ export class AuthenticationService {
 
   constructor(
       private afAuth: AngularFireAuth,
-      private router: Router
+      private router: Router,
+      private _ngZone: NgZone
   ) {
   }
 
@@ -24,8 +25,8 @@ export class AuthenticationService {
       this.afAuth.auth
       .signInWithPopup(provider)
       .then(res => {
-        resolve(res);
-        this.router.navigate(['home']);
+        resolve(res);        
+        this._ngZone.run(() => { this.router.navigate(['home'])});
       })
     })
   }
