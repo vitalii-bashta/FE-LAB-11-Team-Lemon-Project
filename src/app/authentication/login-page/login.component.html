@@ -1,7 +1,7 @@
 <main>
     <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)">
-        <input type="text" formControlName="email" placeholder="Email" required>
-        <input type="text" formControlName="password" placeholder="Password" required>
+        <input type="email" formControlName="email" placeholder="Email" required>
+        <input type="password" formControlName="password" placeholder="Password" required>
         <label class="error">{{errorMessage}}</label>
         <button type="submit" [disabled]="!loginForm.valid">Sign in</button>
     </form>

@@ -62,7 +62,7 @@
             <input type="checkbox" class="checkbox" id="gm-url" formControlName="googleMaps" (change)="urlStatus = !urlStatus">
         </div>
         <div class="form-field" *ngIf="urlStatus">
-            <input type="text" formControlName="googleMapsUrl" placeholder="Add URL">
+            <input type="text" id="mapsURL" formControlName="googleMapsUrl" placeholder="Add URL">
         </div>
         <p class="field-name">VOLUNTEERS' ANOUNT</p>
         <div class="form-field space-between">
@@ -111,14 +111,5 @@
             <input type="radio" id="utsa" value="UTSA" name="eventOrganization" formControlName="eventOrganization">
             <label for="utsa">UTSA</label>
         </div>
-        <!-- <p class="field-name">ADD PHOTOS FOR GALLERY</p>
-        <div class="form-field galery-field">
-            <input type="file" (change)="addPhoto($event.target.files)" id="galery-photos"
-                 accept=".jpg, .jpeg, .png">
-            <label for="galery-photos"> Add photo </label>
-        </div>
-        <div class="photosField" *ngIf="galeryPhotos">
-            <img src="{{photo}}" alt="" *ngFor="let photo of galeryPhotos">            
-        </div> -->
     </main>
 </form>

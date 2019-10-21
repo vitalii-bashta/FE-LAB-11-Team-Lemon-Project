@@ -16,7 +16,7 @@ $fontSize: 18px;
 
 @mixin formElement($bgrCol, $margin) {
     width: 100%;
-    background-color: $bgrCol ;
+    background-color: $bgrCol;
     padding: 15px;
     border: none;
     border-radius: 3px;
@@ -37,7 +37,8 @@ $fontSize: 18px;
             input {
                 @include formElement(lighten($pageCol, 10%), 2px);
                 opacity: 0.6;
-                &::placeholder{
+
+                &::placeholder {
                     color: $txtCol;
                     font-size: $fontSize;
                 }
@@ -47,6 +48,15 @@ $fontSize: 18px;
                 @include formElement($txtCol, 20px);
                 color: lighten($pageCol, 10%);
                 font-size: $fontSize;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: darken($txtCol, 5%);
+                }
+
+                &:disabled{
+                    opacity: 0.5;
+                }
             }
         }
 
@@ -73,6 +83,10 @@ $fontSize: 18px;
 
         p {
             margin: 20px;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 
