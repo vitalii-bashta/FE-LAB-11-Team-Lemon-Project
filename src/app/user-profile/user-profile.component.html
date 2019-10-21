@@ -18,9 +18,9 @@
   <!-- <a (click)="showInformation()" [class.active]="">Information</a>
   <a (click)="showOrganization()" [class.active]=>Organization</a>
   <a (click)="showFeedback()" [class.active]>Feedback</a> -->
-  <a [routerLink]="['information']"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Information</a>
-  <a routerLink="organization" routerLinkActive="active">Organization</a>
-  <a routerLink="feedback" routerLinkActive="active">Feedback</a>
+  <a [routerLink]="['information', key]"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Information</a>
+  <a [routerLink]="['organization', key]" routerLinkActive="active">Organization</a>
+  <a [routerLink]="['feedback', key]" routerLinkActive="active">Feedback</a>
 </nav>
 <router-outlet></router-outlet>
 

@@ -21,7 +21,7 @@ const routes : Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'information/:key',
+        path: "information/:key",
         component: InformationComponent 
       },
       {
@@ -29,7 +29,7 @@ const routes : Routes = [
         component: OrganizationComponent
       },
       {
-        path: 'feedback/:key ',
+        path: 'feedback/:key',
         component: FeedbackComponent
       }
     ]

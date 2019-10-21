@@ -34,19 +34,24 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
   submitted = false;
   errorMessage = '';
+  key: any;
 
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private _userService: HttpServiceUsers,
               private modalService: ModalService,
-              public _authenticationService: AuthenticationService,) { }
+              public _authenticationService: AuthenticationService,) { 
+                // this.route.params.subscribe( params => console.log(params))
+                this.key = this._authenticationService.getUser().uid;
+              }
 
   ngOnInit() {
     console.log(this._authenticationService.getUser());
+    
+    // this.router.navigate(['/information'], this.key);
    
     // this.userModel = this._userService.getUser().subscribe();
-    this.userData = this._userService.getUsers().subscribe(usersData =>  console.log(usersData[0]));
     console.log(this.userData);
   }
 
