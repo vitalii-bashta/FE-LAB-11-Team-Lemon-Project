@@ -15,7 +15,8 @@ export class InformationComponent implements OnInit {
 
   bodyText: string;
 
-  information = {
+  information = {};
+  informationDefault = {
     'mobile': '+38 (097) 123-4567',
     'email': 'someEmail@pwc.com',
     'city': 'Lviv',
@@ -43,7 +44,7 @@ export class InformationComponent implements OnInit {
     this._route.paramMap.subscribe((params) => {
       this.key = params.get("key");
     })
-    
+
   }
 
   logOut() {
