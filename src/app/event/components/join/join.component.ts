@@ -20,7 +20,11 @@ export class JoinComponent implements OnInit {
   public isDisabled:boolean = true;
   constructor(public HttpServiceEvents:HttpServiceEvents) { }
   join() {
-    console.log(this.event.members)
+    console.log(this.user)
+    if (!this.user) {
+      alert('Please Log In')
+      return 
+    }
     if(!!this.event.members) {
       if(!this.event.members.emails.includes(this.user.email)) {
         this.event.members.emails.push(this.user.email)
