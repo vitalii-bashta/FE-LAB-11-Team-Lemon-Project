@@ -34,6 +34,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
   submitted = false;
   errorMessage = '';
+  
   key: any;
 
 
@@ -52,6 +53,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     // this.router.navigate(['/information'], this.key);
    
     // this.userModel = this._userService.getUser().subscribe();
+   
+    // this.userModel = this._userService.getUser().subscribe();
+    this.userData = this._userService.getUsers().subscribe(usersData =>  console.log(usersData[0]));
     console.log(this.userData);
   }
 

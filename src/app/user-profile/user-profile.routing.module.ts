@@ -21,7 +21,7 @@ const routes : Routes = [
         pathMatch: 'full'
       },
       {
-        path: "information/:key",
+        path: 'information/:key',
         component: InformationComponent 
       },
       {
