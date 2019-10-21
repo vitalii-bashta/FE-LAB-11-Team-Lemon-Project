@@ -83,7 +83,7 @@ export class InformationComponent implements OnInit,OnDestroy {
       }
     ));
     this.subs.add(this.event$.subscribe(res => {
-      if(!res.members.emails) {
+      if(!res.members) {
         this.amountOfMembers = this.members(0,res.amountOfVolunteers)
         this.partSircle = this.calcPartOfSircle(0,res.amountOfVolunteers)
       } else {
