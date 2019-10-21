@@ -17,14 +17,15 @@ import { RoundProgresBarComponent } from './components/round-progres-bar-compone
 import { InformationComponent } from './pages/information/information.component';
 import { DescriptionComponent } from './pages/description/description.component';
 import { DiscussionComponent } from './pages/discussion/discussion.component';
-// import { FooterComponent } from 'src/app/home/components/footer/footer.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PostComponent } from './components/posts/posts.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
 import { TopNavigationComponent } from './components/top-navigation/top-navigation.component';
 import { JoinComponent } from './components/join/join.component';
-import { AddPhotoComponent } from './components/add-photo/add-photo.component'
+import { AddPhotoComponent } from './components/add-photo/add-photo.component';
+import { DeleteButtonComponent } from './components/delete-button/delete-button.component';
+import { FooterEventComponent } from './components/footer-event/footer-event.component'
 
 
 const routes : Routes = [
@@ -48,7 +49,6 @@ const routes : Routes = [
     InformationComponent,
     DescriptionComponent,
     DiscussionComponent,
-    // FooterComponent,
     GalleryComponent,
     HeaderComponent,
     PostComponent,
@@ -57,6 +57,8 @@ const routes : Routes = [
     TopNavigationComponent,
     JoinComponent,
     AddPhotoComponent,
+    DeleteButtonComponent,
+    FooterEventComponent,
   ],
   imports: [
     DragDropModule,

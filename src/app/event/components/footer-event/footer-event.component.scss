@@ -1,0 +1,43 @@
+.hidden-space {
+    width: 100%;
+    height: 5em;
+
+}
+.footer-container{
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    z-index: 1;
+}
+
+.links-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #F9F9F9;
+}
+
+.footer-link {
+    font-size: 0.8rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 30px;
+    color: darken(lightgrey, 20% );
+    
+    .icon {
+        padding-bottom: 5px;
+    }
+
+    &:visited{
+        color: darken(lightgrey, 20% );
+    }
+}
+
+.links-wrapper{
+    .active-link {
+        color: darken(pink, 30% );
+    }
+}

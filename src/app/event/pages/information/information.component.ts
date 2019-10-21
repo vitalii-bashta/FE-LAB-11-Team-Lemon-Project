@@ -28,6 +28,8 @@ export class InformationComponent implements OnInit,OnDestroy {
   public isEventFinished: boolean;
   public subs: Subscription = new Subscription();
   public arrayOfPhotos:Array<string>
+  public isManagerOnthePage:boolean;
+  public firstFourMembers:Array<any> = [];
   members(currentNumber:number = 0,needVolunteers:number):string {
     if (typeof needVolunteers === 'string') {
       return 'unlimited'
@@ -65,7 +67,6 @@ export class InformationComponent implements OnInit,OnDestroy {
     public sanitizer: DomSanitizer,
     public auth: AngularFireAuth,
     private route: ActivatedRoute,
-    private fs: FileService,
     ) {}
   ngOnInit() {
     this.route.paramMap.subscribe((params)=>{
@@ -81,21 +82,22 @@ export class InformationComponent implements OnInit,OnDestroy {
         return this.HttpServiceUsers.getUsers(`orderBy="email"&equalTo="${character.email}"`)
       }
     ));
-    // combineLatest(this.currentUser$,this.event$).subscribe(
-    //   (results)=>{
-    //     console.log(results[0])
-    //     console.log(results[1])
-    //   }
-    // )
     this.subs.add(this.event$.subscribe(res => {
-      this.arrayOfPhotos = res.assignedPhotos;
-      console.log(res.assignedPhotos)
-      if(!res.members) {
+      if(!res.members.emails) {
         this.amountOfMembers = this.members(0,res.amountOfVolunteers)
         this.partSircle = this.calcPartOfSircle(0,res.amountOfVolunteers)
       } else {
-        this.amountOfMembers = this.members(res.members.length,res.amountOfVolunteers)
-        this.partSircle = this.calcPartOfSircle(res.members.length,res.amountOfVolunteers)
+        for (let i = 0; i < Math.min(4,res.members.emails.length); i++) {
+          this.firstFourMembers.push(
+            {
+              'email':res.members.emails[i],
+              'avatar':res.members.photos[i]
+            }
+          )
+          console.log(this.firstFourMembers)
+        }
+        this.amountOfMembers = this.members(res.members.emails.length,res.amountOfVolunteers)
+        this.partSircle = this.calcPartOfSircle(res.members.emails.length,res.amountOfVolunteers)
       }
     }));
   }  

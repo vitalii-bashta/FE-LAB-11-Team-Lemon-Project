@@ -20,11 +20,15 @@ export class JoinComponent implements OnInit {
   public isDisabled:boolean = true;
   constructor(public HttpServiceEvents:HttpServiceEvents) { }
   join() {
-    if(!this.event.members.includes(this.user.email)) {
-      this.event.members.push(this.user.email)
+    if(!this.event.members.emails.includes(this.user.email)) {
+      this.event.members.emails.push(this.user.email)
+      this.event.members.photos.push(this.user.avatarUrl)
     } else {
-      this.event.members = this.event.members.filter((elem:string):boolean => {
-        return elem != this.user.email;
+      this.event.members.emails = this.event.members.emails.filter((elem:string):boolean => {
+        return elem !== this.user.email;
+      })
+      this.event.members.photos = this.event.members.photos.filter((elem:string):boolean => {
+        return elem !== this.user.avatarUrl;
       })
     }
     this.HttpServiceEvents.updateEvent(this.keyOfEvent,this.event).subscribe(
@@ -43,8 +47,8 @@ export class JoinComponent implements OnInit {
           }
         }
         this.event = results[1]
-        if(this.event.members !== undefined) {
-          if(this.event.members.includes(this.user.email)) {
+        if(this.event.members.emails !== undefined) {
+          if(this.event.members.emails.includes(this.user.email)) {
             this.status = 'Leave the event'
           } 
         }

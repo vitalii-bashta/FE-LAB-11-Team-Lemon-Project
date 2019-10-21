@@ -11,7 +11,7 @@
     </div>
     <div class="contact-item">
       <div class="contact-item__type">manager</div>
-      <div class="contact-item__value">{{event.manager}}</div>
+      <div class="contact-item__value" [routerLink]="['/user-profile',event.manager.email]">{{event.manager.name}}</div>
       <div class="clear"></div>    
     </div>
     <div class="contact-item">
