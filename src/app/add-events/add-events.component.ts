@@ -102,16 +102,15 @@ export class AddEventsComponent implements OnInit, OnDestroy {
           this.addEventsForm.controls['eventFromOrganization'].setValue('true');
           this.addEventsForm.controls['eventOrganization'].setValue(value.organization);
         }
+        this.managerEmail = this.as.getUser().email;
+        this.us.getUsers(`orderBy="email"&equalTo="${this.managerEmail}"`).subscribe((name) =>{
+         this.managerName = name
+        }, error => {
+         console.error(error)
+       });
        }  
       )
      }
-
-     this.managerEmail = this.as.getUser().email;
-     this.us.getUsers(`orderBy="email"&equalTo="${this.managerEmail}"`).subscribe((name) =>{
-      this.managerName = name
-     }, error => {
-      console.error(error)
-    });
   }
 
   addCover(value){
@@ -193,7 +192,9 @@ export class AddEventsComponent implements OnInit, OnDestroy {
   }
   
   ngOnDestroy() {
-		this.eventSubscription.unsubscribe()
+    if(this.keyOfEvent !== 'new'){
+    this.eventSubscription.unsubscribe()
+    }
   }
   
 }
