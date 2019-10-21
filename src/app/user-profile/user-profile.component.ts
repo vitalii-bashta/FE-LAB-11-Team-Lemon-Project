@@ -17,6 +17,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   public fullName = "Robin Smith";
   userData;
 
+  user
+
   public userModel: User = {
     name: "NoName",
     email: "bratok3000@gmail.com",
@@ -41,6 +43,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
               public _authenticationService: AuthenticationService,) { }
 
   ngOnInit() {
+    console.log(this._authenticationService.getUser());
+   
+    // this.userModel = this._userService.getUser().subscribe();
     this.userData = this._userService.getUsers().subscribe(usersData =>  console.log(usersData[0]));
     console.log(this.userData);
   }
@@ -60,7 +65,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.submitted = true;
-    this._userService.pushUser(this.userModel)
+    this._userService.pushUser(this.userModel).subscribe((result)=> console.log(result));
   }
 
   // showInformation() {

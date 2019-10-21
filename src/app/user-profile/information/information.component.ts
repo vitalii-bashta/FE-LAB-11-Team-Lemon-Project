@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService, HttpServiceUsers } from 'src/app/core';
 import { Observable } from 'rxjs';
-import { ModalService } from 'src/app/user-profile/modal/modal.service';
 
 @Component({
   selector: 'app-information',
@@ -27,15 +26,24 @@ export class InformationComponent implements OnInit {
   public skills = "Front-end developer, RPA developer";
   public aboutMe = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a semper diam, vel laoreet arcu. Integer vestibulum, nibh vestibulum accumsan accumsan, ipsum elit luctus mauris, ac fermentum quam leo elementum quam. Fusce non elit porttitor, condimentum metus eget, facilisis lacus";
 
+  key: string;
+
 
   constructor(public _router: Router,
+              public _route: ActivatedRoute,
               public _authenticationService: AuthenticationService,
-              private modalService: ModalService)
+              public _httpServiceUsers: HttpServiceUsers)
               { }
 
   ngOnInit() {
     this.bodyText = 'This text can be updated in modal 1';
     this.email = this._authenticationService.isLoggInEmail();
+
+    // this.information = this._httpServiceUsers.getUser().subscribe()
+    this._route.paramMap.subscribe((params) => {
+      this.key = params.get("key");
+    })
+    
   }
 
   logOut() {

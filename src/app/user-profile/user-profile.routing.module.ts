@@ -21,15 +21,15 @@ const routes : Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'information',
+        path: 'information/:key',
         component: InformationComponent 
       },
       {
-        path: 'organization',
+        path: 'organization/:key',
         component: OrganizationComponent
       },
       {
-        path: 'feedback',
+        path: 'feedback/:key ',
         component: FeedbackComponent
       }
     ]
