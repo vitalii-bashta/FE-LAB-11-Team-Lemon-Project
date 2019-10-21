@@ -110,6 +110,31 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label>Skills</label>
+        <input type="text" #skills="ngModel"
+        [class.is-invalid]="skills.invalid && skills.touched"
+        class="form-control" name="skills" [(ngModel)]="userModel.skills">
+        <!-- <small class="text-danger" [class.d-none]="skills.valid || skills.untouched">skills is required or invalid</small> -->
+        <div *ngIf="skills.errors && (skills.invalid || skills.touched)">
+          <small class="text-danger" *ngIf="skills.errors.required">skills is required</small>
+          <small class="text-danger" *ngIf="skills.errors.pattern">Your skills is invalid</small>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label>About me</label>
+        <textarea #aboutMe="ngModel" rows="5"
+        [class.is-invalid]="aboutMe.invalid && aboutMe.touched"
+        class="form-control" name="aboutMe" [(ngModel)]="userModel.aboutMe"></textarea>
+        <!-- <small class="text-danger" [class.d-none]="aboutMe.valid || aboutMe.untouched">aboutMe is required or invalid</small> -->
+        <div *ngIf="aboutMe.errors && (aboutMe.invalid || aboutMe.touched)">
+          <small class="text-danger" *ngIf="aboutMe.errors.required">aboutMe is required</small>
+          <small class="text-danger" *ngIf="aboutMe.errors.pattern">Your aboutMe is invalid</small>
+        </div>
+      </div>
+
       <!--Select-->
       <!-- <div class="form-group">
         <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value)"
