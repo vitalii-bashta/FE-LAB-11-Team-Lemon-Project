@@ -11,6 +11,10 @@ export class FeedbackComponent implements OnInit {
 
   constructor(private _route: ActivatedRoute) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this._route.paramMap.subscribe((params) => {
+      this.key = params.get("key");
+    })
+  }
 
 }
