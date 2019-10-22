@@ -31,7 +31,6 @@ export class AddEventsComponent implements OnInit, OnDestroy {
   managerEmail: string;
   managerName: any;
   
-  
   addEventsForm = this.fb.group({
     eventName: [''],
     eventCategory: [{value: '', disabled: true}],
@@ -102,15 +101,15 @@ export class AddEventsComponent implements OnInit, OnDestroy {
           this.addEventsForm.controls['eventFromOrganization'].setValue('true');
           this.addEventsForm.controls['eventOrganization'].setValue(value.organization);
         }
-        this.managerEmail = this.as.getUser().email;
+       }  
+      )
+     }
+     this.managerEmail = this.as.getUser().email;
         this.us.getUsers(`orderBy="email"&equalTo="${this.managerEmail}"`).subscribe((name) =>{
          this.managerName = name
         }, error => {
          console.error(error)
-       });
-       }  
-      )
-     }
+         });
   }
 
   addCover(value){
@@ -120,14 +119,6 @@ export class AddEventsComponent implements OnInit, OnDestroy {
         console.error(error)
       });
   }
-
-  // addPhoto(value){
-  //   this.fs.uploadFile(value).subscribe((x) => {
-  //     this.galeryPhotos.push(x)
-  //     }, error => {
-  //       console.error(error)
-  //     });
-  // }
 
   minusVolunteers(){
     this.volunteersQty -= 1;
@@ -187,7 +178,7 @@ export class AddEventsComponent implements OnInit, OnDestroy {
     } else {
       this.es.updateEvent(this.keyOfEvent, event).subscribe()
     }
-    
+
     this.router.navigate(['home']);
   }
   
