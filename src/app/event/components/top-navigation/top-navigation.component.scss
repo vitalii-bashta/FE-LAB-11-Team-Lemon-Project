@@ -10,13 +10,14 @@ $fontSize: 18px;
   font-size: $fontSize*1.5;
   font-weight: 100;
   text-align: center;
-  & div:hover {
-    cursor: pointer;
-  }
   &__item {
     flex-grow: 1;
   }
   &__name {
-    flex-grow: 7;
+    text-align: center;
+    flex-grow: 9;
   }
+}
+#back {
+  cursor: pointer;
 }

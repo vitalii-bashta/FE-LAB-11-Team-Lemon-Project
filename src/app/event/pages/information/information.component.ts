@@ -69,21 +69,28 @@ export class InformationComponent implements OnInit,OnDestroy {
     private route: ActivatedRoute,
     ) {}
   ngOnInit() {
-    this.route.paramMap.subscribe((params)=>{
+    this.route.paramMap.pipe(
+      share()
+    ).subscribe((params)=>{
       this.keyOfEvent = params.get('key')
       this.event$ = this.HttpServiceEvents.getEvent(params.get('key')).pipe(
         share()
       )
-     }); 
-    this.currentUserEmail$ = this.auth.user;
+    }); 
+    this.currentUserEmail$ = this.auth.user
     this.currentUser$ = this.currentUserEmail$.pipe(
       share(),
       mergeMap((character:any) => {
-        return this.HttpServiceUsers.getUsers(`orderBy="email"&equalTo="${character.email}"`)
+        if(!character) {
+          return character;   
+        }
+        return this.HttpServiceUsers.getUsers(`orderBy="email"&equalTo="${character.email}"`).pipe(
+          share()
+        )
       }
     ));
     this.subs.add(this.event$.subscribe(res => {
-      if(!res.members.emails) {
+      if(!res.members) {
         this.amountOfMembers = this.members(0,res.amountOfVolunteers)
         this.partSircle = this.calcPartOfSircle(0,res.amountOfVolunteers)
       } else {
@@ -94,7 +101,6 @@ export class InformationComponent implements OnInit,OnDestroy {
               'avatar':res.members.photos[i]
             }
           )
-          console.log(this.firstFourMembers)
         }
         this.amountOfMembers = this.members(res.members.emails.length,res.amountOfVolunteers)
         this.partSircle = this.calcPartOfSircle(res.members.emails.length,res.amountOfVolunteers)
