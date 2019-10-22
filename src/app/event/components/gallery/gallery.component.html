@@ -1,7 +1,7 @@
 
   <div class="container">
       <h3 class="header">Gallery</h3>
-      <slideshow [height]="height"
+      <slideshow 
       [minHeight]="'340px'"
       [autoPlay]="true"
       [showArrows]="true"
@@ -9,7 +9,7 @@
       [imageUrls]="arrayOfPhotos"
       [backgroundPosition]='position'
       [backgroundRepeat]="repeat"
-      [lazyLoad]="imageSources?.length > 1"
+      [lazyLoad]="arrayOfPhotos?.length > 1"
       [autoPlayWaitForLazyLoad]="true">
     </slideshow>
 </div>
