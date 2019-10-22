@@ -17,6 +17,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   public fullName = "Robin Smith";
   userData;
 
+  user
+
   public userModel: User = {
     name: "NoName",
     email: "bratok3000@gmail.com",
@@ -27,20 +29,32 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     memberOf: "Gang",
     skills: "No skills",
     aboutMe: "Nothing about me",
-    organizations: "No organizations",
+    organizations: ["No organizations"],
     feedback: ""
   }
   submitted = false;
   errorMessage = '';
   
+  key: any;
+
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private _userService: HttpServiceUsers,
               private modalService: ModalService,
-              public _authenticationService: AuthenticationService,) { }
+              public _authenticationService: AuthenticationService,) { 
+                // this.route.params.subscribe( params => console.log(params))
+                this.key = this._authenticationService.getUser().uid;
+              }
 
   ngOnInit() {
+    console.log(this._authenticationService.getUser());
+    
+    // this.router.navigate(['/information'], this.key);
+   
+    // this.userModel = this._userService.getUser().subscribe();
+   
+    // this.userModel = this._userService.getUser().subscribe();
     this.userData = this._userService.getUsers().subscribe(usersData =>  console.log(usersData[0]));
     console.log(this.userData);
   }
@@ -60,8 +74,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.submitted = true;
+    this._userService.pushUser(this.userModel).subscribe((result)=> console.log(result));
   }
-  
+
   // showInformation() {
   //   this.router.navigate(['information'], {relativeTo: this.route});
   //   this.isActive = false;

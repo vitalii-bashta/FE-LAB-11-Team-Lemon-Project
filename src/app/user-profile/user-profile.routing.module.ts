@@ -16,25 +16,25 @@ const routes : Routes = [
     component: UserProfileComponent,
     children: [
       {
-        path: '', 
-        redirectTo: 'information', 
+        path: '',
+        redirectTo: 'information/',
         pathMatch: 'full'
       },
       {
-        path: 'information',
-        component: InformationComponent 
+        path: 'information/:key',
+        component: InformationComponent
       },
       {
-        path: 'organization',
+        path: 'organization/:key',
         component: OrganizationComponent
       },
       {
-        path: 'feedback',
+        path: 'feedback/:key',
         component: FeedbackComponent
       }
     ]
   }
-  
+
 ]
 
 @NgModule({

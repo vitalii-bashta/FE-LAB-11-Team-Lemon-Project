@@ -18,9 +18,9 @@
   <!-- <a (click)="showInformation()" [class.active]="">Information</a>
   <a (click)="showOrganization()" [class.active]=>Organization</a>
   <a (click)="showFeedback()" [class.active]>Feedback</a> -->
-  <a [routerLink]="['information']"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Information</a>
-  <a routerLink="organization" routerLinkActive="active">Organization</a>
-  <a routerLink="feedback" routerLinkActive="active">Feedback</a>
+  <a [routerLink]="['information', key]"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Information</a>
+  <a [routerLink]="['organization', key]" routerLinkActive="active">Organization</a>
+  <a [routerLink]="['feedback', key]" routerLinkActive="active">Feedback</a>
 </nav>
 <router-outlet></router-outlet>
 
@@ -100,13 +100,38 @@
 
       <div class="form-group">
         <label>Member of</label>
-        <input type="number" #memberOf="ngModel"
+        <input type="text" #memberOf="ngModel"
         [class.is-invalid]="memberOf.invalid && memberOf.touched"
-        class="form-control" name="memberOf" [(ngModel)]="userModel.age">
+        class="form-control" name="memberOf" [(ngModel)]="userModel.memberOf">
         <!-- <small class="text-danger" [class.d-none]="memberOf.valid || memberOf.untouched">memberOf is required or invalid</small> -->
         <div *ngIf="memberOf.errors && (memberOf.invalid || memberOf.touched)">
           <small class="text-danger" *ngIf="memberOf.errors.required">memberOf is required</small>
           <small class="text-danger" *ngIf="memberOf.errors.pattern">Your memberOf is invalid</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Skills</label>
+        <input type="text" #skills="ngModel"
+        [class.is-invalid]="skills.invalid && skills.touched"
+        class="form-control" name="skills" [(ngModel)]="userModel.skills">
+        <!-- <small class="text-danger" [class.d-none]="skills.valid || skills.untouched">skills is required or invalid</small> -->
+        <div *ngIf="skills.errors && (skills.invalid || skills.touched)">
+          <small class="text-danger" *ngIf="skills.errors.required">skills is required</small>
+          <small class="text-danger" *ngIf="skills.errors.pattern">Your skills is invalid</small>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label>About me</label>
+        <textarea #aboutMe="ngModel" rows="5"
+        [class.is-invalid]="aboutMe.invalid && aboutMe.touched"
+        class="form-control" name="aboutMe" [(ngModel)]="userModel.aboutMe"></textarea>
+        <!-- <small class="text-danger" [class.d-none]="aboutMe.valid || aboutMe.untouched">aboutMe is required or invalid</small> -->
+        <div *ngIf="aboutMe.errors && (aboutMe.invalid || aboutMe.touched)">
+          <small class="text-danger" *ngIf="aboutMe.errors.required">aboutMe is required</small>
+          <small class="text-danger" *ngIf="aboutMe.errors.pattern">Your aboutMe is invalid</small>
         </div>
       </div>
 

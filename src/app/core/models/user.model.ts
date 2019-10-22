@@ -9,6 +9,6 @@ export interface User {
     memberOf?: string;
     skills?: string;
     aboutMe?: string;
-    organizations?: string;
+    organizations?: string[];
     feedback?: string;
 }
