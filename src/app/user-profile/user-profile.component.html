@@ -7,10 +7,10 @@
     </div>
     <br />
     <div class="user-profile__image">
-      <img src="{{userModel.avatarUrl}}" alt="photo" />
+      <img src="{{userData.avatarUrl}}" alt="photo" />
     </div>
     <div class="user-profile__fullName">
-        <h2>{{userModel.name}}</h2>
+        <h2>{{userData.name}}</h2>
     </div>
   </div>
 <header>
@@ -44,15 +44,15 @@
         <label>Full Name</label>
         <input type="text" required #name="ngModel"
         [class.is-invalid]="name.invalid && name.touched"
-        class="form-control" name="userName" [(ngModel)]="userModel.name">
+        class="form-control" name="userName" [(ngModel)]="userData.name">
         <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
       </div>
 
       <div class="form-group">
         <label>Mobile</label>
-        <input type="tel" #mobile="ngModel" pattern="^\d{10}$" required
+        <input type="tel" #mobile="ngModel" pattern="^\d{10}$" 
         [class.is-invalid]="mobile.invalid && mobile.touched" class="form-control"
-        name="mobile" [(ngModel)]="userModel.mobile">
+        name="mobile" [(ngModel)]="userData.mobile">
         <!-- <small class="text-danger" [class.d-none]="mobile.valid || mobile.untouched">mobile number is required and must be 10 letters</small> -->
         <div *ngIf="mobile.errors && (mobile.invalid || mobile.touched)">
           <small class="text-danger" *ngIf="mobile.errors.required">Mobile number is required</small>
@@ -60,25 +60,25 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label>Email</label>
         <input type="email" #email="ngModel"
         required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b"
         [class.is-invalid]="email.invalid && email.touched"
-        class="form-control" name="email" [(ngModel)]="userModel.email">
+        class="form-control" name="email" [(ngModel)]="userData.email"> -->
         <!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required or invalid</small> -->
-        <div *ngIf="email.errors && (email.invalid || email.touched)">
+        <!-- <div *ngIf="email.errors && (email.invalid || email.touched)">
           <small class="text-danger" *ngIf="email.errors.required">Email is required</small>
           <small class="text-danger" *ngIf="email.errors.pattern">Your email is invalid</small>
         </div>
-      </div>
+      </div> -->
 
       <div class="form-group">
         <label>City</label>
         <input type="text" #city="ngModel"
-        required pattern="*"
+        pattern=""
         [class.is-invalid]="city.invalid && city.touched"
-        class="form-control" name="city" [(ngModel)]="userModel.city">
+        class="form-control" name="city" [(ngModel)]="userData.city">
         <!-- <small class="text-danger" [class.d-none]="city.valid || city.untouched">City is required or invalid</small> -->
         <div *ngIf="city.errors && (city.invalid || city.touched)">
           <small class="text-danger" *ngIf="city.errors.required">City is required</small>
@@ -90,7 +90,7 @@
         <label>Age</label>
         <input type="number" #age="ngModel"
         [class.is-invalid]="age.invalid && age.touched"
-        class="form-control" name="age" [(ngModel)]="userModel.age">
+        class="form-control" name="age" [(ngModel)]="userData.age">
         <!-- <small class="text-danger" [class.d-none]="age.valid || age.untouched">Age is required or invalid</small> -->
         <div *ngIf="age.errors && (age.invalid || age.touched)">
           <small class="text-danger" *ngIf="age.errors.required">age is required</small>
@@ -102,7 +102,7 @@
         <label>Member of</label>
         <input type="text" #memberOf="ngModel"
         [class.is-invalid]="memberOf.invalid && memberOf.touched"
-        class="form-control" name="memberOf" [(ngModel)]="userModel.memberOf">
+        class="form-control" name="memberOf" [(ngModel)]="userData.memberOf">
         <!-- <small class="text-danger" [class.d-none]="memberOf.valid || memberOf.untouched">memberOf is required or invalid</small> -->
         <div *ngIf="memberOf.errors && (memberOf.invalid || memberOf.touched)">
           <small class="text-danger" *ngIf="memberOf.errors.required">memberOf is required</small>
@@ -114,7 +114,7 @@
         <label>Skills</label>
         <input type="text" #skills="ngModel"
         [class.is-invalid]="skills.invalid && skills.touched"
-        class="form-control" name="skills" [(ngModel)]="userModel.skills">
+        class="form-control" name="skills" [(ngModel)]="userData.skills">
         <!-- <small class="text-danger" [class.d-none]="skills.valid || skills.untouched">skills is required or invalid</small> -->
         <div *ngIf="skills.errors && (skills.invalid || skills.touched)">
           <small class="text-danger" *ngIf="skills.errors.required">skills is required</small>
@@ -127,45 +127,13 @@
         <label>About me</label>
         <textarea #aboutMe="ngModel" rows="5"
         [class.is-invalid]="aboutMe.invalid && aboutMe.touched"
-        class="form-control" name="aboutMe" [(ngModel)]="userModel.aboutMe"></textarea>
+        class="form-control" name="aboutMe" [(ngModel)]="userData.aboutMe"></textarea>
         <!-- <small class="text-danger" [class.d-none]="aboutMe.valid || aboutMe.untouched">aboutMe is required or invalid</small> -->
         <div *ngIf="aboutMe.errors && (aboutMe.invalid || aboutMe.touched)">
           <small class="text-danger" *ngIf="aboutMe.errors.required">aboutMe is required</small>
           <small class="text-danger" *ngIf="aboutMe.errors.pattern">Your aboutMe is invalid</small>
         </div>
       </div>
-
-      <!--Select-->
-      <!-- <div class="form-group">
-        <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value)"
-          #topic="ngModel"
-          [class.is-invalid]="topicHasError && topic.touched" name="" id="" class="custom-select" name="topic" [(ngModel)]="userModel.topic">
-          <option value="default">I am interested in</option>
-          <option *ngFor="let topic of topics">{{ topic }}</option>
-        </select>
-        <small class="text-danger" [class.d-none]="!topicHasError || topic.untouched">Please choose a topic</small>
-      </div> -->
-
-      <!--Radio Buttons-->
-      <!-- <div class="mb-3">
-        <label for="">Time preference</label>
-        <div class="form-check">
-          <input type="radio" [(ngModel)]="userModel.timePreference" class="form-check-input" name="timePreference" value="morning">
-          <label for="" class="form-check-label">Morning (9AM - 12PM)</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" [(ngModel)]="userModel.timePreference" class="form-check-input" name="timePreference" value="evening">
-          <label for="" class="form-check-label">Evening (5PM - 8PM)</label>
-        </div>
-      </div> -->
-
-      <!--Checkbox-->
-      <!-- <div class="form-check mb-3">
-        <input type="checkbox" name="subscribe" [(ngModel)]="userModel.subscribe" class="form-check-input">
-        <label class="form-check-label">
-          Send me promotional offers
-        </label>
-      </div> -->
 
       <button [disabled]="userForm.form.invalid" class="btn btn-primary" type="submit">Submit form</button>
     </form>
