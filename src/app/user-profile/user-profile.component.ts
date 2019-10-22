@@ -2,9 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../core/models/user.model';
 import { HttpServiceUsers } from '../core/services/http-users.service';
-import { map } from 'rxjs/operators';
+import { map, first, take } from 'rxjs/operators';
 import { ModalService } from './modal/modal.service';
 import { AuthenticationService } from '../core';
+import * as firebase from 'firebase';
+import { Subscriber, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,54 +16,61 @@ import { AuthenticationService } from '../core';
 export class UserProfileComponent implements OnInit, OnDestroy {
 
   isActive = true;
-  public fullName = "Robin Smith";
-  userData;
 
-  user
-
+  
+  submitted = false;
+  errorMessage = '';
+  
+  keyOfUserInDatabase: string;
+  key: any;
   public userModel: User = {
     name: "NoName",
-    email: "bratok3000@gmail.com",
+    email: this.key,
     avatarUrl: "https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/login%2Fuser.png?alt=media&token=4191f126-938c-4ef7-813b-f7d6956b4f27",
-    mobile: "5555555555",
+    mobile: "0000000000",
     city: "MiddleOfNowhere",
-    age: 100,
+    age: 0,
     memberOf: "Gang",
     skills: "No skills",
     aboutMe: "Nothing about me",
     organizations: ["No organizations"],
     feedback: ""
   }
-  submitted = false;
-  errorMessage = '';
-  
-  key: any;
-
+  userData: User = {
+    email: this.key
+  };
+  sub: Subscription;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private _userService: HttpServiceUsers,
               private modalService: ModalService,
               public _authenticationService: AuthenticationService,) { 
-                // this.route.params.subscribe( params => console.log(params))
-                this.key = this._authenticationService.getUser().uid;
+
               }
 
   ngOnInit() {
-    console.log(this._authenticationService.getUser());
-    
-    // this.router.navigate(['/information'], this.key);
-   
-    // this.userModel = this._userService.getUser().subscribe();
-   
-    // this.userModel = this._userService.getUser().subscribe();
-    this.userData = this._userService.getUsers().subscribe(usersData =>  console.log(usersData[0]));
-    console.log(this.userData);
+    this.key = this._authenticationService.getUser().providerData[0].uid;
+
+    this.sub = this._userService.getUsers(`orderBy="email"&equalTo="${this.key}"`)
+      .subscribe( users => { 
+        if (Object.keys(users).length > 0) {
+          this.keyOfUserInDatabase = Object.keys(users)[0];
+          console.log(this.keyOfUserInDatabase);
+          this.userData = users[this.keyOfUserInDatabase];
+          // console.log(this.userData);
+          // this.userData.name = users[this.keyOfUserInDatabase].name;
+          // this.userData.avatarUrl = users[this.keyOfUserInDatabase].avatarUrl;
+        } else {
+          this.userData = this.userModel;
+          // this.userData.name = this.userModel.name;
+          // this.userData.avatarUrl = this.userModel.avatarUrl;
+        }
+      });
   }
 
-
   ngOnDestroy() {
-    this.userData.uns
+    this.sub.unsubscribe();
   }
 
   openModal(id: string) {
@@ -74,7 +83,14 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.submitted = true;
-    this._userService.pushUser(this.userModel).subscribe((result)=> console.log(result));
+
+    if (this.keyOfUserInDatabase) {
+      this._userService.updateUser(this.keyOfUserInDatabase, this.userData).subscribe((result)=> console.log(result));
+    } else {
+      this._userService.pushUser(this.userData).subscribe((result)=> console.log(result));
+    }
+    
+    this.closeModal('custom-modal-1');
   }
 
   // showInformation() {

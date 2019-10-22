@@ -3,27 +3,27 @@
   <hr />
   <div class="mobile">
     <span>mobile</span><br/>
-    <span class="pink">{{information.mobile}}</span>
+    <span class="pink">{{userData.mobile}}</span>
   </div>
   <hr />
   <div class="email">
     <span>email</span><br/>
-    <span class="pink">{{email | async}}</span>
+    <span class="pink">{{email$ | async}}</span>
   </div>
   <hr />
   <div class="city">
     <span>city</span><br/>
-    {{information.city}}
+    {{userData.city}}
   </div>
   <hr />
   <div class="age">
     <span>age</span><br/>
-    {{information.age}}
+    {{userData.age}}
   </div>
   <hr />
   <div class="member-of">
     <span>member of</span><br/>
-    <span class="pink">{{information.memberOf}}</span>
+    <span class="pink">{{userData.memberOf}}</span>
   </div>
   <hr />
   <div>
@@ -41,12 +41,12 @@
 
   <h2>Skills</h2>
   <div>
-    {{skills}}
+    {{userData.skills}}
   </div>
 
   <h2>About me</h2>
   <div>
-    {{aboutMe}}
+    {{userData.aboutMe}}
   </div>
 
   <button (click)="logOut()" class="log-out">LOG OUT</button>
