@@ -1,5 +1,23 @@
 $mainThemeColor: darken(pink, 30%);
 
+@media (min-width: 576px) {
+	.icon-link {
+		padding: 10px;
+
+		.icon {
+			font-size: 1.4rem;
+		}
+		.icon-text {
+			font-size: 1.2rem;
+		}
+	}
+	.sub-nav-wrapper {
+		.events-heading {
+			font-size: 1.5rem;
+		}
+	}
+}
+
 @media (min-width: 768px) {
 	.event-wrapper {
 		max-width: 45vw;
@@ -12,6 +30,10 @@ $mainThemeColor: darken(pink, 30%);
 	}
 }
 
+.main-container {
+	padding: 0 5px;
+}
+
 .flex-container {
 	display: flex;
 	justify-content: center;
@@ -19,7 +41,7 @@ $mainThemeColor: darken(pink, 30%);
 }
 
 .events-heading {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	font-weight: 600;
 
 	.events-amount {
@@ -28,15 +50,14 @@ $mainThemeColor: darken(pink, 30%);
 }
 
 .event {
-	padding: 10px;
-	
+	margin: 10px;
+
 	&:focus, &:active {
 		outline: none;
 	}
 	.event-wrapper {
 		position: relative;
 		height: 100%;
-		margin-top: 10px;
 		box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 		cursor: pointer;
 		
@@ -48,7 +69,6 @@ $mainThemeColor: darken(pink, 30%);
 			transform: scale(0.99);
 			transition-duration: 50ms;
 		}
-		
 	}
 }
 
@@ -56,14 +76,6 @@ $mainThemeColor: darken(pink, 30%);
 .text-wrapper {
 	z-index: 0;
 	position: absolute;
-}
-
-.favorites-icon {
-	top: 10px;
-	left: 10px;
-	color: $mainThemeColor;
-	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: white;
 }
 
 .text-wrapper {
@@ -83,24 +95,24 @@ $mainThemeColor: darken(pink, 30%);
 .event-image {
 	width: 100%;
 	min-height: 100%;
+	filter: brightness(80%)
 }
 
 .sub-nav-wrapper {
 	display: flex;
 	justify-content: space-between;
-	margin: 10px 49px -15px 49px;
-	
+	margin: 0 auto;
+	max-width: 92vw;
+	margin-bottom: -15px;
+
 	.icon-wrapper {
 		display: flex;
 		align-items: center;
 
 		.icon-link {
-			padding: 15px;
+			padding: 5px;
 			text-decoration: none;
-
-			&:visited {
-				color: grey;
-			}
+			color: grey;
 
 			&:hover {
 				color: black;
@@ -112,6 +124,9 @@ $mainThemeColor: darken(pink, 30%);
 
 .icon {
 	padding: 5px;
-	font-size: 1.2rem;
 	color: $mainThemeColor;
+}
+
+.icon-text {
+	font-size: 0.8rem
 }

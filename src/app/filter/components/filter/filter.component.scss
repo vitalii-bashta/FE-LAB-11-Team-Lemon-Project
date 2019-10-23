@@ -1,8 +1,19 @@
 $main-theme-color: darken(pink, 30%);
 $lightGrey: #B4B4B9;
 
+@media (min-width: 576px) {
+	.weekdays-input-wrapper label {
+	border-radius: 30px;
+	height: 60px;
+	width: 60px;
+	margin-right: 5px;
+	line-height: 60px;
+}
+
+}
+
 @media (min-width: 992px) {
-    .select {
+	.select {
 		max-width: 40vw;
 	}
 
@@ -95,15 +106,14 @@ $lightGrey: #B4B4B9;
 .weekdays-input-wrapper label {
 	display: inline-block;
 	border: 1px solid $main-theme-color;
-	border-radius: 30px;
+	border-radius: 20px;
 	background: white;
-	height: 60px;
-	width: 60px;
-	margin-right: 5px;
-	line-height: 60px;
+	height: 40px;
+	width: 40px;
+	margin-right: 3px;
+	line-height: 40px;
 	text-align: center;
 	cursor: pointer;
-
 }
 
 .weekdays-input-wrapper input:checked + label {
