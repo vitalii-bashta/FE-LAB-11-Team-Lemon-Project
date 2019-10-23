@@ -83,6 +83,8 @@ export class AddEventsComponent implements OnInit, OnDestroy {
       this.addEventsForm.setValue(this.state.value);
       this.coverPhoto = this.state.value.eventPhoto;
       this.category = this.state.value.eventCategory;
+      this.time = this.state.value.eventTime;
+      this.date = this.state.value.eventDate;
       if(this.state.value.googleMaps){
         this.urlStatus = true;
       }
