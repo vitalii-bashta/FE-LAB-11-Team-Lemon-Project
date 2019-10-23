@@ -15,7 +15,7 @@ export class EventsComponent implements OnInit, OnDestroy {
 	public events: Event[] = [];
 	private searchString: string;
 	private eventSubscription: Subscription;
-	private weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+	private weekDays: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 	constructor(private eventsService: EventsService, private filteringService: FilteringService) { }
 
@@ -45,7 +45,6 @@ export class EventsComponent implements OnInit, OnDestroy {
 	}
 
 	applyFiltersToEvents(filters) {
-		console.log(filters);
 		this.events = this.events.filter((item) => {
 			return this.filterByDate(item, filters.dates) && 
 			this.filterByCategory(item, filters.category) && 

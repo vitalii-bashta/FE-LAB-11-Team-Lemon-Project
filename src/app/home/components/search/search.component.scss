@@ -1,56 +1,59 @@
-.cancel-button {
-    border: none;
-    background: none;
-    min-width: 10vw;
-    font-size: 0.8rem;
+@media (min-width: 576px) {
+	.search-input {
+		width: 77vw;
+	}
 }
 
 .search-wrapper {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    background-color: darken(pink, 20%);
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
+	position: fixed;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+	background-color: darken(pink, 20%);
 
-    .cancel-button {
-        color: #F9F9F9;
-        padding-right: 20px;
+	.cancel-button {
+		color: #F9F9F9;
+		padding-right: 20px;
+		border: none;
+		background: none;
+		min-width: 10vw;
 
-        &:hover {
-            color: lightgrey;
-            transition-duration: 300ms;
-        }
-        &:focus {
-            outline: none;
-        }
-    }
+		&:hover {
+			color: lightgrey;
+			transition-duration: 300ms;
+		}
+		&:focus {
+			outline: none;
+		}
+	}
 }
 
 .input-wrapper {
-    position: relative;
-    .search-input {
-        min-width: 75vw;
-        padding: 10px 30px;;
-        border-radius: 10px;
-        border: none;
-        background-color: pink;
-    
-        &::placeholder {
-            color: grey
-        }
-        &:focus {
-            background-color: lighten(pink, 5%);
-            outline: none;
-        }
-    }
+	position: relative;
+	padding: 5px 0;
+	.search-input {
+		min-width: 60vw;
+		padding: 10px 30px;;
+		border-radius: 10px;
+		border: none;
+		background-color: pink;
+	
+		&::placeholder {
+			color: grey
+		}
+		&:focus {
+			background-color: lighten(pink, 5%);
+			outline: none;
+		}
+	}
 
-    .search-icon {
-        position: absolute;
-        top: 10px;
-        left: 5px;
-        color: grey;
-    }
+	.search-icon {
+		position: absolute;
+		top: 15px;
+		left: 5px;
+		color: grey;
+	}
 }

@@ -41,7 +41,6 @@ export class FilterComponent implements OnInit, OnDestroy {
 			this.weekDays.forEach(item => {
 				(<FormGroup>this.filtersForm.controls['weekDays']).addControl(item, new FormControl(this.initialFilter.weekDays[item]));
 			});
-			console.log(this.initialFilter)
 		});
 
 		this.eventsService.getEvents().subscribe((events) => {
