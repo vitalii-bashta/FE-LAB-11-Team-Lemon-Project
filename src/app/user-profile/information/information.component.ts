@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthenticationService, HttpServiceUsers } from 'src/app/core';
 import { Observable, Subscription } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -15,25 +15,6 @@ import { User } from 'src/app/core/models/user.model';
 export class InformationComponent implements OnInit {
 
   email$: Promise<any>;
-
-  // bodyText: string;
-
-  // information = {};
-  // informationDefault = {
-  //   'mobile': '+38 (097) 123-4567',
-  //   'email': 'someEmail@pwc.com',
-  //   'city': 'Lviv',
-  //   'age': '25 years old',
-  //   'memberOf': 'SirPlus'
-  // }
-
-  // public skills = "Front-end developer, RPA developer";
-  // public aboutMe = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a semper diam, vel laoreet arcu. Integer vestibulum, nibh vestibulum accumsan accumsan, ipsum elit luctus mauris, ac fermentum quam leo elementum quam. Fusce non elit porttitor, condimentum metus eget, facilisis lacus";
-
-  // key: string;
-  // email1$: any;
-  // currentUser$: any;
-  // currentUserEmail$: Observable<firebase.User>;
 
   keyOfUserInDatabase: string;
   key: any;
@@ -63,24 +44,7 @@ export class InformationComponent implements OnInit {
               { }
 
   ngOnInit() {
-    // this.bodyText = 'This text can be updated in modal 1';
     this.email$ = this._authenticationService.isLoggInEmail();
-
-    // console.log(this.auth.user);
-
-    // this.currentUserEmail$ = this.auth.user;
-    // this.currentUser$ = this.currentUserEmail$.pipe(
-    //   share(),
-    //   mergeMap((character:any) => {
-    //     console.log(character);
-    //     return this._httpServiceUsers.getUsers(`orderBy="email"&equalTo="${character.email}"`)
-    //   }
-    // ));
-
-    // // this.information = this._httpServiceUsers.getUser().subscribe()
-    // this._route.paramMap.subscribe((params) => {
-    //   this.key = params.get("key");
-    // })
 
     this.key = this._authenticationService.getUser().providerData[0].uid;
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { User } from '../core/models/user.model';
 import { HttpServiceUsers } from '../core/services/http-users.service';
 import { map, first, take } from 'rxjs/operators';
@@ -91,6 +91,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this._userService.updateUser(this.keyOfUserInDatabase, this.userData).subscribe((result)=> console.log(result));
     } else {
       this._userService.pushUser(this.userData).subscribe((result)=> console.log(result));
+      location.reload();
     }
     
     this.closeModal('custom-modal-1');
