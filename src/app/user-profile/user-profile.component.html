@@ -39,6 +39,7 @@
       {{ userForm.value | json}}
       <hr />
       {{ userModel | json}}
+      <input type="file" value="upload" id="fileButton" (change)="onChange($event)" />
 
       <div class="form-group">
         <label>Full Name</label>
@@ -50,7 +51,7 @@
 
       <div class="form-group">
         <label>Mobile</label>
-        <input type="tel" #mobile="ngModel" pattern="^\d{10}$" 
+        <input type="tel" #mobile="ngModel" pattern="^\d{10}$"
         [class.is-invalid]="mobile.invalid && mobile.touched" class="form-control"
         name="mobile" [(ngModel)]="userData.mobile">
         <!-- <small class="text-danger" [class.d-none]="mobile.valid || mobile.untouched">mobile number is required and must be 10 letters</small> -->

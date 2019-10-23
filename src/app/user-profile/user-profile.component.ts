@@ -17,10 +17,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   isActive = true;
 
-  
+
   submitted = false;
   errorMessage = '';
-  
+
   keyOfUserInDatabase: string;
   key: any;
   public userModel: User = {
@@ -41,12 +41,16 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   };
   sub: Subscription;
 
+  fileButton = document.getElementById('fileButton');
+
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private _userService: HttpServiceUsers,
               private modalService: ModalService,
-              public _authenticationService: AuthenticationService,) { 
-
+              public _authenticationService: AuthenticationService,) {
+                const storageRef = firebase.storage().ref().child('IMG_20190425_202226_1.jpg');
+                storageRef.getDownloadURL().then(url => console.log(url));
               }
 
   ngOnInit() {
@@ -55,7 +59,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     console.log(this.userData.email);
     console.log(this.key);
     this.sub = this._userService.getUsers(`orderBy="email"&equalTo="${this.key}"`)
-      .subscribe( users => { 
+      .subscribe( users => {
         if (Object.keys(users).length > 0) {
           this.keyOfUserInDatabase = Object.keys(users)[0];
           console.log(this.keyOfUserInDatabase);
@@ -83,6 +87,17 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.modalService.close(id);
   }
 
+  onChange(event) {
+    console.log(event);
+    let file = event.target.files[0];
+    console.log(file);
+    let storageRef = firebase.storage().ref('users/' + this.key + '/' + file.name);
+    storageRef.getDownloadURL().then(url => this.userModel.avatarUrl = url);
+    console.log(this.userData.avatarUrl);
+    console.log(storageRef);
+    storageRef.put(file);
+  }
+
   onSubmit() {
     this.submitted = true;
     console.log(this.key);
@@ -93,7 +108,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this._userService.pushUser(this.userData).subscribe((result)=> console.log(result));
       location.reload();
     }
-    
+
     this.closeModal('custom-modal-1');
   }
 
