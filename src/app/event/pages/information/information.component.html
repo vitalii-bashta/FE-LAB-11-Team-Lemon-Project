@@ -9,8 +9,8 @@
 <app-header [event$]='event$'></app-header>
 <div class="sub-pages">
   <div class="sub-page_current" >Information</div>
-  <div class="sub-page" [routerLink]="['./../../description',keyOfEvent]">Description</div>
-  <div class="sub-page" [routerLink]="['./../../discussion',keyOfEvent]">Discussion</div>
+  <div class="sub-page" [routerLink]="['/event/description',keyOfEvent]">Description</div>
+  <div class="sub-page" [routerLink]="['/event/discussion',keyOfEvent]">Discussion</div>
 </div>
 <div class="members">
   <div class="members-first-line">

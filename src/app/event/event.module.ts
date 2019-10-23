@@ -33,7 +33,7 @@ const routes : Routes = [
     path: '',
     component: EventComponent,
     children: [
-      { path: '', redirectTo: 'information', pathMatch: 'full'},
+      { path: '', redirectTo: 'information'},
       { path: 'description/:key', component: DescriptionComponent },
       { path: 'information/:key', component: InformationComponent },
       { path: 'discussion/:key', component: DiscussionComponent } 

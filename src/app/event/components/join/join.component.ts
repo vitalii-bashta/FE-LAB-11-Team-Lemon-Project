@@ -20,7 +20,6 @@ export class JoinComponent implements OnInit {
   public isDisabled:boolean = true;
   constructor(public HttpServiceEvents:HttpServiceEvents) { }
   join() {
-    console.log(this.user)
     if (!this.user) {
       alert('Please Log In')
       return 
@@ -46,7 +45,6 @@ export class JoinComponent implements OnInit {
     this.HttpServiceEvents.updateEvent(this.keyOfEvent,this.event).subscribe(
       (res) => {
         console.log(res)
-        window.location.reload()
       }
     )
   }
