@@ -22,7 +22,7 @@
 			<div class="weekdays-container" formGroupName="weekDays">
 				<div *ngFor="let item of weekDays" class="weekdays-input-wrapper">
 					<input type="checkbox" [formControlName]="item" id="{{item}}">
-					<label for="{{item}}">{{ item }}</label>
+					<label class="weekdays-label" for="{{item}}">{{ item }}</label>
 				</div>
 			</div>
 

@@ -2,14 +2,13 @@ $main-theme-color: darken(pink, 30%);
 $lightGrey: #B4B4B9;
 
 @media (min-width: 576px) {
-	.weekdays-input-wrapper label {
-	border-radius: 30px;
-	height: 60px;
-	width: 60px;
-	margin-right: 5px;
-	line-height: 60px;
-}
-
+	.weekdays-input-wrapper .weekdays-label {
+		border-radius: 30px;
+		height: 60px;
+		width: 60px;
+		margin-right: 5px;
+		line-height: 60px;
+	}
 }
 
 @media (min-width: 992px) {
