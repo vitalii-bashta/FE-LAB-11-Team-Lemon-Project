@@ -90,6 +90,8 @@ export class InformationComponent implements OnInit {
           this.keyOfUserInDatabase = Object.keys(users)[0];
           console.log(this.keyOfUserInDatabase);
           this.userData = users[this.keyOfUserInDatabase];
+          let dbref = firebase.database().ref("users/" + this.keyOfUserInDatabase);
+          dbref.on('value', snap => this.userData = snap.val());
           // console.log(this.userData);
           // this.userData.name = users[this.keyOfUserInDatabase].name;
           // this.userData.avatarUrl = users[this.keyOfUserInDatabase].avatarUrl;
@@ -99,8 +101,6 @@ export class InformationComponent implements OnInit {
           // this.userData.avatarUrl = this.userModel.avatarUrl;
         }
       });
-    
-
   }
 
   logOut() {

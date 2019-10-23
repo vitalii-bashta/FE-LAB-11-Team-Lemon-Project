@@ -1,7 +1,7 @@
 export interface User {
     id?:number;
     name?: string;
-    email: string;
+    email?: string;
     avatarUrl?: string;
     mobile?: string;
     city?: string;

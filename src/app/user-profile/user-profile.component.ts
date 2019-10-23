@@ -25,7 +25,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   key: any;
   public userModel: User = {
     name: "NoName",
-    email: this.key,
+    email: this._authenticationService.getUser().providerData[0].uid,
     avatarUrl: "https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/login%2Fuser.png?alt=media&token=4191f126-938c-4ef7-813b-f7d6956b4f27",
     mobile: "0000000000",
     city: "MiddleOfNowhere",
@@ -37,7 +37,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     feedback: ""
   }
   userData: User = {
-    email: this.key
+    // email: this.key
   };
   sub: Subscription;
 
@@ -51,7 +51,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.key = this._authenticationService.getUser().providerData[0].uid;
-
+    this.userData.email = this.key;
+    console.log(this.userData.email);
+    console.log(this.key);
     this.sub = this._userService.getUsers(`orderBy="email"&equalTo="${this.key}"`)
       .subscribe( users => { 
         if (Object.keys(users).length > 0) {
@@ -83,7 +85,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.submitted = true;
-
+    console.log(this.key);
+    console.log(this.keyOfUserInDatabase)
     if (this.keyOfUserInDatabase) {
       this._userService.updateUser(this.keyOfUserInDatabase, this.userData).subscribe((result)=> console.log(result));
     } else {
