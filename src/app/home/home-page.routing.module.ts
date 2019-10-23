@@ -11,7 +11,7 @@ const routes: Routes = [
 		path: '',
 		component: HomePageComponent,
 		children: [
-			{ path: '', redirectTo: 'events', pathMatch: 'full' },
+			{ path: '', redirectTo: 'events' },
 			{ path: 'events', component: EventsComponent },
       {
         path: 'user-profile',

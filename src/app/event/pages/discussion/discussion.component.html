@@ -1,8 +1,8 @@
-<app-top-navigation [keyOfEvent]='keyOfEvent'></app-top-navigation>
+<app-top-navigation [event$]='event$' [keyOfEvent]='keyOfEvent'></app-top-navigation>
 <app-header [event$]='event$'></app-header>
 <div class="sub-pages">
-  <div class="sub-page" [routerLink]="['./../../information',keyOfEvent]">Information</div>
-  <div class="sub-page" [routerLink]="['./../../description',keyOfEvent]">Description</div>
+  <div class="sub-page" [routerLink]="['/event/information',keyOfEvent]">Information</div>
+  <div class="sub-page" [routerLink]="['/event/description',keyOfEvent]">Description</div>
   <div class="sub-page_current">Discussion</div>
 </div>
 <h3 class="header">Leave a comment</h3>

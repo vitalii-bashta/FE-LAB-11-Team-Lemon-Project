@@ -13,8 +13,6 @@ export class GalleryComponent implements OnInit,OnDestroy {
   public repeat:string = 'no-repeat';
   constructor() {}
   ngOnInit() {
-
-
   }
   ngOnDestroy() {
   }

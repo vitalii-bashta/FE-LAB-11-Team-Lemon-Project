@@ -79,7 +79,6 @@ export class InformationComponent implements OnInit,OnDestroy {
     }); 
     this.currentUserEmail$ = this.auth.user
     this.currentUser$ = this.currentUserEmail$.pipe(
-      share(),
       mergeMap((character:any) => {
         if(!character) {
           return character;   
@@ -88,7 +87,8 @@ export class InformationComponent implements OnInit,OnDestroy {
           share()
         )
       }
-    ));
+    ),
+    share());
     this.subs.add(this.event$.subscribe(res => {
       if(!res.members) {
         this.amountOfMembers = this.members(0,res.amountOfVolunteers)

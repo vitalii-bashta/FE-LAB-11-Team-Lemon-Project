@@ -1,5 +1,5 @@
 <div class="navigation">
-    <div class="navigation__item" id='back' [routerLink]="['/home/']"><i class="fas fa-angle-left"></i></div>
+    <div class="navigation__item" id='back' [routerLink]="['/home']"><i class="fas fa-angle-left"></i></div>
     <div class="navigation__item" *ngIf="isEventFinished&&isManagerOnthePage" [routerLink]="['/add-events', keyOfEvent]">Edit</div>
     <div class="navigation__name">Event</div>
     <div class="navigation__item"></div>

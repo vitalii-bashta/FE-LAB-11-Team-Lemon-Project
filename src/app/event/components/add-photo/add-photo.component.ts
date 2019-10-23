@@ -27,7 +27,7 @@ export class AddPhotoComponent implements OnInit, OnDestroy {
   uploadFile(file) {
     console.log(this.currentUser)
     if(this.currentUser) {
-      if(this.event.members.emails.includes(this.currentUser.email)) {
+      if(this.event.members.emails.includes(this.currentUser[Object.keys(this.currentUser)[0]].email)) {
         this.path = `${this.keyOfEvent}/gallery/`
         let length:number = 0;
         if(this.event.assignedPhotos) {
@@ -35,7 +35,7 @@ export class AddPhotoComponent implements OnInit, OnDestroy {
         }
         this.fs.uploadFileToGallery(file,this.path,length,this.event,this.keyOfEvent)
       } else {
-        alert(`You can not ad photo because you did not join the event`)
+        alert(`You can not add photo because you did not join the event`)
       }
     } else {
       alert('Please Log In')

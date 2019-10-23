@@ -23,6 +23,7 @@ export class TopNavigationComponent implements OnInit {
     this.isEventFinished = !(new Date(this.eventDate)<(new Date()))
     combineLatest(this.currentUser$,this.event$).subscribe(
       (results:[User,Event])=>{
+        console.log(results[0], results[1])
         for (const key in results[0]) {
           if (results[0].hasOwnProperty(key)) {
             this.isManagerOnthePage = results[0][key].email === results[1].manager.email;
