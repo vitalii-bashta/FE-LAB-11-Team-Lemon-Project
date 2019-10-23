@@ -16,17 +16,15 @@
             <input type="file" (change)="addCover($event.target.files)" id="event-photo"
                  accept=".jpg, .jpeg, .png">
             <label for="event-photo">Add cover photo</label>
+            <input type="text" formControlName="eventPhoto" value="{{ coverPhoto }}" hidden="true">
         </div>
         <p class="field-name">CATEGORY</p>
         <p>You have to add the event category</p>
         <div class="form-field">
-            <input type="button" value="+" class="add-option" id="add-option" [routerLink]="['categories']">
+            <input type="button" value="+" class="add-option" id="add-option" (click)=addCategory(addEventsForm.value)>
             <label for="add-option">add option</label>
         </div>
-        <div class="form-field" *ngIf="state">
-            <input type="text" formControlName="eventCategory" value="{{ state.category }}">
-        </div>
-        <div class="form-field" *ngIf="!state && getcategory">
+        <div class="form-field" *ngIf="state || getcategory">
             <input type="text" formControlName="eventCategory">
         </div>
         <p class="field-name">CONTACTS</p>

@@ -1,6 +1,6 @@
 <form [formGroup]="categoriesForm" (ngSubmit)="submit(categoriesForm.value)">
     <header>
-        <button type="reset" class="cancel-button" routerLink="/add-events">Cancel</button>
+        <button type="reset" class="cancel-button" (click)="return()">Cancel</button>
         <h2 class="categories-page-header">Categories</h2>
         <button type="submit" class="create-button" [disabled]="!categoriesForm.valid">Apply</button>
     </header>
