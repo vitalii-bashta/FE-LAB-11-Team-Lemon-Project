@@ -12,8 +12,14 @@ export class CategoryPageComponent implements OnInit {
 
   private _previousUrl: string;
   private _currentUrl: string;
+  navigation = this.router.getCurrentNavigation();
+  state = this.navigation.extras.state;
+  volQty: number = this.state.volunteers;
+  button: string = this.state.buttonName;
+  evTitle: string = this.state.title;
+
   categoriesForm = this.fb.group({
-    categoryName: ['']
+    categoryName: [this.state.value.eventCategory]
   });
 
   constructor(
@@ -35,8 +41,16 @@ export class CategoryPageComponent implements OnInit {
     this._previousUrl = this._currentUrl.slice(0, -11);
   }
 
-  submit(value) {
-    this.router.navigateByUrl(this._previousUrl, { state: { category: value.categoryName } });
+  submit(category) {
+    let value = this.state.value;
+    value.eventCategory = category.categoryName;
+    this.router.navigateByUrl(this._previousUrl, { state: { value, volunteers: this.volQty, buttonName: this.button, title : this.evTitle } }); 
+  }
+
+  return(){
+    let value = this.state.value;
+    let volQty = this.state.volunteers;
+    this.router.navigateByUrl(this._previousUrl, { state: { value, volunteers: volQty } }); 
   }
 
 }

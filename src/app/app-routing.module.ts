@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AngularFireAuthGuard, canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+
 import { AuthGuardService } from './core/services/auth-guard.service';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["authentication"]);
 
 const routes: Routes =  [
   {
@@ -23,7 +27,9 @@ const routes: Routes =  [
   },
   {
     path: 'add-events/:key',
-    loadChildren: () => import('./add-events/add-events.module').then(m => m.AddEventsModule)
+    loadChildren: () => import('./add-events/add-events.module').then(m => m.AddEventsModule),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin}
   },
   {
     path: 'error',

@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from "@angular/router";
+import { NavigationEnd, Router, ActivatedRoute } from "@angular/router";
 import { Subscription, Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { FileService, HttpServiceEvents, HttpServiceUsers, AuthenticationService } from 'src/app/core';
-import { Event } from 'src/app/core/models/event.model'
+import { Event } from 'src/app/core/models/event.model';
 
 @Component({
   selector: 'app-add-events',
@@ -22,17 +23,21 @@ export class AddEventsComponent implements OnInit, OnDestroy {
   navigation = this.router.getCurrentNavigation();
   state = this.navigation.extras.state;
   getcategory: boolean;
+  category:string;
   urlStatus: boolean = false;
   keyOfEvent: string;
   coverPhoto: Observable<string>;
   addButton: string = "Create";
   title: string = "New Event";
   private eventSubscription: Subscription;
+  private userSubscription: Subscription;
+  private _currentUrl: string;
   managerEmail: string;
   managerName: any;
   
   addEventsForm = this.fb.group({
     eventName: [''],
+    eventPhoto: [this.coverPhoto],
     eventCategory: [{value: '', disabled: true}],
     phoneContacts: ['', [Validators.required]],
     emailContacts: ['', [Validators.required, Validators.email]],
@@ -59,13 +64,32 @@ export class AddEventsComponent implements OnInit, OnDestroy {
     private us: HttpServiceUsers,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe((event: NavigationEnd) => {
+      this._setURLs(event);
+    });
+  }
 
   ngOnInit() {
+    console.log(this.state)
     this.route.paramMap.subscribe((params)=>{
       this.keyOfEvent = params.get('key')
      });
-     if(this.keyOfEvent !== 'new'){
+     if(this.state){
+      this.addButton = this.state.buttonName;
+      this.title = this.state.title;
+      this.addEventsForm.setValue(this.state.value);
+      this.coverPhoto = this.state.value.eventPhoto;
+      this.category = this.state.value.eventCategory;
+      if(this.state.value.googleMaps){
+        this.urlStatus = true;
+      }
+      if(this.state.volunteers){
+        this.volunteersQty = this.state.volunteers;
+      }
+     } else if(this.keyOfEvent !== 'new'){
       this.addButton = 'Edit';
       this.title = 'Edit Event';
       this.eventSubscription =  this.es.getEvent(this.keyOfEvent).subscribe((value) => {
@@ -76,6 +100,7 @@ export class AddEventsComponent implements OnInit, OnDestroy {
         if(value.category && !this.state){
           this.getcategory = true;
           this.addEventsForm.controls['eventCategory'].setValue(value.category);
+          this.category = value.category;
         }
         this.addEventsForm.controls['phoneContacts'].setValue(value.contacts.phone);
         this.addEventsForm.controls['emailContacts'].setValue(value.contacts.email);
@@ -89,7 +114,7 @@ export class AddEventsComponent implements OnInit, OnDestroy {
           this.addEventsForm.controls['googleMapsUrl'].setValue(value.location.url);
         }
         if(value.amountOfVolunteers === 'unlimited'){
-          this.addEventsForm.controls['volunteersQuantity'].setValue('true');        
+          this.addEventsForm.controls['volunteersQuantity'].setValue('true');
         } else {
           this.volunteersQty = value.amountOfVolunteers;
         }
@@ -105,11 +130,26 @@ export class AddEventsComponent implements OnInit, OnDestroy {
       )
      }
      this.managerEmail = this.as.getUser().email;
-        this.us.getUsers(`orderBy="email"&equalTo="${this.managerEmail}"`).subscribe((name) =>{
-         this.managerName = name
-        }, error => {
-         console.error(error)
-         });
+     this.userSubscription = this.us.getUsers(`orderBy="email"&equalTo="${this.managerEmail}"`)
+      .subscribe( users => { 
+        if (Object.keys(users).length > 0) {
+          let dataKey = Object.keys(users)[0];
+          let userData = users[dataKey];
+          this.managerName = userData.name
+        } else {
+          this.managerName = 'not registered';
+        }
+      });
+  }
+  
+  private _setURLs(event: NavigationEnd): void {
+    this._currentUrl = event.urlAfterRedirects;
+  }
+
+  addCategory(value){
+    value.eventPhoto = this.coverPhoto || "";
+    value.eventCategory = this.category;
+      this.router.navigateByUrl(`${this._currentUrl}/categories`, { state: {value, volunteers: this.volunteersQty, buttonName: this.addButton, title : this.title } });
   }
 
   addCover(value){
@@ -155,12 +195,12 @@ export class AddEventsComponent implements OnInit, OnDestroy {
         name: this.managerName,
         email: this.managerEmail,
       },
-      category: value.eventCategory,
+      category: this.category,
       location: {
         city: value.eventCity,
         street: value.eventStreet,
         url: this.gmUrl,
-      },      
+      },
       urlImage: this.coverPhoto,
       date: evDate + 'T' + evTime,
       contacts: {
@@ -175,16 +215,18 @@ export class AddEventsComponent implements OnInit, OnDestroy {
 
     if(this.keyOfEvent === 'new'){
       this.es.pushEvent(event).subscribe()
+      this.router.navigate(['home']);
     } else {
       this.es.updateEvent(this.keyOfEvent, event).subscribe()
+      this.router.navigate([`/event/information/${this.keyOfEvent}`]);
     }
 
-    this.router.navigate(['home']);
   }
   
   ngOnDestroy() {
-    if(this.keyOfEvent !== 'new'){
-    this.eventSubscription.unsubscribe()
+    if(!this.state && this.keyOfEvent !== 'new'){
+    this.eventSubscription.unsubscribe();
+    this.userSubscription.unsubscribe()
     }
   }
   
