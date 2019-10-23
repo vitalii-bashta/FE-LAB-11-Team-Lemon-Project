@@ -12,7 +12,13 @@ export class FooterComponent implements OnInit {
   constructor(public _authenticationService: AuthenticationService) { }
 
   ngOnInit() {
-    this.key = this._authenticationService.getUser().providerData[0].uid;
+    let user = this._authenticationService.getUser();
+    if (user) {
+      this.key = user.providerData[0].uid;
+    } else{
+      this.key = "undefined";
+    }
+    // this.key = this._authenticationService.getUser().providerData[0].uid;
   }
 
 }
