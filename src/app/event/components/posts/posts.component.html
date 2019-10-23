@@ -1,6 +1,9 @@
 <div class="comment">
     <div class="comment-photo">
-        <img class="avatar" src="{{post.user.avatar}}" alt="">
+        <img class="avatar" 
+            src="{{post.user.avatar}}" 
+            alt="{{post.user.userName}}" 
+            [routerLink]="['/user-profile',user]">
     </div> 
     <div class="comment-body">
         <div class="comment-body-description">

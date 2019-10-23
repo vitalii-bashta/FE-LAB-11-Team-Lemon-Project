@@ -24,11 +24,7 @@ export class DeleteButtonComponent implements OnInit,OnDestroy {
   ) { }
   delete() {
     this.sub.add(
-      this.HttpServiceEvents.deleteEvent(this.keyOfEvent).subscribe(
-        (result) => {
-          console.log(result)
-        }
-      )
+      this.HttpServiceEvents.deleteEvent(this.keyOfEvent).subscribe()
     )
   }
   ngOnInit() {

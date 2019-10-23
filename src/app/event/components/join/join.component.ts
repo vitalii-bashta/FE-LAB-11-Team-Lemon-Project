@@ -44,7 +44,7 @@ export class JoinComponent implements OnInit {
     }
     this.HttpServiceEvents.updateEvent(this.keyOfEvent,this.event).subscribe(
       (res) => {
-        console.log(res)
+        window.location.reload()
       }
     )
   }

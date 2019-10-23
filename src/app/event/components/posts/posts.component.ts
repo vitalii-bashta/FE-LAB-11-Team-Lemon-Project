@@ -7,7 +7,8 @@ import { Post } from 'src/app/core/models/post.model'
   styleUrls: ['./posts.component.scss']
 })
 export class PostComponent implements OnInit {
-  @Input() post;
+  @Input() post:Post;
+  @Input() user:string;
   public postDate:string;
   public DAY_OF_WEEK:Map<number,string> = new Map([
     [0,'Sunday'],

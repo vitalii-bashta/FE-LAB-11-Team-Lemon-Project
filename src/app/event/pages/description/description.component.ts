@@ -1,10 +1,15 @@
 import { Component, OnInit, OnDestroy,Input } from '@angular/core';
 import { Observable,Subscription } from 'rxjs';
-import { share } from 'rxjs/operators'
+import { share, mergeMap } from 'rxjs/operators'
 
 import { Event } from 'src/app/core/models/event.model'
+import { User } from 'src/app/core/models/user.model'
 import { HttpServiceEvents } from 'src/app/core/services/http-events.service'
-import { ActivatedRoute } from '@angular/router';
+import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
+import { AngularFireAuth } from '@angular/fire/auth';
+import { ActivatedRoute } from '@angular/router'
+
+
 
 @Component({
   selector: 'app-description',
@@ -13,6 +18,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DescriptionComponent implements OnInit,OnDestroy {
   public event$:Observable<Event>;
+  public currentUser$:Observable<User>;
+  public currentUserEmail$;
+  public currentUserEmail: string;
+  public date: string;
   public titleCanHelp:string = 'How can I help';
   public titleAboutEvent:string = 'About Event'; 
   public titlewhatDoINeed:string = 'What do i need';
@@ -60,18 +69,36 @@ export class DescriptionComponent implements OnInit,OnDestroy {
   }
   constructor(
     private HttpServiceEvents: HttpServiceEvents,
-    private route: ActivatedRoute
+    private HttpServiceUsers: HttpServiceUsers,
+    private route: ActivatedRoute,
+    public auth: AngularFireAuth,
     ) {
   }
   ngOnInit() {
+    this.currentUserEmail$ = this.auth.user;
+    this.currentUser$ = this.currentUserEmail$.pipe(
+      share(),
+      mergeMap((character:any) => {
+        if(character) {
+          this.currentUserEmail = character.email;
+        } else {
+          this.currentUserEmail = 'anonym'
+        }
+        return this.HttpServiceUsers.getUsers(`orderBy="email"&equalTo="${this.currentUserEmail}"`).pipe(
+          share()
+        )
+    })).pipe(
+      share()
+    );    
     this.route.paramMap.subscribe((params)=>{
       this.keyOfEvent = params.get('key')
-     });    
+    });    
     this.event$ = this.HttpServiceEvents.getEvent(this.keyOfEvent).pipe(
       share()
     )
     this.sub.add(this.event$.subscribe(
       (element) => {
+        this.date = element.date;
         this.schedule = this.doSchedule(element.schedule);      
       }
     ))
