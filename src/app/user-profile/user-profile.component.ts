@@ -28,7 +28,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   public userModel: User = {
     name: "NoName",
     email: this._authenticationService.getUser().providerData[0].uid,
-    avatarUrl: "https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/users%2Fanonym.jpg?alt=media&token=399cd780-01ae-4975-b2fc-059c7cafb460",
+    avatarUrl: "https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/users%2FuserDeault.png?alt=media&token=d4ca2f47-806d-4cd5-95f6-49dbd72297bb",
     mobile: "0000000000",
     city: "MiddleOfNowhere",
     age: 0,
