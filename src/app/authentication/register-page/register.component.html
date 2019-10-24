@@ -1,18 +1,20 @@
-<main>
-    <form [formGroup]="registerForm" (ngSubmit)="submit(registerForm.value)">
-        <input type="email" formControlName="email" placeholder="Email" required>
-        <input type="password" formControlName="password" placeholder="Password" required>
-        <label class="error">{{errorMessage}}</label>
-        <button type="submit" [disabled]="!registerForm.valid">Sign up</button>
-    </form>
-    <div class="divider">
-        <div class="line"></div>
-        <span>or</span>
-        <div class="line"></div>
-    </div>
-    <p (click)="auth.googleSignin()"><i class="fab fa-google"></i> Sign in with Google</p>
-</main>
-<footer>
-    <p>I already have an account.</p>
-    <a routerLink="/authentication">Sign in</a>
-</footer>
+<div class="second-wrapper">
+    <main>
+        <form [formGroup]="registerForm" (ngSubmit)="submit(registerForm.value)">
+            <input type="email" formControlName="email" placeholder="Email" required>
+            <input type="password" formControlName="password" placeholder="Password" required>
+            <label class="error">{{errorMessage}}</label>
+            <button type="submit" [disabled]="!registerForm.valid">Sign up</button>
+        </form>
+        <div class="divider">
+            <div class="line"></div>
+            <span>or</span>
+            <div class="line"></div>
+        </div>
+        <p (click)="auth.googleSignin()"><i class="fab fa-google"></i> Sign in with Google</p>
+    </main>
+    <footer>
+        <p>I already have an account.</p>
+        <a routerLink="/authentication">Sign in</a>
+    </footer>
+</div>
