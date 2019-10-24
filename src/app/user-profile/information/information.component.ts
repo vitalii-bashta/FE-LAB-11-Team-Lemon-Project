@@ -52,7 +52,7 @@ export class InformationComponent implements OnInit {
       .subscribe( users => { 
         if (Object.keys(users).length > 0) {
           this.keyOfUserInDatabase = Object.keys(users)[0];
-          console.log(this.keyOfUserInDatabase);
+          // console.log(this.keyOfUserInDatabase);
           this.userData = users[this.keyOfUserInDatabase];
           let dbref = firebase.database().ref("users/" + this.keyOfUserInDatabase);
           dbref.on('value', snap => this.userData = snap.val());
