@@ -28,7 +28,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   public userModel: User = {
     name: "NoName",
     email: this._authenticationService.getUser().providerData[0].uid,
-    avatarUrl: "https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/unknown-person-icon-17.jpg?alt=media&token=3ff13b84-1fd7-45f9-958b-b30ef06badb6",
+    avatarUrl: "https://firebasestorage.googleapis.com/v0/b/fe-lab-11-team-lemon-project.appspot.com/o/users%2Fanonym.jpg?alt=media&token=399cd780-01ae-4975-b2fc-059c7cafb460",
     mobile: "0000000000",
     city: "MiddleOfNowhere",
     age: 0,
@@ -100,7 +100,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     // console.log(event);
     let file = event.target.files[0];
     
-    console.log(this.storage.storage.refFromURL(this.userData.avatarUrl).delete())
+    // console.log(this.storage.storage.refFromURL(this.userData.avatarUrl).delete())
     // console.log(file);
     let storageRef = firebase.storage().ref('users/' + this.key + '/' + file.name);
     
