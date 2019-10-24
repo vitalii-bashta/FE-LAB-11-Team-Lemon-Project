@@ -16,7 +16,8 @@
 	<div class="flex-container">
 		<div *ngFor="let event of events" class="event" [routerLink]="['/../event/information',event.id]">
 			<div class="event-wrapper">
-				<img [src]="event.urlImage" class="event-image" alt="image">
+				<img *ngIf="event.urlImage" [src]="event.urlImage" class="event-image" alt="image">
+				<img *ngIf="!event.urlImage" src="../../../../assets/image-placeholder.jpg" class="event-image" alt="image">
 				<a class="favorites-icon" routerLink="events"></a>
 				<div class="text-wrapper">
 					<p class="event-name">{{event.eventName | uppercase}}</p>
