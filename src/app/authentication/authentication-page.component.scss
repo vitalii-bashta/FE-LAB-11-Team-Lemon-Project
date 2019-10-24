@@ -1,6 +1,7 @@
 $pageCol: #FF2055;
 $txtCol: #FFFFFF;
 $fontSize: 18px;
+$fontSizeWeb: 14px;
 
 
 * {
@@ -12,18 +13,20 @@ $fontSize: 18px;
 .wrapper {
     background-color: $pageCol;
     width: 100%;
-    min-height: 736px;
+    min-height: 100vh;
     color: $txtCol;
     font-size: $fontSize;
     padding: 10% 5%;
 
     @media screen and (min-width: 600px) {
-        padding: 5% 30%;
+        padding: 2% 30%;
+        font-size: $fontSizeWeb;
     }
 
     header {
         display: flex;
         flex-direction: column;
+        min-height: 23vh;
 
         button {
             background-color: $pageCol;
@@ -31,12 +34,21 @@ $fontSize: 18px;
             border: none;
             font-size: $fontSize;
             align-self: flex-end;
+
+            @media screen and (min-width: 600px) {
+                font-size: $fontSizeWeb;
+            }
+
         }
         .user {
             margin: 60px;
             width: 100px;
             height: 100px;
             align-self: center;
+
+            @media screen and (min-width: 600px) {
+                margin: 40px;
+            }
         }
 
     }

@@ -79,6 +79,8 @@ form {
                 #event-photo + label {
                     font-size: 20px;
                     padding: 5px;
+                    text-align: center;
+                    border: 1px solid gray;
                     // width: 50px;
                     color: $grey;
                     display: inline-block;
@@ -90,6 +92,7 @@ form {
 
                     &:hover {
                         cursor: pointer;
+                        background-color: $lightgrey;
                     }
 
                     @media screen and (min-width: 600px) {
@@ -144,11 +147,14 @@ form {
                     color: $blackgrey;
                     font-size: 15px;
                     outline: none;
-
                     &::placeholder {
                         color: $grey;
                         font-size: 20px;
                     }
+                }
+
+                input[type="text"]{
+                    min-width: 40%;
                 }
 
                 .add-option {

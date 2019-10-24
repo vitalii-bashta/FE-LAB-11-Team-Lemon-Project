@@ -1,17 +1,19 @@
-<main>
-    <form [formGroup]="forgotPassForm" (ngSubmit)="submit(forgotPassForm.value)">
-        <input type="email" formControlName="email" placeholder="Email" required>
-        <label class="error">{{errorMessage}}</label>
-        <button type="submit" [disabled]="!forgotPassForm.valid">Send pass</button>
-    </form>
-    <div class="divider">
-        <div class="line"></div>
-        <span>or</span>
-        <div class="line"></div>
-    </div>
-    <p (click)="auth.googleSignin()"><i class="fab fa-google"></i> Sign in with Google</p>
-</main>
-<footer>
-    <p>No account?</p>
-    <a routerLink="/authentication/register">Sign up</a>
-</footer>
+<div class="second-wrapper">
+    <main>
+        <form [formGroup]="forgotPassForm" (ngSubmit)="submit(forgotPassForm.value)">
+            <input type="email" formControlName="email" placeholder="Email" required>
+            <label class="error">{{errorMessage}}</label>
+            <button type="submit" [disabled]="!forgotPassForm.valid">Send pass</button>
+        </form>
+        <div class="divider">
+            <div class="line"></div>
+            <span>or</span>
+            <div class="line"></div>
+        </div>
+        <p (click)="auth.googleSignin()"><i class="fab fa-google"></i> Sign in with Google</p>
+    </main>
+    <footer>
+        <p>No account?</p>
+        <a routerLink="/authentication/register">Sign up</a>
+    </footer>
+</div>
