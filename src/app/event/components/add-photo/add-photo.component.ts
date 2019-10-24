@@ -25,7 +25,6 @@ export class AddPhotoComponent implements OnInit, OnDestroy {
     private fs: FileServiceEvents
   ) { }
   uploadFile(file) {
-    console.log(this.currentUser)
     if(this.currentUser) {
       if(this.event.members.emails.includes(this.currentUser[Object.keys(this.currentUser)[0]].email)) {
         this.path = `${this.keyOfEvent}/gallery/`

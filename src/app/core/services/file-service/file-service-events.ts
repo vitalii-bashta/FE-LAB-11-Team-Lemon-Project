@@ -38,16 +38,10 @@ export class FileServiceEvents {
         } else {
           firebaseEvent.assignedPhotos = [url]
         }
-        this.HttpServiceEvents.updateEvent(keyOfEvent,firebaseEvent).subscribe(
-          (res) => {
-            console.log(res)
-          }
-        )
+        this.HttpServiceEvents.updateEvent(keyOfEvent,firebaseEvent).subscribe()
       })
     })
   ).subscribe(
-    (x) => console.log(x),
-    (error) => console.error(error)
     );
   }
 }

@@ -26,6 +26,7 @@ export class DiscussionComponent implements OnInit,OnDestroy {
   public currentUserEmail:string;
   public currentUser$;
   public keyOfEvent: string;
+  public date: string
   constructor(
     private HttpServicePosts:HttpServicePosts,
     private HttpServiceUsers:HttpServiceUsers,
@@ -42,6 +43,11 @@ export class DiscussionComponent implements OnInit,OnDestroy {
      });   
     this.event$ = this.HttpServiceEvents.getEvent(this.keyOfEvent).pipe(
       share()
+    )
+    this.event$.subscribe (
+      (event) => {
+        this.date = event.date
+      }
     )
     this.posts$ = this.HttpServicePosts.getPosts(`orderBy="forEvent"&equalTo="${this.keyOfEvent}"`);
     this.sub.add(this.posts$.subscribe(

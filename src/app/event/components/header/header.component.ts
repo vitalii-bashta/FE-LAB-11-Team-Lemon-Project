@@ -52,7 +52,6 @@ export class HeaderComponent implements OnInit,OnDestroy {
 
   constructor() { }
   ngOnInit() {
-    console.log(this.event$)
     this.sub.add(this.event$.subscribe(
       (event:Event) => {
         this.status = this.dateFormat(event.date)

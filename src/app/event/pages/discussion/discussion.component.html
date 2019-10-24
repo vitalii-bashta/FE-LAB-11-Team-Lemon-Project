@@ -1,4 +1,8 @@
-<app-top-navigation [event$]='event$' [keyOfEvent]='keyOfEvent'></app-top-navigation>
+<app-top-navigation 
+  [event$]='event$'
+  [currentUser$]='currentUser$'
+  [eventDate]='date' 
+  [keyOfEvent]='keyOfEvent'></app-top-navigation>
 <app-header [event$]='event$'></app-header>
 <div class="sub-pages">
   <div class="sub-page" [routerLink]="['/event/information',keyOfEvent]">Information</div>
@@ -12,5 +16,7 @@
     [keyOfEvent] = 'keyOfEvent'>
 </app-add-comment>
 <ng-container *ngFor='let item of arrayOfFilteredPosts'>
-  <app-post [post]='item'></app-post>
+  <app-post 
+  [post]='item'
+  [user]='currentUserEmail'></app-post>
 </ng-container>

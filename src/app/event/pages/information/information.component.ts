@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription, from, forkJoin, combineLatest } from 'rxjs'
+import { Observable, Subscription, EMPTY  } from 'rxjs'
 import { mergeMap } from 'rxjs/operators'
 import { DomSanitizer } from '@angular/platform-browser';
 import { share } from 'rxjs/operators'
@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router'
 import { Event } from 'src/app/core/models/event.model'
 import { User } from 'src/app/core/models/user.model'
 import { HttpServiceUsers } from 'src/app/core/services/http-users.service'
-import { FileService, HttpServiceEvents } from 'src/app/core';
+import { HttpServiceEvents } from 'src/app/core';
 
 
 @Component({
@@ -31,8 +31,14 @@ export class InformationComponent implements OnInit,OnDestroy {
   public isManagerOnthePage:boolean;
   public firstFourMembers:Array<any> = [];
   members(currentNumber:number = 0,needVolunteers:number):string {
+    if( currentNumber === 0) {
+      if (typeof needVolunteers === 'string') {
+        return `${currentNumber}/unlimited`
+      }      
+      return `0/${needVolunteers}`
+    }
     if (typeof needVolunteers === 'string') {
-      return 'unlimited'
+      return `${currentNumber}/unlimited`
     }
     if (!currentNumber || !needVolunteers) {
       return '';
@@ -81,7 +87,7 @@ export class InformationComponent implements OnInit,OnDestroy {
     this.currentUser$ = this.currentUserEmail$.pipe(
       mergeMap((character:any) => {
         if(!character) {
-          return character;   
+          return EMPTY;   
         }
         return this.HttpServiceUsers.getUsers(`orderBy="email"&equalTo="${character.email}"`).pipe(
           share()
