@@ -12,7 +12,7 @@
   }
   .log-out {
     margin-top: 20px;
-    width: 100%;
+    width: 97%;
     height: 40px;
     background-color: transparent;
     color: $pink;
@@ -20,5 +20,8 @@
     border: 1px solid $pink;
     border-radius: 5px;
     cursor: pointer;
+  }
+  .log-out-button {
+    text-align: center;
   }
 }
